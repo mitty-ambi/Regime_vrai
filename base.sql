@@ -18,7 +18,6 @@ CREATE TABLE sante (
     poids FLOAT,
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE
 );
-
 CREATE TABLE objectifs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50)
