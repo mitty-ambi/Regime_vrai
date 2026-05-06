@@ -18,6 +18,7 @@ CREATE TABLE sante (
     poids FLOAT,
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE
 );
+
 CREATE TABLE objectifs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50)
@@ -33,21 +34,41 @@ CREATE TABLE utilisateur_objectifs (
 
 CREATE TABLE regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(100),
-    description TEXT,
-    pourcentage_viande INT,
-    pourcentage_poisson INT,
-    pourcentage_volaille INT,
+    type ENUM('augmentation', 'reduction', 'IMC ideal'),
+    prix DECIMAL(10,2),
     duree INT,
-    variation_poids FLOAT,
-    prix DECIMAL(10,2)
+    variation_poids FLOAT
+);
+
+CREATE TABLE aliments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100),
+    calories INT,
+    type VARCHAR(50)
+);
+
+CREATE TABLE regime_aliments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    regime_id INT,
+    aliment_id INT,
+    FOREIGN KEY (regime_id) REFERENCES regimes(id) ON DELETE CASCADE,
+    FOREIGN KEY (aliment_id) REFERENCES aliments(id) ON DELETE CASCADE
 );
 
 CREATE TABLE activites (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100),
-    description TEXT,
-    calories_brulees_par_jour INT
+    date_activite DATE,
+    calories_brulees INT
+);
+
+CREATE TABLE historique_activites (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    utilisateur_id INT,
+    activite_id INT,
+    date_historique TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE,
+    FOREIGN KEY (activite_id) REFERENCES activites(id) ON DELETE CASCADE
 );
 
 CREATE TABLE portefeuille (
@@ -74,6 +95,17 @@ CREATE TABLE transactions (
     FOREIGN KEY (code_id) REFERENCES codes(id)
 );
 
+CREATE TABLE paiements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    utilisateur_id INT,
+    offre VARCHAR(100),
+    prix DECIMAL(10,2),
+    benefice DECIMAL(10,2),
+    statut ENUM('en_attente', 'valide', 'refuse') DEFAULT 'en_attente',
+    date_paiement TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE
+);
+
 CREATE TABLE achats_regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     utilisateur_id INT,
@@ -84,6 +116,8 @@ CREATE TABLE achats_regimes (
     FOREIGN KEY (regime_id) REFERENCES regimes(id)
 );
 
-
-
-
+CREATE TABLE parametres (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cle VARCHAR(100),
+    valeur VARCHAR(255)
+);
