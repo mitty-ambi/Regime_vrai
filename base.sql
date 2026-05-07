@@ -1,4 +1,5 @@
 CREATE DATABASE regime_app;
+
 USE regime_app;
 
 CREATE TABLE utilisateurs (
@@ -8,6 +9,7 @@ CREATE TABLE utilisateurs (
     mot_de_passe VARCHAR(255),
     genre ENUM('Homme', 'Femme'),
     is_gold BOOLEAN DEFAULT FALSE,
+    solde DECIMAL(10, 2) DEFAULT 0.00,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -34,10 +36,15 @@ CREATE TABLE utilisateur_objectifs (
 
 CREATE TABLE regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100),
     type ENUM('augmentation', 'reduction', 'IMC ideal'),
-    prix DECIMAL(10,2),
-    duree INT,
-    variation_poids FLOAT
+    prix DECIMAL(10, 2),
+    date_debut DATE,
+    date_fin DATE,
+    variation_poids FLOAT,
+    pourcentage_viande DECIMAL(5, 2),
+    pourcentage_poisson DECIMAL(5, 2),
+    pourcentage_volaille DECIMAL(5, 2)
 );
 
 CREATE TABLE aliments (
@@ -45,14 +52,6 @@ CREATE TABLE aliments (
     nom VARCHAR(100),
     calories INT,
     type VARCHAR(50)
-);
-
-CREATE TABLE regime_aliments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    regime_id INT,
-    aliment_id INT,
-    FOREIGN KEY (regime_id) REFERENCES regimes(id) ON DELETE CASCADE,
-    FOREIGN KEY (aliment_id) REFERENCES aliments(id) ON DELETE CASCADE
 );
 
 CREATE TABLE activites (
@@ -71,53 +70,30 @@ CREATE TABLE historique_activites (
     FOREIGN KEY (activite_id) REFERENCES activites(id) ON DELETE CASCADE
 );
 
-CREATE TABLE portefeuille (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id INT,
-    solde DECIMAL(10,2) DEFAULT 0,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE
-);
-
-CREATE TABLE codes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    code VARCHAR(50) UNIQUE,
-    montant DECIMAL(10,2),
-    est_utilise BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE transactions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id INT,
-    code_id INT,
-    montant DECIMAL(10,2),
-    date_transaction TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
-    FOREIGN KEY (code_id) REFERENCES codes(id)
-);
-
-CREATE TABLE paiements (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id INT,
-    offre VARCHAR(100),
-    prix DECIMAL(10,2),
-    benefice DECIMAL(10,2),
-    statut ENUM('en_attente', 'valide', 'refuse') DEFAULT 'en_attente',
-    date_paiement TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE
-);
-
 CREATE TABLE achats_regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     utilisateur_id INT,
     regime_id INT,
-    prix_paye DECIMAL(10,2),
+    prix_original DECIMAL(10, 2),
+    prix_paye DECIMAL(10, 2),
     date_achat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
     FOREIGN KEY (regime_id) REFERENCES regimes(id)
 );
 
-CREATE TABLE parametres (
+CREATE TABLE codes (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    cle VARCHAR(100),
-    valeur VARCHAR(255)
+    code VARCHAR(50) UNIQUE,
+    montant DECIMAL(10, 2),
+    est_utilise BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE transactions_codes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    utilisateur_id INT,
+    code_id INT,
+    montant_credite DECIMAL(10, 2),
+    date_transaction TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
+    FOREIGN KEY (code_id) REFERENCES codes(id)
 );
