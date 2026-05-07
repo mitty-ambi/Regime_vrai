@@ -47,6 +47,14 @@ CREATE TABLE regimes (
     pourcentage_volaille DECIMAL(5, 2)
 );
 
+CREATE TABLE regime_activite (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_regime INT,
+    id_activite INT,
+    FOREIGN KEY (id_regime) REFERENCES regimes(id) ON DELETE CASCADE,
+    FOREIGN KEY (activites) REFERENCES activites(id) ON DELETE CASCADE
+);
+
 CREATE TABLE aliments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100),
@@ -59,15 +67,6 @@ CREATE TABLE activites (
     nom VARCHAR(100),
     date_activite DATE,
     calories_brulees INT
-);
-
-CREATE TABLE historique_activites (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id INT,
-    activite_id INT,
-    date_historique TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE,
-    FOREIGN KEY (activite_id) REFERENCES activites(id) ON DELETE CASCADE
 );
 
 CREATE TABLE achats_regimes (
