@@ -1,50 +1,29 @@
-<nav class="navbar">
-    <div class="nav-container">
-        <div class="nav-brand">
-            <a href="/">
-                <span class="brand-icon">🏋️</span>
-                <span class="brand-text">Fit<span class="brand-highlight">Regime</span></span>
-            </a>
+<header>
+    <nav>
+        <div class="logo">
+            🥗 Régime App
         </div>
-
-        <div class="nav-toggle" id="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="nav-right">
+            <?php if (session()->get('is_logged_in')): ?>
+                <?php $user = session()->get('utilisateur'); ?>
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <?= strtoupper(substr(esc($user['nom']), 0, 1)) ?>
+                    </div>
+                    <div>
+                        <div style="font-weight: 600; color: var(--dark);">
+                            <?= esc($user['nom']) ?>
+                        </div>
+                        <div style="font-size: 0.85rem; color: var(--gray);">
+                            <?= esc($user['email']) ?>
+                        </div>
+                    </div>
+                </div>
+                <a href="/auth/logout" class="logout-btn">Déconnexion</a>
+            <?php else: ?>
+                <a href="/auth/login" class="login-btn">Connexion</a>
+                <a href="/auth/inscription" class="register-btn">Inscription</a>
+            <?php endif; ?>
         </div>
-
-        <div class="nav-menu" id="nav-menu">
-            <ul class="nav-links">
-                <li><a href="/" class="nav-link"><span class="nav-icon">🏠</span> Accueil</a></li>
-                <li><a href="/regime/add" class="nav-link"><span class="nav-icon">➕</span> Ajouter Régime</a></li>
-                <li><a href="/regimes/list" class="nav-link"><span class="nav-icon">📋</span> Liste Régimes</a></li>
-                <li><a href="/activities" class="nav-link"><span class="nav-icon">🏃</span> Activités</a></li>
-                <li><a href="/profile" class="nav-link"><span class="nav-icon">👤</span> Mon Profil</a></li>
-                <li><a href="/wallet" class="nav-link"><span class="nav-icon">💰</span> Porte-monnaie</a></li>
-                <li><a href="/gold/upgrade" class="nav-link gold-link"><span class="nav-icon">👑</span> Devenir Gold</a>
-                </li>
-                <li><a href="/login" class="nav-link login-btn"><span class="nav-icon">🔑</span> Connexion</a></li>
-                <li><a href="/" class="nav-link"><span class="nav-icon">📝</span> Inscription</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<script>
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    if (navToggle) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-    }
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        });
-    });
-</script>
+    </nav>
+</header>

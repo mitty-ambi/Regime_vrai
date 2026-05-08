@@ -9,11 +9,15 @@ ini_set('display_errors', 1);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un régime</title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/info_client.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/admin_dashboard.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/CrudRegime.css') ?>">
 </head>
 
 <body>
-    <?php include('navbar.php'); ?>
+
+    <?= view("navbar") ?>
+    <?= view("sidebar") ?>
 
     <div class="container">
         <h1 class="page-title">➕ Ajouter un régime</h1>

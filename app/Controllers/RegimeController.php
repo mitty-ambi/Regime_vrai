@@ -23,7 +23,7 @@ class RegimeController extends BaseController
     {
         $data['liste_regime'] = $this->regimeModel->findAll();
         $data['liste_objectif'] = $this->objectifModel->findAll();
-        return view('CrudRegime', $data);
+        return view('/regime/CrudRegime', $data);
     }
     public function insert()
     {
