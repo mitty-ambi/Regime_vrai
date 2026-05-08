@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - NutriGain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+            --light: #f9fafb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #059669 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 900px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-visual {
+            background: linear-gradient(135deg, var(--primary) 0%, #059669 100%);
+            padding: 60px 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .auth-visual-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .auth-visual h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .auth-visual p {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .auth-form {
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-form h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .auth-form .subtitle {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Manrope', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .form-check-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-check input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        .form-check label {
+            margin-bottom: 0;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .forgot-password {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+            margin-bottom: 16px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .auth-footer {
+            text-align: center;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gray-light);
+        }
+
+        .divider span {
+            position: relative;
+            background: white;
+            padding: 0 12px;
+            color: var(--gray);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .social-login {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .btn-social {
+            background: var(--light);
+            color: var(--dark);
+            border: 1px solid var(--gray-light);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-social:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-visual {
+                padding: 40px 30px;
+            }
+
+            .auth-form {
+                padding: 40px 30px;
+            }
+
+            .auth-visual-icon {
+                font-size: 60px;
+            }
+
+            .auth-visual h2 {
+                font-size: 24px;
+            }
+
+            .auth-form h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <!-- LEFT SIDE - VISUAL -->
+        <div class="auth-visual">
+            <div class="auth-visual-icon">🥗</div>
+            <h2>NutriGain</h2>
+            <p>Atteignez vos objectifs nutritionnels avec un régime personnalisé adapté à vos besoins et vos envies.</p>
+        </div>
+
+        <!-- RIGHT SIDE - FORM -->
+        <div class="auth-form">
+            <h1>Connexion</h1>
+            <p class="subtitle">Entrez vos identifiants pour accéder à votre profil</p>
+
+            <!-- ALERTS -->
+            <div class="alert alert-danger" style="display: none;">
+                <strong>Erreur !</strong> Email ou mot de passe incorrect.
+            </div>
+
+            <form action="/auth/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-check">
+                    <div class="form-check-left">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Se souvenir de moi</label>
+                    </div>
+                    <a href="/auth/forgot-password" class="forgot-password">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="btn">Se Connecter</button>
+
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="btn-social">Google</button>
+                    <button type="button" class="btn-social">Apple</button>
+                </div>
+
+                <div class="auth-footer">
+                    Pas encore inscrit ? <a href="/auth/register">Créer un compte</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
