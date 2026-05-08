@@ -75,6 +75,7 @@ CREATE TABLE achats_regimes (
     prix_original DECIMAL(10, 2),
     prix_paye DECIMAL(10, 2),
     date_achat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    statu VARCHAR(20) DEFAULT 'en cours','termine','annule',
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
     FOREIGN KEY (regime_id) REFERENCES regimes(id)
 );
