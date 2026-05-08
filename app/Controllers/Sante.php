@@ -19,7 +19,6 @@ class Sante extends BaseController
         if (!session()->has('temp_user_id') && !session()->has('utilisateur')) {
             return redirect()->to('/auth/login')->with('error', 'Veuillez vous connecter d\'abord');
         }
-
         return view('sante/info');
     }
 

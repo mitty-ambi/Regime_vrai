@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NutriGain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --secondary: #8b5cf6;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+            --info: #3b82f6;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        /* HEADER */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 16px;
+            background: var(--primary-light);
+            border-radius: 8px;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .logout-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 32px;
+        }
+
+        /* PAGE TITLE */
+        .page-header {
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* GRID LAYOUT */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .col-full {
+            grid-column: 1 / -1;
+        }
+
+        /* CARDS */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header a {
+            font-size: 12px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* PROFILE CARD */
+        .profile-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .profile-item {
+            padding: 16px;
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+        .profile-label {
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .profile-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* GOAL DISPLAY */
+        .goal-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* REGIME CARDS */
+        .regime-card {
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            padding: 20px;
+            background: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+
+        .regime-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+        }
+
+        .regime-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary-light) 0%, white 100%);
+        }
+
+        .regime-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .regime-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .regime-duration {
+            font-size: 12px;
+            background: var(--gray-lighter);
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: var(--gray);
+        }
+
+        .regime-description {
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .regime-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .regime-stat {
+            text-align: center;
+        }
+
+        .regime-stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .regime-stat-label {
+            font-size: 11px;
+            color: var(--gray);
+        }
+
+        .regime-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .regime-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .regime-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .regime-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* WALLET SECTION */
+        .wallet-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wallet-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .wallet-balance {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wallet-label {
+            font-size: 12px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wallet-actions {
+            margin-top: 24px;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .wallet-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .wallet-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* GOLD OFFER */
+        .gold-offer {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-left: 4px solid #d97706;
+            color: white;
+        }
+
+        .gold-offer .card-header {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* MODAL / CODE INPUT */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--gray-light);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--gray-light);
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .container {
+                padding: 20px 16px;
+            }
+
+            nav {
+                padding: 12px 16px;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">🥗 NutriGain</div>
+            <div class="nav-right">
+                <div class="user-profile">
+                    <div class="user-avatar">JD</div>
+                    <div>
+                        <strong>Jean Dupont</strong><br>
+                        <small style="color: var(--gray);">Profil Utilisateur</small>
+                    </div>
+                </div>
+                <button class="logout-btn">Déconnexion</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- PAGE TITLE -->
+        <div class="page-header">
+            <h1>Bienvenue, Jean ! 👋</h1>
+            <p>Retrouvez vos régimes personnalisés et gérez votre profil nutritionnel</p>
+        </div>
+
+        <!-- MAIN GRID -->
+        <div class="grid">
+            <!-- LEFT COLUMN -->
+            <div>
+                <!-- PROFILE CARD -->
+                <div class="card">
+                    <div class="card-header">
+                        📊 Votre Profil
+                        <a href="/profile">Modifier</a>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-item">
+                            <div class="profile-label">Âge</div>
+                            <div class="profile-value">28 ans</div>
+                        </div>
+                        <div class="profile-item">
+                            <div class="profile-label">Taille</div>
+                            <div class="profile-value">175 cm</div>
+                        </div>
+                        <div class="profile-item">
+                            <div class="profile-label">Poids Actuel</div>
+                            <div class="profile-value">82 kg</div>
+                        </div>
+                        <div class="profile-item">
+                            <div class="profile-label">IMC</div>
+                            <div class="profile-value">26.8</div>
+                        </div>
+                    </div>
+                    <div>
+                        <strong style="font-size: 12px; color: var(--gray);">OBJECTIF ACTUEL</strong>
+                        <div style="margin-top: 8px;">
+                            <span class="goal-badge">🎯 Atteindre IMC idéal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WALLET CARD -->
+                <div class="card wallet-card" style="margin-top: 24px;">
+                    <div class="wallet-balance">25,50€</div>
+                    <div class="wallet-label">Solde Portefeuille</div>
+                    <div class="wallet-actions">
+                        <button class="wallet-btn" onclick="openCodeModal()">Ajouter Code</button>
+                        <button class="wallet-btn">Voir Historique</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div>
+                <!-- GOLD OFFER -->
+                <div class="card gold-offer">
+                    <div class="card-header">⭐ Offre Premium Gold</div>
+                    <p style="margin-bottom: 16px; font-size: 13px;">Obtenez 15% de réduction sur tous les régimes</p>
+                    <p style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">29,99€<span style="font-size: 13px;"> (une seule fois)</span></p>
+                    <button style="width: 100%; background: white; color: var(--warning); border: none; padding: 10px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#fbbf24'" onmouseout="this.style.background='white'">Activer Premium</button>
+                </div>
+
+                <!-- ACTIVE REGIMES -->
+                <div class="card" style="margin-top: 24px;">
+                    <div class="card-header">📋 Régimes Actifs</div>
+                    <p style="font-size: 13px; color: var(--gray); margin-bottom: 16px;">Vous n'avez pas encore activé de régime</p>
+                    <a href="#regimes" style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 13px;">Découvrir les régimes →</a>
+                </div>
+            </div>
+
+            <!-- REGIMES SUGGESTIONS (FULL WIDTH) -->
+            <div class="col-full">
+                <div class="card">
+                    <div class="card-header">
+                        🍎 Régimes Recommandés
+                        <a href="/regimes">Voir tous</a>
+                    </div>
+
+                    <!-- REGIME 1 -->
+                    <div class="regime-card featured">
+                        <div class="regime-header">
+                            <div class="regime-name">Régime Équilibré 30 jours</div>
+                            <div class="regime-duration">30 jours</div>
+                        </div>
+                        <div class="regime-description">Régime parfait pour atteindre votre IMC idéal. Combinaison idéale de protéines, glucides et lipides.</div>
+                        <div class="regime-stats">
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">50%</div>
+                                <div class="regime-stat-label">Protéines</div>
+                            </div>
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">30%</div>
+                                <div class="regime-stat-label">Volaille</div>
+                            </div>
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">20%</div>
+                                <div class="regime-stat-label">Poisson</div>
+                            </div>
+                        </div>
+                        <div class="regime-footer">
+                            <div class="regime-price">19,99€</div>
+                            <button class="regime-btn">Activer Régime</button>
+                        </div>
+                    </div>
+
+                    <!-- REGIME 2 -->
+                    <div class="regime-card">
+                        <div class="regime-header">
+                            <div class="regime-name">Régime Protéiné 60 jours</div>
+                            <div class="regime-duration">60 jours</div>
+                        </div>
+                        <div class="regime-description">Riche en protéines pour développer la masse musculaire et la force.</div>
+                        <div class="regime-stats">
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">70%</div>
+                                <div class="regime-stat-label">Protéines</div>
+                            </div>
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">40%</div>
+                                <div class="regime-stat-label">Volaille</div>
+                            </div>
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">30%</div>
+                                <div class="regime-stat-label">Poisson</div>
+                            </div>
+                        </div>
+                        <div class="regime-footer">
+                            <div class="regime-price">34,99€</div>
+                            <button class="regime-btn">Activer Régime</button>
+                        </div>
+                    </div>
+
+                    <!-- REGIME 3 -->
+                    <div class="regime-card">
+                        <div class="regime-header">
+                            <div class="regime-name">Régime Léger 15 jours</div>
+                            <div class="regime-duration">15 jours</div>
+                        </div>
+                        <div class="regime-description">Idéal pour une détox rapide et léger avant un événement important.</div>
+                        <div class="regime-stats">
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">40%</div>
+                                <div class="regime-stat-label">Protéines</div>
+                            </div>
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">20%</div>
+                                <div class="regime-stat-label">Volaille</div>
+                            </div>
+                            <div class="regime-stat">
+                                <div class="regime-stat-value">40%</div>
+                                <div class="regime-stat-label">Légumes</div>
+                            </div>
+                        </div>
+                        <div class="regime-footer">
+                            <div class="regime-price">12,99€</div>
+                            <button class="regime-btn">Activer Régime</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: CODE PORTEFEUILLE -->
+    <div class="modal" id="codeModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCodeModal()">✕</button>
+            <div class="modal-header">Ajouter un code</div>
+            <form>
+                <div class="form-group">
+                    <label>Code Promo</label>
+                    <input type="text" placeholder="Entrez votre code" required>
+                </div>
+                <button type="submit" class="btn-submit">Valider le Code</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openCodeModal() {
+            document.getElementById('codeModal').classList.add('show');
+        }
+
+        function closeCodeModal() {
+            document.getElementById('codeModal').classList.remove('show');
+        }
+
+        // Fermer le modal en cliquant en dehors
+        document.getElementById('codeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCodeModal();
+            }
+        });
+    </script>
+</body>
+</html>

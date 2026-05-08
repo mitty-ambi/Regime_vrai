@@ -66,7 +66,10 @@ class Auth extends BaseController
 
     public function logout()
     {
-        session()->remove('utilisateur');
-        return redirect()->to('/auth/login')->with('success', 'Déconnexion réussie');
+        // Détruire complètement la session
+        session()->destroy();
+        
+        // Rediriger vers la page de login avec message
+        return redirect()->to('/')->with('success', 'Déconnexion réussie');
     }
 }
