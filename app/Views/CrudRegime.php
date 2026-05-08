@@ -1,7 +1,6 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,76 +9,110 @@ ini_set('display_errors', 1);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un régime</title>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 20px;
-        }
-
-        form {
-            width: 400px;
-            margin: auto;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0 15px;
-        }
-
-        button {
-            background: green;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 
 <body>
-    <h1>➕ Ajouter un régime</h1>
+    <?php include('navbar.php'); ?>
 
-    <?php if (session()->getFlashdata('error')): ?>
-        <p style="color:red"><?= session()->getFlashdata('error') ?></p>
-    <?php endif; ?>
+    <div class="container">
+        <h1 class="page-title">➕ Ajouter un régime</h1>
 
-    <form action="/Regime/insert" method="POST">
-        <label>Nom du régime :</label>
-        <input type="text" name="nom" required>
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-error">
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        <?php endif; ?>
 
-        <label>Type :</label>
-        <select name="type" required>
-            <option value="augmentation">Augmentation</option>
-            <option value="reduction">Réduction</option>
-            <option value="IMC ideal">IMC idéal</option>
-        </select>
+        <div class="form-container">
+            <form action="/Regime/insert" method="POST" class="regime-form">
+                <div class="form-group">
+                    <label for="nom">Nom du régime :</label>
+                    <input type="text" id="nom" name="nom" required placeholder="Ex: Régime Méditerranéen">
+                </div>
 
-        <label>Prix (€) :</label>
-        <input type="number" step="0.01" name="prix" required>
+                <div class="form-group">
+                    <label for="type">Type :</label>
+                    <select id="type" name="type" required>
+                        <option value="">Sélectionnez un type</option>
+                        <?php foreach ($liste_objectif as $objectifs) { ?>
+                            <option value="<?= $objectifs['nom'] ?>">
+                                ⚖️ <?= $objectifs['nom'] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
 
-        <label>Durée (semaines) :</label>
-        <input type="number" name="duree" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prix">Prix (€) :</label>
+                        <input type="number" step="0.01" id="prix" name="prix" required placeholder="0.00">
+                    </div>
 
-        <label>Variation de poids (kg) :</label>
-        <input type="number" step="0.1" name="variation" required>
+                    <div class="form-group">
+                        <label for="duree">Durée (semaines) :</label>
+                        <input type="number" id="duree" name="duree" required placeholder="4">
+                    </div>
+                </div>
 
-        <label>Pourcentage viande (%) :</label>
-        <input type="number" step="1" name="viande" required>
+                <div class="form-group">
+                    <label for="variation">Variation de poids (kg) :</label>
+                    <input type="number" step="0.1" id="variation" name="variation" required placeholder="-2.5 ou +3.0">
+                </div>
 
-        <label>Pourcentage poisson (%) :</label>
-        <input type="number" step="1" name="poisson" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="viande">🥩 Pourcentage viande (%) :</label>
+                        <input type="number" step="1" id="viande" name="viande" required placeholder="30">
+                    </div>
 
-        <label>Pourcentage volaille (%) :</label>
-        <input type="number" step="1" name="volaille" required>
+                    <div class="form-group">
+                        <label for="poisson">🐟 Pourcentage poisson (%) :</label>
+                        <input type="number" step="1" id="poisson" name="poisson" required placeholder="30">
+                    </div>
 
-        <button type="submit">✅ Ajouter le régime</button>
-    </form>
-    liste :
-    <?php foreach ($liste_regime as $regime) { ?>
-        <p>id : <?= $regime['id'] ?></p>
-    <?php } ?>
+                    <div class="form-group">
+                        <label for="volaille">🍗 Pourcentage volaille (%) :</label>
+                        <input type="number" step="1" id="volaille" name="volaille" required placeholder="40">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">✅ Ajouter le régime</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <h2 class="table-title">📋 Liste des régimes</h2>
+            <table class="regime-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Type</th>
+                        <th>Prix</th>
+                        <th>Durée(jours)</th>
+                        <th>Variation poids</th>
+                        <th>% Viande</th>
+                        <th>% Poisson</th>
+                        <th>% Volaille</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($liste_regime as $regime): ?>
+                        <tr>
+                            <td><?= $regime['nom'] ?></td>
+                            <td><?= $regime['type'] ?></td>
+                            <td><?= $regime['prix'] ?>$</td>
+                            <td><?= $regime['duree'] ?> </td>
+                            <td><?= $regime['variation_poids'] ?></td>
+                            <td><?= $regime['pourcentage_viande'] ?></td>
+                            <td><?= $regime['pourcentage_poisson'] ?></td>
+                            <td><?= $regime['pourcentage_volaille'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -68,8 +68,6 @@ CREATE TABLE activites (
     calories_brulees INT
 );
 
-
-
 CREATE TABLE achats_regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     utilisateur_id INT,
@@ -168,6 +166,6 @@ INSERT INTO codes (code, montant, est_utilise) VALUES
 ('CODE22', 22.00, 0);
 
 INSERT INTO transactions_codes (utilisateur_id, code_id, montant_credite) VALUES
-(1, 1, 10.00), 
+(1, 1, 10.00),
 (3, 7, 10.00),
-(5, 3, 5.00); 
+(5, 3, 5.00);
