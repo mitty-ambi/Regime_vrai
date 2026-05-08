@@ -15,10 +15,11 @@
                             <?= esc($user['nom']) ?>
                         </div>
                         <div style="font-size: 0.85rem; color: var(--gray);">
-                            <?= esc($user['email']) ?>
+                            💰 <?= number_format($user['solde'], 2) ?>€
                         </div>
                     </div>
                 </div>
+                <a href="/codes/ajouter-credit" class="credit-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 14px;">💳 Créditer</a>
                 <a href="/auth/logout" class="logout-btn">Déconnexion</a>
             <?php else: ?>
                 <a href="/auth/login" class="login-btn">Connexion</a>

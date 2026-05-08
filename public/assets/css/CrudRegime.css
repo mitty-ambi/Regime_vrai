@@ -35,7 +35,8 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    margin-left: 270px; /* Pour la sidebar */
+    margin-left: 270px;
+    /* Pour la sidebar */
     padding: 32px;
 }
 
@@ -231,7 +232,7 @@ body {
         margin-left: 0;
         padding: 24px;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr !important;
         gap: 0 !important;
@@ -242,30 +243,30 @@ body {
     .container {
         padding: 16px;
     }
-    
+
     .page-title {
         font-size: 24px;
         margin-bottom: 24px;
     }
-    
+
     .form-container {
         padding: 20px;
     }
-    
+
     .regime-table {
         font-size: 12px;
     }
-    
+
     .regime-table thead th,
     .regime-table tbody td {
         padding: 10px 12px;
     }
-    
+
     .table-title {
         font-size: 18px;
         padding: 16px 16px 0 16px;
     }
-    
+
     .btn-submit {
         padding: 12px 20px;
         font-size: 14px;
@@ -298,6 +299,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -307,4 +309,88 @@ body {
 .form-container,
 .table-container {
     animation: fadeIn 0.4s ease;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: var(--info);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: var(--danger);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+/* ========== ONGLETS ========== */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--gray-light);
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray);
+    transition: all 0.3s ease;
+    margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+    color: var(--primary);
+    background: var(--light);
+}
+
+.tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
 }

@@ -98,6 +98,7 @@ ini_set('display_errors', 1);
                         <th>% Viande</th>
                         <th>% Poisson</th>
                         <th>% Volaille</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,6 +112,11 @@ ini_set('display_errors', 1);
                             <td><?= $regime['pourcentage_viande'] ?></td>
                             <td><?= $regime['pourcentage_poisson'] ?></td>
                             <td><?= $regime['pourcentage_volaille'] ?></td>
+                            <td class="action-buttons">
+                                <a href="/Regime/update/<?= $regime['id'] ?>" class="btn-edit">✏️ Modifier</a>
+                                <a href="/Regime/supprimer/<?= $regime['id'] ?>" class="btn-delete"
+                                    onclick="return confirm('Voulez-vous vraiment supprimer ?')">🗑️ Supprimer</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
