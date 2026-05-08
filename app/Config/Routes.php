@@ -6,8 +6,8 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Auth::inscription');
-$routes->get('/livres','LivreController::index');
-$routes->get('/livres/filtre','LivreController::filtre');
+$routes->get('/livres', 'LivreController::index');
+$routes->get('/livres/filtre', 'LivreController::filtre');
 
 // Routes d'authentification
 $routes->get('/auth/login', 'Auth::login');
@@ -21,3 +21,6 @@ $routes->post('/sante/save', 'Sante::save');
 
 // Routes dashboard
 $routes->get('/dashboard', 'Dashboard::index');
+
+$routes->get('/Regime/go_to_regime', 'RegimeController::go_to_regime');
+$routes->post('/Regime/insert', 'RegimeController::insert');
