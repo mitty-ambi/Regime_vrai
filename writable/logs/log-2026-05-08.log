@@ -673,7 +673,11 @@ in APPPATH/Views/CrudRegime.php on line 38.
  9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+<<<<<<< Updated upstream
 ERROR - 2026-05-08 15:47:31 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+=======
+ERROR - 2026-05-08 16:21:02 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+>>>>>>> Stashed changes
 Stack trace:
 #0 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
 #1 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
@@ -705,7 +709,11 @@ Stack trace:
 #10 /home/user/Documents/GITHUB1/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 #11 /home/user/Documents/GITHUB1/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
 #12 {main}
+<<<<<<< Updated upstream
 CRITICAL - 2026-05-08 15:47:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+=======
+CRITICAL - 2026-05-08 16:21:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+>>>>>>> Stashed changes
 Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
 [Method: GET, Route: Regime/go_to_regime]
 in SYSTEMPATH/Database/BaseConnection.php on line 606.
@@ -720,7 +728,11 @@ in SYSTEMPATH/Database/BaseConnection.php on line 606.
  9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+<<<<<<< Updated upstream
 ERROR - 2026-05-08 15:47:35 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+=======
+ERROR - 2026-05-08 16:21:03 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+>>>>>>> Stashed changes
 Stack trace:
 #0 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
 #1 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
@@ -752,7 +764,11 @@ Stack trace:
 #10 /home/user/Documents/GITHUB1/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 #11 /home/user/Documents/GITHUB1/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
 #12 {main}
+<<<<<<< Updated upstream
 CRITICAL - 2026-05-08 15:47:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+=======
+CRITICAL - 2026-05-08 16:21:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+>>>>>>> Stashed changes
 Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
 [Method: GET, Route: Regime/go_to_regime]
 in SYSTEMPATH/Database/BaseConnection.php on line 606.
@@ -767,7 +783,11 @@ in SYSTEMPATH/Database/BaseConnection.php on line 606.
  9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+<<<<<<< Updated upstream
 ERROR - 2026-05-08 15:47:43 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+=======
+ERROR - 2026-05-08 16:21:03 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+>>>>>>> Stashed changes
 Stack trace:
 #0 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
 #1 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
@@ -799,7 +819,11 @@ Stack trace:
 #10 /home/user/Documents/GITHUB1/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 #11 /home/user/Documents/GITHUB1/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
 #12 {main}
+<<<<<<< Updated upstream
 CRITICAL - 2026-05-08 15:47:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+=======
+CRITICAL - 2026-05-08 16:21:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+>>>>>>> Stashed changes
 Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
 [Method: GET, Route: Regime/go_to_regime]
 in SYSTEMPATH/Database/BaseConnection.php on line 606.
@@ -814,7 +838,11 @@ in SYSTEMPATH/Database/BaseConnection.php on line 606.
  9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+<<<<<<< Updated upstream
 ERROR - 2026-05-08 15:47:43 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+=======
+ERROR - 2026-05-08 16:21:04 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+>>>>>>> Stashed changes
 Stack trace:
 #0 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
 #1 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
@@ -846,7 +874,11 @@ Stack trace:
 #10 /home/user/Documents/GITHUB1/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 #11 /home/user/Documents/GITHUB1/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
 #12 {main}
+<<<<<<< Updated upstream
 CRITICAL - 2026-05-08 15:47:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+=======
+CRITICAL - 2026-05-08 16:21:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+>>>>>>> Stashed changes
 Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
 [Method: GET, Route: Regime/go_to_regime]
 in SYSTEMPATH/Database/BaseConnection.php on line 606.
@@ -861,7 +893,11 @@ in SYSTEMPATH/Database/BaseConnection.php on line 606.
  9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+<<<<<<< Updated upstream
 ERROR - 2026-05-08 15:47:43 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+=======
+ERROR - 2026-05-08 16:21:04 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'php'@'localhost' (using password: YES) in /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php:201
+>>>>>>> Stashed changes
 Stack trace:
 #0 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
 #1 /home/user/Documents/GITHUB1/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
@@ -893,6 +929,7 @@ Stack trace:
 #10 /home/user/Documents/GITHUB1/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 #11 /home/user/Documents/GITHUB1/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
 #12 {main}
+<<<<<<< Updated upstream
 CRITICAL - 2026-05-08 15:47:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
 Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
 [Method: GET, Route: Regime/go_to_regime]
@@ -2586,6 +2623,9 @@ Stack trace:
 #11 /home/user/Documents/GITHUB1/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
 #12 {main}
 CRITICAL - 2026-05-08 15:50:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+=======
+CRITICAL - 2026-05-08 16:21:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+>>>>>>> Stashed changes
 Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
 [Method: GET, Route: Regime/go_to_regime]
 in SYSTEMPATH/Database/BaseConnection.php on line 606.
