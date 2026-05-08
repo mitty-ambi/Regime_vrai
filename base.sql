@@ -95,3 +95,76 @@ CREATE TABLE transactions_codes (
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
     FOREIGN KEY (code_id) REFERENCES codes(id)
 );
+
+
+INSERT INTO objectifs (nom) VALUES
+('augmentation'),
+('reduction'),
+('IMC ideal');
+
+INSERT INTO activites (nom, date_activite, calories_brulees) VALUES
+('Course à pied', '2026-05-01', 600),
+('Musculation', '2026-05-01', 400),
+('Natation', '2026-05-01', 500),
+('Vélo', '2026-05-01', 550),
+('Yoga', '2026-05-01', 200);
+
+INSERT INTO regimes (nom, type, prix, duree, variation_poids, pourcentage_viande, pourcentage_poisson, pourcentage_volaille) VALUES
+('Hyper Protéiné', 'augmentation', 49.99, 4, 3.5, 50, 20, 30),
+('Équilibré', 'IMC ideal', 39.99, 4, 0, 33, 33, 34),
+('Pescetarien', 'reduction', 44.99, 4, -1.5, 0, 60, 40),
+('Light Volaille', 'reduction', 34.99, 4, -2.5, 10, 20, 70),
+('Mixte Complet', 'IMC ideal', 44.99, 4, 0, 40, 20, 40);
+
+INSERT INTO utilisateurs (nom, email, mot_de_passe, genre, is_gold, solde) VALUES
+('Alice Martin', 'alice@email.com', 'password', 'Femme', 0, 50.00),
+('Thomas Durand', 'thomas@email.com', 'password', 'Homme', 0, 0.00),
+('Julie Petit', 'julie@email.com', 'password', 'Femme', 1, 120.00),
+('Marc Lefevre', 'marc@email.com', 'password', 'Homme', 0, 10.00),
+('Sophie Bernard', 'sophie@email.com', 'password', 'Femme', 0, 30.00);
+
+INSERT INTO sante (utilisateur_id, taille, poids) VALUES
+(1, 165, 70),
+(2, 180, 85),
+(3, 170, 62),
+(4, 175, 95),
+(5, 160, 55);
+
+INSERT INTO utilisateur_objectifs (utilisateur_id, objectif_id) VALUES
+(1, 2), 
+(1, 3),
+(2, 1),
+(2, 3),
+(3, 2),
+(4, 1),
+(5, 2),
+(5, 3);
+
+INSERT INTO achats_regimes (utilisateur_id, regime_id, prix_original, prix_paye) VALUES
+(1, 4, 34.99, 34.99),
+(2, 1, 49.99, 49.99),  
+(3, 4, 34.99, 29.74),   
+(4, 1, 49.99, 49.99),   
+(5, 3, 44.99, 44.99);   
+
+INSERT INTO codes (code, montant, est_utilise) VALUES
+('CODE10', 10.00, 0),
+('CODE20', 20.00, 0),
+('CODE05', 5.00, 0),
+('CODE15', 15.00, 0),
+('CODE25', 25.00, 0),
+('WELCOME', 10.00, 0),
+('SANTE10', 10.00, 0),
+('GOLD15', 15.00, 0),
+('REGIME5', 5.00, 0),
+('SPORT10', 10.00, 0),
+('CODE30', 30.00, 0),
+('CODE08', 8.00, 0),
+('CODE12', 12.00, 0),
+('CODE18', 18.00, 0),
+('CODE22', 22.00, 0);
+
+INSERT INTO transactions_codes (utilisateur_id, code_id, montant_credite) VALUES
+(1, 1, 10.00), 
+(3, 7, 10.00),
+(5, 3, 5.00); 
