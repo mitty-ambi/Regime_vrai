@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Étape 2 - NutriGain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+            --light: #f9fafb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--light);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .register-container {
+            max-width: 600px;
+            margin: 0 auto;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .register-header .logo {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .register-header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .register-header p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* PROGRESS BAR */
+        .progress-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+
+        .progress-step {
+            flex: 1;
+            height: 8px;
+            background: var(--gray-light);
+            border-radius: 4px;
+            max-width: 80px;
+            overflow: hidden;
+        }
+
+        .progress-step.active {
+            background: var(--primary);
+        }
+
+        .progress-step.completed {
+            background: var(--success);
+        }
+
+        /* FORM */
+        .register-form {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gray-light);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        input[type="number"],
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Manrope', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .input-unit {
+            position: relative;
+        }
+
+        .input-unit input {
+            padding-right: 40px;
+        }
+
+        .input-unit::after {
+            content: attr(data-unit);
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+        /* IMC RESULT */
+        .imc-result {
+            background: var(--gray-lighter);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .imc-result.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .imc-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .imc-status {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .imc-status.underweight {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .imc-status.normal {
+            background: #d1fae5;
+            color: var(--primary-dark);
+        }
+
+        .imc-status.overweight {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .imc-status.obese {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* CHECKBOX */
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .form-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .form-check label {
+            margin-bottom: 0;
+            margin-top: 0;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        /* BUTTONS */
+        .form-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--dark);
+            border: 1px solid var(--gray-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            .register-form {
+                padding: 24px;
+            }
+
+            .register-header h1 {
+                font-size: 24px;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .input-unit::after {
+                right: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <!-- HEADER -->
+        <div class="register-header">
+            <div class="logo">🥗 NutriGain</div>
+            <h1>Créer un compte</h1>
+            <p>Étape 2 : Vos informations de santé</p>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="progress-bar">
+            <div class="progress-step completed"></div>
+            <div class="progress-step active"></div>
+        </div>
+
+        <!-- FORM -->
+        <div class="register-form">
+            <form action="/auth/register/step2" method="POST">
+                <!-- INFORMATIONS DE SANTÉ -->
+                <div class="form-section">
+                    <div class="form-section-title">📊 Mesures Physiques</div>
+
+                    <div class="form-group">
+                        <label for="height">Taille (cm) *</label>
+                        <div class="input-unit" data-unit="cm">
+                            <input type="number" id="height" name="height" placeholder="170" min="100" max="250" required oninput="calculateIMC()">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight">Poids (kg) *</label>
+                        <div class="input-unit" data-unit="kg">
+                            <input type="number" id="weight" name="weight" placeholder="75" min="30" max="300" required oninput="calculateIMC()">
+                        </div>
+                    </div>
+
+                    <!-- IMC DISPLAY -->
+                    <div class="imc-result" id="imcResult">
+                        <div class="imc-value" id="imcValue">--</div>
+                        <div class="imc-status" id="imcStatus">--</div>
+                    </div>
+                </div>
+
+                <!-- OBJECTIFS DE SANTÉ -->
+                <div class="form-section">
+                    <div class="form-section-title">🎯 Votre Objectif</div>
+
+                    <div class="form-check">
+                        <input type="radio" id="goal_increase" name="goal" value="increase" required>
+                        <label for="goal_increase"><strong>Augmenter mon poids</strong> - Je veux prendre du poids sainement</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="radio" id="goal_decrease" name="goal" value="decrease" required>
+                        <label for="goal_decrease"><strong>Réduire mon poids</strong> - Je veux perdre du poids</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="radio" id="goal_ideal" name="goal" value="ideal" required>
+                        <label for="goal_ideal"><strong>Atteindre mon IMC idéal</strong> - Je veux équilibrer mon poids</label>
+                    </div>
+                </div>
+
+                <!-- MOT DE PASSE -->
+                <div class="form-section">
+                    <div class="form-section-title">🔐 Sécurité</div>
+
+                    <div class="form-group">
+                        <label for="password">Mot de passe *</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <small style="color: var(--gray); font-size: 12px; margin-top: 4px; display: block;">Minimum 8 caractères</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password_confirm">Confirmer le mot de passe *</label>
+                        <input type="password" id="password_confirm" name="password_confirm" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">J'accepte les conditions d'utilisation et la politique de confidentialité</label>
+                    </div>
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="form-actions">
+                    <a href="/auth/register" class="btn btn-secondary">← Précédent</a>
+                    <button type="submit" class="btn btn-primary">Créer un compte</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function calculateIMC() {
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            
+            if (height && weight && height > 0 && weight > 0) {
+                // Conversion cm en m
+                const heightInMeters = height / 100;
+                const imc = weight / (heightInMeters * heightInMeters);
+                const imcRounded = imc.toFixed(1);
+
+                // Déterminer le statut
+                let status = '';
+                let statusClass = '';
+                
+                if (imc < 18.5) {
+                    status = 'Insuffisance pondérale';
+                    statusClass = 'underweight';
+                } else if (imc >= 18.5 && imc < 25) {
+                    status = 'Poids normal';
+                    statusClass = 'normal';
+                } else if (imc >= 25 && imc < 30) {
+                    status = 'Surpoids';
+                    statusClass = 'overweight';
+                } else {
+                    status = 'Obésité';
+                    statusClass = 'obese';
+                }
+
+                // Afficher le résultat
+                const resultDiv = document.getElementById('imcResult');
+                document.getElementById('imcValue').textContent = imcRounded;
+                document.getElementById('imcStatus').textContent = status;
+                document.getElementById('imcStatus').className = 'imc-status ' + statusClass;
+                resultDiv.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>
