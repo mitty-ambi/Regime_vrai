@@ -61,14 +61,7 @@ CREATE TABLE activites (
     calories_brulees INT
 );
 
-CREATE TABLE historique_activites (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id INT,
-    activite_id INT,
-    date_historique TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE,
-    FOREIGN KEY (activite_id) REFERENCES activites(id) ON DELETE CASCADE
-);
+
 
 CREATE TABLE achats_regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -77,6 +70,7 @@ CREATE TABLE achats_regimes (
     prix_original DECIMAL(10, 2),
     prix_paye DECIMAL(10, 2),
     date_achat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    statu VARCHAR(20) DEFAULT 'en cours','termine','annule',
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
     FOREIGN KEY (regime_id) REFERENCES regimes(id)
 );
