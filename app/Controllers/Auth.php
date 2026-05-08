@@ -15,7 +15,7 @@ class Auth extends BaseController
 
     public function inscription()
     {
-        return view('auth/inscription');
+        return view('auth/inscription_simple');
     }
 
     public function login()
@@ -32,24 +32,19 @@ class Auth extends BaseController
             'genre' => $this->request->getPost('genre')
         ];
 
-        $santeData = [
-            'taille' => $this->request->getPost('taille'),
-            'poids' => $this->request->getPost('poids')
-        ];
-
         // Debug : afficher les données reçues
         log_message('debug', 'Données inscription: ' . json_encode($inscriptionData));
-        log_message('debug', 'Données santé: ' . json_encode($santeData));
 
-        $result = $this->authModel->register($inscriptionData, $santeData);
+        $utilisateurId = $this->authModel->registerUser($inscriptionData);
 
         // Debug : afficher le résultat
-        log_message('debug', 'Résultat inscription: ' . json_encode($result));
+        log_message('debug', 'Résultat inscription: ' . json_encode($utilisateurId));
 
-        if ($result['success']) {
-            return redirect()->to('/auth/login')->with('success', $result['message']);
+        if ($utilisateurId) {
+            session()->set('temp_user_id', $utilisateurId);
+            return redirect()->to('/sante/info')->with('success', 'Inscription réussie ! Veuillez compléter vos informations santé.');
         } else {
-            $errors = $result['errors'] ?? [$result['message'] ?? 'Erreur lors de l\'inscription'];
+            $errors = $this->authModel->getErrors();
             return redirect()->back()->with('errors', $errors)->withInput();
         }
     }

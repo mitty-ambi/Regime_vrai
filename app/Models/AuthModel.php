@@ -16,6 +16,21 @@ class AuthModel extends Model
         $this->santeModel = new SanteModel();
     }
 
+    public function registerUser($inscriptionData)
+    {
+        // Hasher le mot de passe avant insertion
+        $inscriptionData['mot_de_passe'] = password_hash($inscriptionData['mot_de_passe'], PASSWORD_DEFAULT);
+        
+        $utilisateurId = $this->utilisateurModel->insert($inscriptionData);
+        
+        if ($utilisateurId) {
+            return $utilisateurId;
+        } else {
+            $this->errors = $this->utilisateurModel->errors();
+            return false;
+        }
+    }
+
     public function register($inscriptionData, $santeData)
     {
         $db = \Config\Database::connect();
@@ -70,6 +85,11 @@ class AuthModel extends Model
                 'message' => 'Erreur: ' . $e->getMessage()
             ];
         }
+    }
+
+    public function getErrors()
+    {
+        return $this->errors ?? [];
     }
 
     public function login($email, $password)
