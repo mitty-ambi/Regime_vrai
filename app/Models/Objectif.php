@@ -2,7 +2,7 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class Sante extends Model
+class Objectif extends Model
 {
     protected $table = "objectifs";
     protected $primaryKey = 'id';

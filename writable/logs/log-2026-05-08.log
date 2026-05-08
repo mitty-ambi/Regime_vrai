@@ -1,0 +1,675 @@
+ERROR - 2026-05-08 12:03:48 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-05-08 12:03:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-08 12:03:49 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-05-08 12:03:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-08 12:03:54 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-05-08 12:03:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-08 12:03:54 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-05-08 12:03:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-08 12:04:04 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-05-08 12:04:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-08 12:04:04 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /home/main/Documents/GitHub/Regime_vrai/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/main/Documents/GitHub/Regime_vrai/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/main/Documents/GitHub/Regime_vrai/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/main/Documents/GitHub/Regime_vrai/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/main/Documents/GitHub/Regime_vrai/app/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+#6 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+#7 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /home/main/Documents/GitHub/Regime_vrai/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /home/main/Documents/GitHub/Regime_vrai/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/main/Documents/GitHub/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-05-08 12:04:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Controllers/RegimeController.php(20): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 12:52:52 --> ErrorException: include(inc/navbar.php): Failed to open stream: No such file or directory
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 17.
+ 1 APPPATH/Views/CrudRegime.php(17): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/CrudRegime.php(17): include()
+ 3 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/RegimeController.php(21): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 12:52:53 --> ErrorException: include(inc/navbar.php): Failed to open stream: No such file or directory
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 17.
+ 1 APPPATH/Views/CrudRegime.php(17): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/CrudRegime.php(17): include()
+ 3 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/RegimeController.php(21): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 12:52:53 --> ErrorException: include(inc/navbar.php): Failed to open stream: No such file or directory
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 17.
+ 1 APPPATH/Views/CrudRegime.php(17): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/CrudRegime.php(17): include()
+ 3 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/RegimeController.php(21): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 12:52:53 --> ErrorException: include(inc/navbar.php): Failed to open stream: No such file or directory
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 17.
+ 1 APPPATH/Views/CrudRegime.php(17): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/CrudRegime.php(17): include()
+ 3 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/RegimeController.php(21): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 12:52:53 --> ErrorException: include(inc/navbar.php): Failed to open stream: No such file or directory
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 17.
+ 1 APPPATH/Views/CrudRegime.php(17): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/CrudRegime.php(17): include()
+ 3 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/RegimeController.php(21): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:02:59 --> ErrorException: Undefined array key "variation"
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 110.
+ 1 APPPATH/Views/CrudRegime.php(110): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:02:59 --> ErrorException: Undefined array key "variation"
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 110.
+ 1 APPPATH/Views/CrudRegime.php(110): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:03:00 --> ErrorException: Undefined array key "variation"
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 110.
+ 1 APPPATH/Views/CrudRegime.php(110): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:03:00 --> ErrorException: Undefined array key "variation"
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 110.
+ 1 APPPATH/Views/CrudRegime.php(110): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:03:47 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 100.
+ 1 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/RegimeController.php(21): view()
+ 4 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 5 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:03:48 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 100.
+ 1 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/RegimeController.php(21): view()
+ 4 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 5 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:04:20 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 101.
+ 1 APPPATH/Views/CrudRegime.php(101): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:04:21 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 101.
+ 1 APPPATH/Views/CrudRegime.php(101): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:04:21 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 101.
+ 1 APPPATH/Views/CrudRegime.php(101): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:04:21 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 101.
+ 1 APPPATH/Views/CrudRegime.php(101): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:04:21 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 101.
+ 1 APPPATH/Views/CrudRegime.php(101): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:04:22 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 101.
+ 1 APPPATH/Views/CrudRegime.php(101): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:06:08 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 107.
+ 1 APPPATH/Views/CrudRegime.php(107): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:06:09 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 107.
+ 1 APPPATH/Views/CrudRegime.php(107): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:06:09 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 107.
+ 1 APPPATH/Views/CrudRegime.php(107): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:06:09 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 107.
+ 1 APPPATH/Views/CrudRegime.php(107): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:06:10 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 107.
+ 1 APPPATH/Views/CrudRegime.php(107): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:06:10 --> ErrorException: Undefined array key ""
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 107.
+ 1 APPPATH/Views/CrudRegime.php(107): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:07:50 --> ErrorException: Undefined variable $variable
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 38.
+ 1 APPPATH/Views/CrudRegime.php(38): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:07:51 --> ErrorException: Undefined variable $variable
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 38.
+ 1 APPPATH/Views/CrudRegime.php(38): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:07:51 --> ErrorException: Undefined variable $variable
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 38.
+ 1 APPPATH/Views/CrudRegime.php(38): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:07:51 --> ErrorException: Undefined variable $variable
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 38.
+ 1 APPPATH/Views/CrudRegime.php(38): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 13:07:52 --> ErrorException: Undefined variable $variable
+[Method: GET, Route: /]
+in APPPATH/Views/CrudRegime.php on line 38.
+ 1 APPPATH/Views/CrudRegime.php(38): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/main/Documents/GitHub/Regime_vrai/app/Views/CrudRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->go_to_regime()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
