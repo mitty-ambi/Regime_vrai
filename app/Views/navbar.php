@@ -24,7 +24,7 @@
                 <li><a href="/gold/upgrade" class="nav-link gold-link"><span class="nav-icon">👑</span> Devenir Gold</a>
                 </li>
                 <li><a href="/login" class="nav-link login-btn"><span class="nav-icon">🔑</span> Connexion</a></li>
-                <li><a href="/register" class="nav-link"><span class="nav-icon">📝</span> Inscription</a></li>
+                <li><a href="/" class="nav-link"><span class="nav-icon">📝</span> Inscription</a></li>
             </ul>
         </div>
     </div>
