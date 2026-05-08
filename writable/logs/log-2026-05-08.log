@@ -212,3 +212,17 @@ Stack trace:
 #10 /home/sharon/Documents/s4/SI/Regime_vrai/public/index.php(59): CodeIgniter\Boot::bootWeb()
 #11 /home/sharon/Documents/s4/SI/Regime_vrai/system/rewrite.php(44): require_once('...')
 #12 {main}
+CRITICAL - 2026-05-08 12:26:56 --> ParseError: syntax error, unexpected token "<<", expecting end of file
+[Method: CLI, Route: serve]
+in APPPATH/Config/Routes.php on line 8.
+ 1 SYSTEMPATH/CLI/Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 3 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 4 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+CRITICAL - 2026-05-08 12:27:15 --> ParseError: syntax error, unexpected token "<<", expecting end of file
+[Method: CLI, Route: serve]
+in APPPATH/Config/Routes.php on line 8.
+ 1 SYSTEMPATH/CLI/Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 3 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 4 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()

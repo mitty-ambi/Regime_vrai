@@ -21,3 +21,5 @@ $routes->post('/sante/save', 'Sante::save');
 
 // Routes dashboard
 $routes->get('/dashboard', 'Dashboard::index');
+
+
