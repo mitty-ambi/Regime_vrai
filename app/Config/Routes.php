@@ -41,6 +41,7 @@ $routes->get('/Activites/add', 'ActiviteController::go_to_activite');
 $routes->post('/Activites/insert', 'ActiviteController::insert');
 $routes->get('/Activites/update/(:num)', 'ActiviteController::update/$1');
 $routes->post('/Activites/edit/(:num)', 'ActiviteController::edit/$1');
+$routes->post('/Activites/associer/', 'ActiviteController::associer');
 $routes->get('/Activites/supprimer/(:num)', 'ActiviteController::supprimer/$1');
 
 // Codes - CRUD complet + Validation

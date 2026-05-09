@@ -51,7 +51,7 @@ CREATE TABLE regime_activite (
     id_regime INT,
     id_activite INT,
     FOREIGN KEY (id_regime) REFERENCES regimes(id) ON DELETE CASCADE,
-    FOREIGN KEY (activites) REFERENCES activites(id) ON DELETE CASCADE
+    FOREIGN KEY (id_activite) REFERENCES activites(id) ON DELETE CASCADE
 );
 
 CREATE TABLE aliments (
@@ -74,7 +74,9 @@ CREATE TABLE achats_regimes (
     prix_original DECIMAL(10, 2),
     prix_paye DECIMAL(10, 2),
     date_achat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    statu VARCHAR(20) DEFAULT 'en cours','termine','annule',
+    statu VARCHAR(20) DEFAULT 'en cours',
+    'termine',
+    'annule',
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
     FOREIGN KEY (regime_id) REFERENCES regimes(id)
 );
@@ -96,83 +98,193 @@ CREATE TABLE transactions_codes (
     FOREIGN KEY (code_id) REFERENCES codes(id)
 );
 
+INSERT INTO
+    objectifs (nom)
+VALUES
+    ('augmentation'),
+    ('reduction'),
+    ('IMC ideal');
 
-INSERT INTO objectifs (nom) VALUES
-('augmentation'),
-('reduction'),
-('IMC ideal');
+INSERT INTO
+    activites (nom, calories_brulees)
+VALUES
+    ('Course à pied', 600),
+    ('Musculation', 400),
+    ('Natation', 500),
+    ('Vélo', 550),
+    ('Yoga', 200);
 
-INSERT INTO activites (nom, calories_brulees) VALUES
-('Course à pied', 600),
-('Musculation', 400),
-('Natation', 500),
-('Vélo', 550),
-('Yoga', 200);
+INSERT INTO
+    regimes (
+        nom,
+        type,
+        prix,
+        duree,
+        variation_poids,
+        pourcentage_viande,
+        pourcentage_poisson,
+        pourcentage_volaille
+    )
+VALUES
+    (
+        'Hyper Protéiné',
+        'augmentation',
+        49.99,
+        4,
+        3.5,
+        50,
+        20,
+        30
+    ),
+    (
+        'Équilibré',
+        'IMC ideal',
+        39.99,
+        4,
+        0,
+        33,
+        33,
+        34
+    ),
+    (
+        'Pescetarien',
+        'reduction',
+        44.99,
+        4,
+        -1.5,
+        0,
+        60,
+        40
+    ),
+    (
+        'Light Volaille',
+        'reduction',
+        34.99,
+        4,
+        -2.5,
+        10,
+        20,
+        70
+    ),
+    (
+        'Mixte Complet',
+        'IMC ideal',
+        44.99,
+        4,
+        0,
+        40,
+        20,
+        40
+    );
 
-INSERT INTO regimes (nom, type, prix, duree, variation_poids, pourcentage_viande, pourcentage_poisson, pourcentage_volaille) VALUES
-('Hyper Protéiné', 'augmentation', 49.99, 4, 3.5, 50, 20, 30),
-('Équilibré', 'IMC ideal', 39.99, 4, 0, 33, 33, 34),
-('Pescetarien', 'reduction', 44.99, 4, -1.5, 0, 60, 40),
-('Light Volaille', 'reduction', 34.99, 4, -2.5, 10, 20, 70),
-('Mixte Complet', 'IMC ideal', 44.99, 4, 0, 40, 20, 40);
+INSERT INTO
+    utilisateurs (nom, email, mot_de_passe, genre, is_gold, solde)
+VALUES
+    (
+        'Alice Martin',
+        'alice@email.com',
+        'password',
+        'Femme',
+        0,
+        50.00
+    ),
+    (
+        'Thomas Durand',
+        'thomas@email.com',
+        'password',
+        'Homme',
+        0,
+        0.00
+    ),
+    (
+        'Julie Petit',
+        'julie@email.com',
+        'password',
+        'Femme',
+        1,
+        120.00
+    ),
+    (
+        'Marc Lefevre',
+        'marc@email.com',
+        'password',
+        'Homme',
+        0,
+        10.00
+    ),
+    (
+        'Sophie Bernard',
+        'sophie@email.com',
+        'password',
+        'Femme',
+        0,
+        30.00
+    );
 
-INSERT INTO utilisateurs (nom, email, mot_de_passe, genre, is_gold, solde) VALUES
-('Alice Martin', 'alice@email.com', 'password', 'Femme', 0, 50.00),
-('Thomas Durand', 'thomas@email.com', 'password', 'Homme', 0, 0.00),
-('Julie Petit', 'julie@email.com', 'password', 'Femme', 1, 120.00),
-('Marc Lefevre', 'marc@email.com', 'password', 'Homme', 0, 10.00),
-('Sophie Bernard', 'sophie@email.com', 'password', 'Femme', 0, 30.00);
+INSERT INTO
+    sante (utilisateur_id, taille, poids)
+VALUES
+    (1, 165, 70),
+    (2, 180, 85),
+    (3, 170, 62),
+    (4, 175, 95),
+    (5, 160, 55);
 
-INSERT INTO sante (utilisateur_id, taille, poids) VALUES
-(1, 165, 70),
-(2, 180, 85),
-(3, 170, 62),
-(4, 175, 95),
-(5, 160, 55);
+INSERT INTO
+    utilisateur_objectifs (utilisateur_id, objectif_id)
+VALUES
+    (1, 2),
+    (1, 3),
+    (2, 1),
+    (2, 3),
+    (3, 2),
+    (4, 1),
+    (5, 2),
+    (5, 3);
 
-INSERT INTO utilisateur_objectifs (utilisateur_id, objectif_id) VALUES
-(1, 2), 
-(1, 3),
-(2, 1),
-(2, 3),
-(3, 2),
-(4, 1),
-(5, 2),
-(5, 3);
+INSERT INTO
+    achats_regimes (
+        utilisateur_id,
+        regime_id,
+        prix_original,
+        prix_paye
+    )
+VALUES
+    (1, 4, 34.99, 34.99),
+    (2, 1, 49.99, 49.99),
+    (3, 4, 34.99, 29.74),
+    (4, 1, 49.99, 49.99),
+    (5, 3, 44.99, 44.99);
 
-INSERT INTO achats_regimes (utilisateur_id, regime_id, prix_original, prix_paye) VALUES
-(1, 4, 34.99, 34.99),
-(2, 1, 49.99, 49.99),  
-(3, 4, 34.99, 29.74),   
-(4, 1, 49.99, 49.99),   
-(5, 3, 44.99, 44.99);   
+INSERT INTO
+    codes (code, montant, est_utilise)
+VALUES
+    ('CODE10', 10.00, 0),
+    ('CODE20', 20.00, 0),
+    ('CODE05', 5.00, 0),
+    ('CODE15', 15.00, 0),
+    ('CODE25', 25.00, 0),
+    ('WELCOME', 10.00, 0),
+    ('SANTE10', 10.00, 0),
+    ('GOLD15', 15.00, 0),
+    ('REGIME5', 5.00, 0),
+    ('SPORT10', 10.00, 0),
+    ('CODE30', 30.00, 0),
+    ('CODE08', 8.00, 0),
+    ('CODE12', 12.00, 0),
+    ('CODE18', 18.00, 0),
+    ('CODE22', 22.00, 0);
 
-INSERT INTO codes (code, montant, est_utilise) VALUES
-('CODE10', 10.00, 0),
-('CODE20', 20.00, 0),
-('CODE05', 5.00, 0),
-('CODE15', 15.00, 0),
-('CODE25', 25.00, 0),
-('WELCOME', 10.00, 0),
-('SANTE10', 10.00, 0),
-('GOLD15', 15.00, 0),
-('REGIME5', 5.00, 0),
-('SPORT10', 10.00, 0),
-('CODE30', 30.00, 0),
-('CODE08', 8.00, 0),
-('CODE12', 12.00, 0),
-('CODE18', 18.00, 0),
-('CODE22', 22.00, 0);
-
-INSERT INTO transactions_codes (utilisateur_id, code_id, montant_credite) VALUES
-(1, 1, 10.00),
-(3, 7, 10.00),
-(5, 3, 5.00);
-
-
+INSERT INTO
+    transactions_codes (utilisateur_id, code_id, montant_credite)
+VALUES
+    (1, 1, 10.00),
+    (3, 7, 10.00),
+    (5, 3, 5.00);
 
 -- Supprimer la table si elle existe
 DROP TABLE IF EXISTS utilisateur_objectifs;
+
 DROP TABLE IF EXISTS objectifs;
 
 -- Créer la table objectifs (simple)
@@ -183,10 +295,12 @@ CREATE TABLE objectifs (
 );
 
 -- Insérer les 3 objectifs de base (sans description)
-INSERT INTO objectifs (nom) VALUES
-('Augmenter son poids'),
-('Réduire son poids'),
-('Atteindre son IMC idéal');
+INSERT INTO
+    objectifs (nom)
+VALUES
+    ('Augmenter son poids'),
+    ('Réduire son poids'),
+    ('Atteindre son IMC idéal');
 
 -- Créer la table de liaison utilisateur_objectifs
 CREATE TABLE utilisateur_objectifs (
@@ -195,16 +309,25 @@ CREATE TABLE utilisateur_objectifs (
     objectif_id INT NOT NULL,
     statut ENUM('actif', 'atteint', 'abandonne') DEFAULT 'actif',
     date_debut DATE DEFAULT CURRENT_TIMESTAMP,
-    poids_initial DECIMAL(5,2) NULL,
-    poids_cible DECIMAL(5,2) NULL,
+    poids_initial DECIMAL(5, 2) NULL,
+    poids_cible DECIMAL(5, 2) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE,
     FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE CASCADE
 );
 
-
 -- Ajouter la colonne photo_profil à la table utilisateurs
-ALTER TABLE utilisateurs ADD COLUMN photo_profil VARCHAR(255) NULL AFTER email;
+ALTER TABLE
+    utilisateurs
+ADD
+    COLUMN photo_profil VARCHAR(255) NULL
+AFTER
+    email;
 
 -- Mettre à jour les utilisateurs existants avec une valeur NULL
-UPDATE utilisateurs SET photo_profil = NULL WHERE photo_profil IS NULL;
+UPDATE
+    utilisateurs
+SET
+    photo_profil = NULL
+WHERE
+    photo_profil IS NULL;
