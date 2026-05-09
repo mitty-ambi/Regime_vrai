@@ -1,0 +1,21 @@
+# CodeIgniter 4
+writable/
+writable/*
+app/writable/
+.env
+env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Dependencies
+vendor/
+node_modules/
