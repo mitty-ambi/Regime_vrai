@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - Étape 1 - NutriGain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #10b981;
@@ -40,6 +43,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -236,7 +240,7 @@
             font-weight: 500;
         }
 
-        .radio-option input[type="radio"]:checked + .radio-label {
+        .radio-option input[type="radio"]:checked+.radio-label {
             border-color: var(--primary);
             background: var(--primary-light);
             color: var(--primary-dark);
@@ -359,7 +363,6 @@
             .register-container {
                 padding: 0;
             }
-            
             .form-card {
                 padding: 30px 20px;
                 border-radius: 0;
@@ -377,6 +380,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="register-container">
         <div class="register-header">
@@ -411,25 +415,24 @@
 
         <form action="/auth/register" method="post">
             <?= csrf_field() ?>
-            
+
             <div class="form-card">
                 <div class="form-section">
                     <h3>Informations personnelles</h3>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nom">Nom complet</label>
-                            <input type="text" id="nom" name="nom" class="form-control" 
-                                   placeholder="Jean Dupont" required
-                                   value="<?= old('nom') ?>">
+                            <input type="text" id="nom" name="nom" class="form-control" placeholder="Jean Dupont"
+                                required value="<?= old('nom') ?>">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="email">Email</label>
                             <div class="input-group">
-                                <input type="email" id="email" name="email" class="form-control" 
-                                       placeholder="jean@example.com" required autocomplete="email"
-                                       value="<?= old('email') ?>">
+                                <input type="email" id="email" name="email" class="form-control"
+                                    placeholder="jean@example.com" required autocomplete="email"
+                                    value="<?= old('email') ?>">
                                 <button type="button" class="clear-btn" onclick="clearInput('email')">✕</button>
                             </div>
                         </div>
@@ -437,8 +440,8 @@
 
                     <div class="form-group">
                         <label for="mot_de_passe">Mot de passe</label>
-                        <input type="password" id="mot_de_passe" name="mot_de_passe" class="form-control" 
-                               placeholder="••••••••" required autocomplete="new-password">
+                        <input type="password" id="mot_de_passe" name="mot_de_passe" class="form-control"
+                            placeholder="••••••••" required autocomplete="new-password">
                     </div>
 
                     <div class="form-group">
@@ -464,8 +467,8 @@
                                     <span class="photo-text">Ajouter une photo</span>
                                 </div>
                             </div>
-                            <input type="file" id="photo_profil" name="photo_profil" class="form-control" 
-                                   accept="image/*" onchange="previewPhoto(event)">
+                            <input type="file" id="photo_profil" name="photo_profil" class="form-control"
+                                accept="image/*" onchange="previewPhoto(event)">
                             <input type="hidden" id="photo_data" name="photo_data">
                         </div>
                     </div>
@@ -487,11 +490,11 @@
         }
 
         // Auto-focus sur le premier champ vide
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const nomField = document.getElementById('nom');
             const emailField = document.getElementById('email');
             const passwordField = document.getElementById('mot_de_passe');
-            
+
             if (!nomField.value) {
                 nomField.focus();
             } else if (!emailField.value) {
@@ -503,21 +506,21 @@
 
         // Animation des champs
         document.querySelectorAll('.form-control').forEach(field => {
-            field.addEventListener('focus', function() {
+            field.addEventListener('focus', function () {
                 this.parentElement.style.transform = 'scale(1.02)';
             });
-            
-            field.addEventListener('blur', function() {
+
+            field.addEventListener('blur', function () {
                 this.parentElement.style.transform = 'scale(1)';
             });
         });
 
         // Validation en temps réel
         const emailField = document.getElementById('email');
-        emailField.addEventListener('blur', function() {
+        emailField.addEventListener('blur', function () {
             const email = this.value;
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
+
             if (email && !emailRegex.test(email)) {
                 this.style.borderColor = '#ef4444';
             } else {
@@ -526,9 +529,9 @@
         });
 
         const passwordField = document.getElementById('mot_de_passe');
-        passwordField.addEventListener('blur', function() {
+        passwordField.addEventListener('blur', function () {
             const password = this.value;
-            
+
             if (password && password.length < 6) {
                 this.style.borderColor = '#ef4444';
             } else {
@@ -541,7 +544,6 @@
             const file = event.target.files[0];
             const preview = document.getElementById('photo-preview');
             const photoData = document.getElementById('photo_data');
-            
             if (file) {
                 // Validate file type
                 if (!file.type.startsWith('image/')) {
@@ -549,16 +551,15 @@
                     event.target.value = '';
                     return;
                 }
-                
                 // Validate file size (max 5MB)
                 if (file.size > 5 * 1024 * 1024) {
                     alert('L\'image ne doit pas dépasser 5MB.');
                     event.target.value = '';
                     return;
                 }
-                
+
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     preview.innerHTML = `<img src="${e.target.result}" alt="Photo de profil">`;
                     photoData.value = e.target.result;
                 };
@@ -567,9 +568,10 @@
         }
 
         // Click on preview to trigger file input
-        document.getElementById('photo-preview').addEventListener('click', function() {
+        document.getElementById('photo-preview').addEventListener('click', function () {
             document.getElementById('photo_profil').click();
         });
     </script>
 </body>
+
 </html>
