@@ -34,7 +34,7 @@ class Auth extends BaseController
         $inscriptionData = [
             'nom' => $this->request->getPost('nom'),
             'email' => $this->request->getPost('email'),
-            'mot_de_passe' => password_hash($this->request->getPost('mot_de_passe'), PASSWORD_DEFAULT),
+            'mot_de_passe' => $this->request->getPost('mot_de_passe'),
             'genre' => $this->request->getPost('genre')
         ];
 
@@ -44,7 +44,10 @@ class Auth extends BaseController
             session()->set('temp_user_id', $utilisateurId);
             return redirect()->to('/sante/info')->with('success', 'Inscription réussie !');
         } else {
-            return redirect()->back()->with('error', 'Erreur lors de l\'inscription')->withInput();
+            $errors = $this->authModel->getErrors();
+            return redirect()->back()
+                ->with('errors', $errors ?: ['Erreur lors de l\'inscription'])
+                ->withInput();
         }
     }
 
