@@ -8,5 +8,12 @@ class Regime extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['nom', 'type', 'prix', 'duree', 'variation_poids', 'pourcentage_viande', 'pourcentage_poisson', 'pourcentage_volaille'];
     protected $useTimestamps = false;
+
+    //recuperer les objecif pour dimuner le poid
+    public function getRegimeDiminuePoid() {
+        return $this->select("*")
+        ->where("variation_poids <",0)
+        ->findAll();
+    }
 }
 ?>
