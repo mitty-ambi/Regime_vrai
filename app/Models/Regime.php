@@ -22,7 +22,7 @@ class Regime extends Model
     }
 
     //suggestion des regimes diminuateur de poid
-    private function getSuggestionDiminuateurPoid($durer, $preference, $seuilVariationPoidMin)
+    public function getSuggestionDiminuateurPoid($durer, $preference, $seuilVariationPoidMin)
     {
         return $this->whereDiminuateurPoid()
             ->whereDurrerInferieur($durer)
@@ -52,12 +52,12 @@ class Regime extends Model
     }
 
     //reucuper les regime pour haugmenter le poid jusqu a une certain seuil
-    public function whereSueiVariationPoidlMin($seuil)
+    private function whereSueiVariationPoidlMin($seuil)
     {
         return  $this->where("variation_poids >=", $seuil);
     }
 
-    public function whereSueiVariationPoidlMax($seuil)
+    private function whereSueiVariationPoidlMax($seuil)
     {
         return $this->where("variation_poids <=", $seuil);
     }
@@ -65,12 +65,12 @@ class Regime extends Model
     //recuperer les regime pour dimuner le poid
     public function whereDiminuateurPoid()
     {
-        return $this->where("variation_poids <", 0);
+        return $this->where("variation_poids <", 0)->orderBy('variation_poids','ASC');
     }
 
     //recuperer les regime pour haugmenter le poid
     public function whereAugmenteurPoid()
     {
-        return $this->where("variation_poids >", 0);
+        return $this->where("variation_poids >", 0)->orderBy('variation_poids','DESC');
     }
 }

@@ -1,3 +1,9 @@
+<?php
+
+use App\Models\SanteModel;
+
+$santeModel = new SanteModel();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +18,12 @@
 
     <!-- filtre le regime en fonction de l objectif -->
     <section>
-        <form action="">
+        <form action="/Regime/get/suggestion" method="get">
             <!-- selection de l objectif -->
             <label for="input_objectifs"></label>
-            <select name="objectifs" id="">
+            <select name="objectif_id" id="">
                 <?php foreach ($liste_objectif as $objectifs) { ?>
-                    <option value="<?= $objectifs['nom'] ?>">
+                    <option value="<?= $objectifs['id'] ?>">
                         ⚖️ <?= $objectifs['nom'] ?>
                     </option>
                 <?php } ?>
@@ -26,6 +32,10 @@
             <!-- selection du durrer -->
             <label for="input_durrer">Durer du regime</label>
             <input type="number" name="durrer" id="input_durrer">
+
+            <!-- selectionner le variation voulu -->
+            <label for="input_durrer">Variation voulu</label>
+            <input type="number" name="variationVoulu" id="input_durrer">
 
             <!-- selection du type de proteinne preferer -->
             <p>
@@ -41,6 +51,18 @@
             </p>
             <input type="submit" value="Rechercher">
         </form>
+    </section>
+    <section>
+        <!-- information sur l imc  -->
+        <?php if (isset($data_imc_ideal)) { ?>
+            <h4>Info imc ideal</h4>
+            <ul>
+                <li>Imc actuel : <?= $data_imc_ideal["imc"] ?></li>
+                <li>Imc Ideal : <?= $data_imc_ideal["imc_ideal"] ?></li>
+                <li>Poid actuel : <?= $data_imc_ideal["poids"] ?></li>
+                <li>Poid pour Imc ideal : <?= $data_imc_ideal["poids_ideal"] ?></li>
+            </ul>
+        <?php } ?>
     </section>
 
     <section>
@@ -72,9 +94,7 @@
                             <td><?= $regime['pourcentage_poisson'] ?></td>
                             <td><?= $regime['pourcentage_volaille'] ?></td>
                             <td class="action-buttons">
-                                <a href="/Regime/update/<?= $regime['id'] ?>" class="btn-edit">✏️ Modifier</a>
-                                <a href="/Regime/supprimer/<?= $regime['id'] ?>" class="btn-delete"
-                                    onclick="return confirm('Voulez-vous vraiment supprimer ?')">🗑️ Supprimer</a>
+                                <a href="/Regime/update/<?= $regime['id'] ?>" class="btn-edit">✏️ Acheter</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

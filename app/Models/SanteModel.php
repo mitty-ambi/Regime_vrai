@@ -69,4 +69,27 @@ class SanteModel extends Model
         }
         return $sante;
     }
+
+    public function calculerPoid($imc,$taille) {
+         $tailleEnMetres = $taille / 100;
+        return round($imc*($tailleEnMetres*$tailleEnMetres),2);
+    }
+
+    //recuperer la variation de poid necessaire pour ateindre l IMC ideal
+    public function getInfoForImcIdeal($utilisateurId) {
+        $sante = $this->getSanteByUtilisateurId($utilisateurId);
+        if ($sante) {
+            $taille = $sante['taille'];
+            $poids = $sante["poids"];
+            $imcIdeal = $this->db->table("parametre")->get(1)->getResultArray()[0]["imc_ideal"];
+            $poidIdeal = $this->calculerPoid($imcIdeal,$taille);
+            $variationPoid = $poidIdeal - $poids;
+
+            $sante['imc'] = $this->calculateIMC($sante['taille'], $sante['poids']);
+            $sante['imc_ideal'] = $this->db->table("parametre")->get(1)->getResultArray()[0]["imc_ideal"];
+            $sante['poids_ideal'] = $poidIdeal;
+            $sante['variation_poid'] = $variationPoid;
+        }
+        return $sante;
+    }
 }
