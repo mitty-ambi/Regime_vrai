@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Étape 2 - NutriGain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Inscription - Étape 2 - Régime App</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #10b981;
@@ -30,6 +33,24 @@
             background: var(--light);
             min-height: 100vh;
             padding: 40px 20px;
+        }
+
+        .register-container {
+            max-width: 600px;
+            margin: 0 auto;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .register-header {
@@ -290,6 +311,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="register-container">
         <div class="register-header">
@@ -326,33 +348,30 @@
             <?= csrf_field() ?>
             
             <div class="info-box">
-                <div class="icon">💡</div>
-                <div class="content">
-                    <h4>Pourquoi ces informations ?</h4>
-                    <p>Vos données de santé nous permettent de calculer votre IMC et de vous fournir des recommandations personnalisées.</p>
-                </div>
+                <h3>📊 Pourquoi ces informations ?</h3>
+                <p>Vos données de santé nous permettent de calculer votre IMC et de vous proposer des recommandations
+                    personnalisées pour atteindre vos objectifs.</p>
             </div>
 
-            <div class="form-section">
-                <h3>Mesures corporelles</h3>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="taille">Taille</label>
-                        <div class="input-group">
-                            <input type="number" id="taille" name="taille" class="form-control" 
-                                   placeholder="170" min="100" max="250" required step="1">
-                            <span class="input-addon">cm</span>
-                        </div>
+            <form action="/sante/save" method="post">
+                <div class="form-group">
+                    <label for="taille" class="form-label">Taille *</label>
+                    <div class="input-group">
+                        <input type="number" id="taille" name="taille" class="form-input" required min="50" max="300"
+                            step="0.1" value="<?= old('taille') ?>" placeholder="170">
+                        <span class="input-suffix">cm</span>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="poids">Poids</label>
-                        <div class="input-group">
-                            <input type="number" id="poids" name="poids" class="form-control" 
-                                   placeholder="70" min="30" max="300" required step="0.1">
-                            <span class="input-addon">kg</span>
-                        </div>
+                    <?php if (isset($validation) && $validation->getError('taille')): ?>
+                        <div class="error-message"><?= $validation->getError('taille') ?></div>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="poids" class="form-label">Poids *</label>
+                    <div class="input-group">
+                        <input type="number" id="poids" name="poids" class="form-input" required min="1" max="500"
+                            step="0.1" value="<?= old('poids') ?>" placeholder="70">
+                        <span class="input-suffix">kg</span>
                     </div>
                 </div>
             </div>
@@ -409,4 +428,5 @@
         });
     </script>
 </body>
+
 </html>
