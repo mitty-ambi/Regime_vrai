@@ -14,8 +14,13 @@ class Regime extends Model
 
     //suggestons des regimes augmentateur de poid
     public function getSuggestionHaugmenterPoid($durer, $preference, $seuilVariationPoidMax) {
-        
+        return $this->whereAugmenteurPoid()
+            ->whereDurrerInferieur($durer)
+            ->preference($preference)
+            ->whereSueiVariationPoidlMax($seuilVariationPoidMax)
+            ->findAll();
     }
+    
     //suggestion des regimes diminuateur de poid
     public function getSuggestionDiminuateurPoid($durer, $preference, $seuilVariationPoidMin)
     {
