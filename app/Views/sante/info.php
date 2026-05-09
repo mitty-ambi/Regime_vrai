@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - Étape 2 - Régime App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #10b981;
@@ -43,6 +46,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -258,6 +262,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="register-container">
         <div class="register-header">
@@ -298,15 +303,16 @@
 
             <div class="info-box">
                 <h3>📊 Pourquoi ces informations ?</h3>
-                <p>Vos données de santé nous permettent de calculer votre IMC et de vous proposer des recommandations personnalisées pour atteindre vos objectifs.</p>
+                <p>Vos données de santé nous permettent de calculer votre IMC et de vous proposer des recommandations
+                    personnalisées pour atteindre vos objectifs.</p>
             </div>
 
             <form action="/sante/save" method="post">
                 <div class="form-group">
                     <label for="taille" class="form-label">Taille *</label>
                     <div class="input-group">
-                        <input type="number" id="taille" name="taille" class="form-input" required 
-                               min="50" max="300" step="0.1" value="<?= old('taille') ?>" placeholder="170">
+                        <input type="number" id="taille" name="taille" class="form-input" required min="50" max="300"
+                            step="0.1" value="<?= old('taille') ?>" placeholder="170">
                         <span class="input-suffix">cm</span>
                     </div>
                     <?php if (isset($validation) && $validation->getError('taille')): ?>
@@ -317,8 +323,8 @@
                 <div class="form-group">
                     <label for="poids" class="form-label">Poids *</label>
                     <div class="input-group">
-                        <input type="number" id="poids" name="poids" class="form-input" required 
-                               min="1" max="500" step="0.1" value="<?= old('poids') ?>" placeholder="70">
+                        <input type="number" id="poids" name="poids" class="form-input" required min="1" max="500"
+                            step="0.1" value="<?= old('poids') ?>" placeholder="70">
                         <span class="input-suffix">kg</span>
                     </div>
                     <?php if (isset($validation) && $validation->getError('poids')): ?>
@@ -331,4 +337,5 @@
         </div>
     </div>
 </body>
+
 </html>

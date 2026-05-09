@@ -44,7 +44,7 @@
     </section>
 
     <section>
-         <div class="table-container">
+        <div class="table-container">
             <h2 class="table-title">📋 Liste des régimes</h2>
             <table class="regime-table">
                 <thead>
