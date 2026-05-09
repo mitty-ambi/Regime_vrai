@@ -96,6 +96,12 @@ CREATE TABLE transactions_codes (
     FOREIGN KEY (code_id) REFERENCES codes(id)
 );
 
+CREATE TABLE parametre (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    imc_ideal  DECIMAL(10, 2)
+);
+
+INSERT INTO parametre (imc_ideal) VALUES (22);
 
 INSERT INTO objectifs (nom) VALUES
 ('augmentation'),

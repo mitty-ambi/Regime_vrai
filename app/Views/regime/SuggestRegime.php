@@ -1,3 +1,9 @@
+<?php
+
+use App\Models\SanteModel;
+
+$santeModel = new SanteModel();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +34,7 @@
             <input type="number" name="durrer" id="input_durrer">
 
             <!-- selectionner le variation voulu -->
-             <label for="input_durrer">Variation voulu</label>
+            <label for="input_durrer">Variation voulu</label>
             <input type="number" name="variationVoulu" id="input_durrer">
 
             <!-- selection du type de proteinne preferer -->
@@ -46,9 +52,21 @@
             <input type="submit" value="Rechercher">
         </form>
     </section>
+    <section>
+        <!-- information sur l imc  -->
+        <?php if (isset($data_imc_ideal)) { ?>
+            <h4>Info imc ideal</h4>
+            <ul>
+                <li>Imc actuel : <?= $data_imc_ideal["imc"] ?></li>
+                <li>Imc Ideal : <?= $data_imc_ideal["imc_ideal"] ?></li>
+                <li>Poid actuel : <?= $data_imc_ideal["poids"] ?></li>
+                <li>Poid pour Imc ideal : <?= $data_imc_ideal["poids_ideal"] ?></li>
+            </ul>
+        <?php } ?>
+    </section>
 
     <section>
-         <div class="table-container">
+        <div class="table-container">
             <h2 class="table-title">📋 Liste des régimes</h2>
             <table class="regime-table">
                 <thead>
@@ -76,9 +94,7 @@
                             <td><?= $regime['pourcentage_poisson'] ?></td>
                             <td><?= $regime['pourcentage_volaille'] ?></td>
                             <td class="action-buttons">
-                                <a href="/Regime/update/<?= $regime['id'] ?>" class="btn-edit">✏️ Modifier</a>
-                                <a href="/Regime/supprimer/<?= $regime['id'] ?>" class="btn-delete"
-                                    onclick="return confirm('Voulez-vous vraiment supprimer ?')">🗑️ Supprimer</a>
+                                <a href="/Regime/update/<?= $regime['id'] ?>" class="btn-edit">✏️ Acheter</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
