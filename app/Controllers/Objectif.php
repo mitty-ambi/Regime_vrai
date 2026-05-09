@@ -71,12 +71,10 @@ class Objectif extends BaseController
             foreach ($objectifsChoisis as $objectifData) {
                 $objectifId = $objectifData->id;
                 $poidsObjectif = $objectifData->poids ?? null;
-
                 // Calculer le poids cible si un poids est spécifié
                 $poidsCible = null;
                 if ($poidsObjectif && isset($utilisateur['poids'])) {
                     $poidsCible = $utilisateur['poids'];
-
                     // Récupérer le nom de l'objectif pour déterminer l'opération
                     $objectif = $this->objectifModel->find($objectifId);
                     if ($objectif) {

@@ -58,125 +58,160 @@
             margin-bottom: 40px;
         }
 
+        .register-header .logo {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
         .register-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
             color: var(--dark);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .register-header p {
-            font-size: 1.1rem;
             color: var(--gray);
+            font-size: 14px;
         }
 
+        /* PROGRESS BAR */
         .progress-bar {
             display: flex;
-            justify-content: space-between;
+            gap: 12px;
             margin-bottom: 40px;
-            position: relative;
-        }
-
-        .progress-bar::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gray-light);
-            z-index: 1;
+            justify-content: center;
         }
 
         .progress-step {
-            position: relative;
-            z-index: 2;
-            text-align: center;
             flex: 1;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            height: 8px;
             background: var(--gray-light);
-            color: var(--gray);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-bottom: 8px;
-            transition: all 0.3s ease;
+            border-radius: 4px;
+            max-width: 80px;
+            overflow: hidden;
         }
 
-        .step-number.active {
+        .progress-step.active {
             background: var(--primary);
-            color: white;
         }
 
-        .step-number.completed {
+        .progress-step.completed {
             background: var(--success);
+        }
+
+        .progress-step.completed::after {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
             color: white;
+            font-size: 12px;
         }
 
-        .step-label {
-            font-size: 0.9rem;
+        .progress-labels {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+
+        .progress-label {
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
             color: var(--gray);
+            max-width: 80px;
         }
 
-        .step-label.active {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .step-label.completed {
+        .progress-label.completed {
             color: var(--success);
             font-weight: 600;
         }
 
-        .register-card {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        .progress-label.active {
+            color: var(--primary);
+            font-weight: 600;
         }
 
-        .form-group {
+        /* FORM */
+        .register-form {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
             margin-bottom: 24px;
         }
 
-        .form-label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--dark);
-            margin-bottom: 8px;
+        .form-section {
+            margin-bottom: 32px;
         }
 
-        .form-input {
+        .form-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-section h3::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 14px;
+        }
+
+        .form-control {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid var(--gray-light);
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 16px;
             transition: all 0.3s ease;
             font-family: 'Manrope', sans-serif;
         }
 
-        .form-input:focus {
+        .form-control:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
-        .form-input.error {
-            border-color: var(--danger);
+        .input-group {
+            position: relative;
         }
 
-        .error-message {
-            color: var(--danger);
-            font-size: 0.85rem;
-            margin-top: 6px;
+        .input-addon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 14px;
         }
 
         .btn {
@@ -186,7 +221,7 @@
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -196,69 +231,83 @@
         .btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
         }
 
-        .btn:active {
-            transform: translateY(0);
+        .btn:disabled {
+            background: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         .alert {
-            padding: 16px;
+            padding: 12px 16px;
             border-radius: 8px;
             margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .alert-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
         }
 
         .alert-success {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            border-left: 4px solid var(--primary);
-        }
-
-        .alert-danger {
-            background: #fef2f2;
-            color: var(--danger);
-            border-left: 4px solid var(--danger);
-        }
-
-        .alert-info {
-            background: #e0f2fe;
-            color: #0369a1;
-            border-left: 4px solid #0ea5e9;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
         }
 
         .info-box {
-            background: #f0fdf4;
-            border: 1px solid var(--primary-light);
+            background: var(--primary-light);
+            border: 1px solid var(--primary);
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
         }
 
-        .info-box h3 {
+        .info-box .icon {
+            color: var(--primary);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-box .content {
+            flex: 1;
+        }
+
+        .info-box h4 {
             color: var(--primary-dark);
-            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+            font-size: 14px;
         }
 
         .info-box p {
-            color: var(--gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            color: var(--dark);
+            font-size: 13px;
+            line-height: 1.4;
         }
 
-        .input-group {
-            position: relative;
-        }
+        @media (max-width: 640px) {
+            .register-container {
+                padding: 0;
+            }
+            
+            .register-form {
+                padding: 30px 20px;
+                border-radius: 0;
+            }
 
-        .input-suffix {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray);
-            font-weight: 500;
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
         }
     </style>
 </head>
@@ -266,41 +315,38 @@
 <body>
     <div class="register-container">
         <div class="register-header">
+            <div class="logo">🥗 NutriGain</div>
             <h1>Informations santé</h1>
-            <p>Dernière étape pour personnaliser votre expérience</p>
+            <p>Dernière étape pour compléter votre profil</p>
         </div>
 
         <div class="progress-bar">
-            <div class="progress-step">
-                <div class="step-number completed">1</div>
-                <div class="step-label completed">Informations</div>
-            </div>
-            <div class="progress-step">
-                <div class="step-number active">2</div>
-                <div class="step-label active">Santé</div>
-            </div>
+            <div class="progress-step completed"></div>
+            <div class="progress-step active"></div>
         </div>
 
-        <div class="register-card">
-            <?php if (session()->getFlashdata('success')): ?>
-                <div class="alert alert-success">
-                    <?= session()->getFlashdata('success') ?>
-                </div>
-            <?php endif; ?>
+        <div class="progress-labels">
+            <div class="progress-label completed">Informations</div>
+            <div class="progress-label active">Santé</div>
+        </div>
 
-            <?php if (session()->getFlashdata('errors')): ?>
-                <div class="alert alert-danger">
-                    <?php $errors = session()->getFlashdata('errors'); ?>
-                    <?php if (is_array($errors)): ?>
-                        <?php foreach ($errors as $error): ?>
-                            <div class="error-message"><?= $error ?></div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <div class="error-message"><?= $errors ?></div>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
+        <?php if (session()->has('errors')): ?>
+            <div class="alert alert-error">
+                <?php foreach (session('errors') as $error): ?>
+                    <p><?= $error ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
+        <?php if (session()->has('success')): ?>
+            <div class="alert alert-success">
+                <?= session('success') ?>
+            </div>
+        <?php endif; ?>
+
+        <form class="register-form" action="/sante/save" method="post">
+            <?= csrf_field() ?>
+            
             <div class="info-box">
                 <h3>📊 Pourquoi ces informations ?</h3>
                 <p>Vos données de santé nous permettent de calculer votre IMC et de vous proposer des recommandations
@@ -327,15 +373,60 @@
                             step="0.1" value="<?= old('poids') ?>" placeholder="70">
                         <span class="input-suffix">kg</span>
                     </div>
-                    <?php if (isset($validation) && $validation->getError('poids')): ?>
-                        <div class="error-message"><?= $validation->getError('poids') ?></div>
-                    <?php endif; ?>
                 </div>
+            </div>
 
-                <button type="submit" class="btn">Terminer l'inscription</button>
-            </form>
-        </div>
+            <button type="submit" class="btn">Terminer l'inscription</button>
+        </form>
     </div>
+
+    <script>
+        // Auto-focus sur le premier champ vide
+        document.addEventListener('DOMContentLoaded', function() {
+            const tailleField = document.getElementById('taille');
+            const poidsField = document.getElementById('poids');
+            
+            if (!tailleField.value) {
+                tailleField.focus();
+            } else if (!poidsField.value) {
+                poidsField.focus();
+            }
+        });
+
+        // Animation des champs
+        document.querySelectorAll('.form-control').forEach(field => {
+            field.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            field.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Validation en temps réel
+        const tailleField = document.getElementById('taille');
+        tailleField.addEventListener('blur', function() {
+            const taille = parseInt(this.value);
+            
+            if (taille && (taille < 100 || taille > 250)) {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+
+        const poidsField = document.getElementById('poids');
+        poidsField.addEventListener('blur', function() {
+            const poids = parseFloat(this.value);
+            
+            if (poids && (poids < 30 || poids > 300)) {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +13,6 @@
 
 
 </head>
-
 <body>
     
     <?= view("navbar") ?>
@@ -145,7 +143,6 @@
 
             // Préparer les données avec les poids
             const objectifsData = [];
-
             selectedObjectifs.forEach(objectifId => {
                 const objectifData = {
                     id: objectifId,
@@ -175,7 +172,6 @@
                         return;
                     }
                 }
-
                 objectifsData.push(objectifData);
             });
 

@@ -6,6 +6,8 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Auth::inscription');
+$routes->get('/livres','LivreController::index');
+$routes->get('/livres/filtre','LivreController::filtre');
 
 // Routes d'authentification
 $routes->get('/auth/login', 'Auth::login');

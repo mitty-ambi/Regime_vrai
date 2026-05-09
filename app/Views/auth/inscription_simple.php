@@ -363,7 +363,6 @@
             .register-container {
                 padding: 0;
             }
-
             .form-card {
                 padding: 30px 20px;
                 border-radius: 0;
@@ -545,7 +544,6 @@
             const file = event.target.files[0];
             const preview = document.getElementById('photo-preview');
             const photoData = document.getElementById('photo_data');
-
             if (file) {
                 // Validate file type
                 if (!file.type.startsWith('image/')) {
@@ -553,7 +551,6 @@
                     event.target.value = '';
                     return;
                 }
-
                 // Validate file size (max 5MB)
                 if (file.size > 5 * 1024 * 1024) {
                     alert('L\'image ne doit pas dépasser 5MB.');
