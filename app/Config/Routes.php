@@ -26,6 +26,10 @@ $routes->post('/Regime/insert', 'RegimeController::insert');
 $routes->get('/Regime/update/(:num)', 'RegimeController::update/$1');
 $routes->post('/Regime/edit/(:num)', 'RegimeController::edit/$1');
 $routes->get('/Regime/supprimer/(:num)', 'RegimeController::supprimer/$1');
+// Regime - suggestion de regime
+$routes->get('/Regime/suggest',function () {
+    return view('regime/SuggestRegime');
+});
 
 // Activites - CRUD complet
 $routes->get('/Activites/add', 'ActiviteController::go_to_activite');
