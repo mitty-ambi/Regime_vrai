@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Étape 1 - Régime App</title>
+    <title>Inscription - Étape 1 - NutriGain</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #10b981;
             --primary-dark: #059669;
             --primary-light: #d1fae5;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --success: #10b981;
             --dark: #1f2937;
             --gray: #6b7280;
             --gray-light: #e5e7eb;
@@ -54,177 +52,142 @@
             margin-bottom: 40px;
         }
 
+        .register-header .logo {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
         .register-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
             color: var(--dark);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .register-header p {
-            font-size: 1.1rem;
             color: var(--gray);
+            font-size: 14px;
         }
 
+        /* PROGRESS BAR */
         .progress-bar {
             display: flex;
-            justify-content: space-between;
+            gap: 12px;
             margin-bottom: 40px;
-            position: relative;
-        }
-
-        .progress-bar::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gray-light);
-            z-index: 1;
+            justify-content: center;
         }
 
         .progress-step {
-            position: relative;
-            z-index: 2;
-            text-align: center;
             flex: 1;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            height: 8px;
             background: var(--gray-light);
-            color: var(--gray);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-bottom: 8px;
-            transition: all 0.3s ease;
+            border-radius: 4px;
+            max-width: 80px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .step-number.active {
+        .progress-step.active {
             background: var(--primary);
+        }
+
+        .progress-step.completed::after {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
             color: white;
+            font-size: 12px;
         }
 
-        .step-label {
-            font-size: 0.9rem;
+        .progress-labels {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+
+        .progress-label {
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
             color: var(--gray);
+            max-width: 80px;
         }
 
-        .step-label.active {
+        .progress-label.active {
             color: var(--primary);
             font-weight: 600;
         }
 
-        .register-card {
+        /* FORM CARD */
+        .form-card {
             background: white;
             border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             padding: 40px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 24px;
+        }
+
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-section h3::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
-        .form-label {
+        .form-group label {
             display: block;
-            font-size: 0.9rem;
+            margin-bottom: 8px;
             font-weight: 500;
             color: var(--dark);
-            margin-bottom: 8px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--gray-light);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            font-family: 'Manrope', sans-serif;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-        }
-
-        .form-input.error {
-            border-color: var(--danger);
-        }
-
-        .error-message {
-            color: var(--danger);
-            font-size: 0.85rem;
-            margin-top: 6px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px 24px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Manrope', sans-serif;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .alert {
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-        }
-
-        .alert-success {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            border-left: 4px solid var(--primary);
-        }
-
-        .alert-danger {
-            background: #fef2f2;
-            color: var(--danger);
-            border-left: 4px solid var(--danger);
-        }
-
-        .login-link {
-            text-align: center;
-            margin-top: 24px;
-            color: var(--gray);
-        }
-
-        .login-link a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .login-link a:hover {
-            text-decoration: underline;
+            font-size: 14px;
         }
 
         .input-group {
             position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-light);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         .clear-btn {
@@ -237,12 +200,8 @@
             color: var(--gray);
             cursor: pointer;
             font-size: 16px;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+            padding: 4px;
+            border-radius: 4px;
             transition: all 0.2s ease;
         }
 
@@ -251,130 +210,366 @@
             color: var(--dark);
         }
 
-        .form-input:placeholder-shown + .clear-btn {
-            display: none;
+        .radio-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .radio-option {
+            flex: 1;
+            position: relative;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .radio-label {
+            display: block;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-light);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        .radio-label:hover {
+            border-color: var(--primary);
+        }
+
+        .photo-upload-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .photo-preview {
+            width: 120px;
+            height: 120px;
+            border: 2px dashed var(--gray-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .photo-preview:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .photo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .photo-icon {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .photo-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn:disabled {
+            background: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .alert-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+        }
+
+        .alert-success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+        }
+
+        .login-link {
+            text-align: center;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .register-container {
+                padding: 0;
+            }
+            
+            .form-card {
+                padding: 30px 20px;
+                border-radius: 0;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 12px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="register-container">
         <div class="register-header">
-            <h1>Créer votre compte</h1>
-            <p>Rejoignez-nous et commencez votre parcours santé</p>
+            <div class="logo">🥗 NutriGain</div>
+            <h1>Créez votre compte</h1>
+            <p>Rejoignez notre plateforme de suivi nutritionnel</p>
         </div>
 
         <div class="progress-bar">
-            <div class="progress-step">
-                <div class="step-number active">1</div>
-                <div class="step-label active">Informations</div>
-            </div>
-            <div class="progress-step">
-                <div class="step-number">2</div>
-                <div class="step-label">Santé</div>
-            </div>
+            <div class="progress-step active"></div>
+            <div class="progress-step"></div>
         </div>
 
-        <div class="register-card">
-            <?php if (session()->getFlashdata('success')): ?>
+        <div class="progress-labels">
+            <div class="progress-label active">Informations</div>
+            <div class="progress-label">Santé</div>
+        </div>
+
+        <?php if (session()->has('errors')): ?>
+                <div class="alert alert-error">
+                    <?php foreach (session('errors') as $error): ?>
+                            <p><?= $error ?></p>
+                    <?php endforeach; ?>
+                </div>
+        <?php endif; ?>
+
+        <?php if (session()->has('success')): ?>
                 <div class="alert alert-success">
-                    <?= session()->getFlashdata('success') ?>
+                    <?= session('success') ?>
                 </div>
-            <?php endif; ?>
+        <?php endif; ?>
 
-            <?php if (session()->getFlashdata('errors')): ?>
-                <div class="alert alert-danger">
-                    <?php $errors = session()->getFlashdata('errors'); ?>
-                    <?php if (is_array($errors)): ?>
-                        <?php foreach ($errors as $error): ?>
-                            <div class="error-message"><?= $error ?></div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <div class="error-message"><?= $errors ?></div>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-
-            <form action="/auth/register" method="post">
-                <div class="form-group">
-                    <label for="nom" class="form-label">Nom complet *</label>
-                    <input type="text" id="nom" name="nom" class="form-input" required 
-                           value="<?= old('nom') ?>" placeholder="Entrez votre nom complet">
-                    <?php if (isset($validation) && $validation->getError('nom')): ?>
-                        <div class="error-message"><?= $validation->getError('nom') ?></div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Adresse email *</label>
-                    <div class="input-group">
-                        <input type="email" id="email" name="email" class="form-input" required 
-                               value="<?= old('email') ?>" placeholder="exemple@email.com"
-                               autocomplete="email">
-                        <button type="button" class="clear-btn" onclick="clearInput('email')" title="Effacer">
-                            ✕
-                        </button>
+        <form action="/auth/register" method="post">
+            <?= csrf_field() ?>
+            
+            <div class="form-card">
+                <div class="form-section">
+                    <h3>Informations personnelles</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom complet</label>
+                            <input type="text" id="nom" name="nom" class="form-control" 
+                                   placeholder="Jean Dupont" required
+                                   value="<?= old('nom') ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <input type="email" id="email" name="email" class="form-control" 
+                                       placeholder="jean@example.com" required autocomplete="email"
+                                       value="<?= old('email') ?>">
+                                <button type="button" class="clear-btn" onclick="clearInput('email')">✕</button>
+                            </div>
+                        </div>
                     </div>
-                    <?php if (isset($validation) && $validation->getError('email')): ?>
-                        <div class="error-message"><?= $validation->getError('email') ?></div>
-                    <?php endif; ?>
+
+                    <div class="form-group">
+                        <label for="mot_de_passe">Mot de passe</label>
+                        <input type="password" id="mot_de_passe" name="mot_de_passe" class="form-control" 
+                               placeholder="••••••••" required autocomplete="new-password">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Genre</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="homme" name="genre" value="Homme" required>
+                                <label for="homme" class="radio-label">👨 Homme</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="femme" name="genre" value="Femme" required>
+                                <label for="femme" class="radio-label">👩 Femme</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="photo_profil">Photo de profil (optionnel)</label>
+                        <div class="photo-upload-container">
+                            <div class="photo-preview" id="photo-preview">
+                                <div class="photo-placeholder">
+                                    <span class="photo-icon">📷</span>
+                                    <span class="photo-text">Ajouter une photo</span>
+                                </div>
+                            </div>
+                            <input type="file" id="photo_profil" name="photo_profil" class="form-control" 
+                                   accept="image/*" onchange="previewPhoto(event)">
+                            <input type="hidden" id="photo_data" name="photo_data">
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="mot_de_passe" class="form-label">Mot de passe *</label>
-                    <input type="password" id="mot_de_passe" name="mot_de_passe" class="form-input" required 
-                           placeholder="Minimum 6 caractères">
-                    <?php if (isset($validation) && $validation->getError('mot_de_passe')): ?>
-                        <div class="error-message"><?= $validation->getError('mot_de_passe') ?></div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="genre" class="form-label">Genre *</label>
-                    <select id="genre" name="genre" class="form-input" required>
-                        <option value="">Sélectionner votre genre</option>
-                        <option value="Homme" <?= old('genre') == 'Homme' ? 'selected' : '' ?>>Homme</option>
-                        <option value="Femme" <?= old('genre') == 'Femme' ? 'selected' : '' ?>>Femme</option>
-                    </select>
-                    <?php if (isset($validation) && $validation->getError('genre')): ?>
-                        <div class="error-message"><?= $validation->getError('genre') ?></div>
-                    <?php endif; ?>
-                </div>
-
-                <button type="submit" class="btn">Continuer vers les infos santé</button>
-            </form>
-
-            <div class="login-link">
-                <p>Déjà un compte ? <a href="/auth/login">Connectez-vous ici</a></p>
             </div>
+
+            <button type="submit" class="btn">Continuer vers les infos santé</button>
+        </form>
+
+        <div class="login-link">
+            <p>Déjà un compte ? <a href="/auth/login">Se connecter</a></p>
         </div>
     </div>
 
     <script>
-        function clearInput(inputId) {
-            const input = document.getElementById(inputId);
-            if (input) {
-                input.value = '';
-                input.focus();
+        function clearInput(fieldId) {
+            document.getElementById(fieldId).value = '';
+            document.getElementById(fieldId).focus();
+        }
+
+        // Auto-focus sur le premier champ vide
+        document.addEventListener('DOMContentLoaded', function() {
+            const nomField = document.getElementById('nom');
+            const emailField = document.getElementById('email');
+            const passwordField = document.getElementById('mot_de_passe');
+            
+            if (!nomField.value) {
+                nomField.focus();
+            } else if (!emailField.value) {
+                emailField.focus();
+            } else if (!passwordField.value) {
+                passwordField.focus();
+            }
+        });
+
+        // Animation des champs
+        document.querySelectorAll('.form-control').forEach(field => {
+            field.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            field.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Validation en temps réel
+        const emailField = document.getElementById('email');
+        emailField.addEventListener('blur', function() {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+
+        const passwordField = document.getElementById('mot_de_passe');
+        passwordField.addEventListener('blur', function() {
+            const password = this.value;
+            
+            if (password && password.length < 6) {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+
+        // Photo preview functionality
+        function previewPhoto(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('photo-preview');
+            const photoData = document.getElementById('photo_data');
+            
+            if (file) {
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    alert('Veuillez sélectionner une image valide.');
+                    event.target.value = '';
+                    return;
+                }
+                
+                // Validate file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('L\'image ne doit pas dépasser 5MB.');
+                    event.target.value = '';
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Photo de profil">`;
+                    photoData.value = e.target.result;
+                };
+                reader.readAsDataURL(file);
             }
         }
 
-        // Gérer l'affichage du bouton clear
-        document.addEventListener('DOMContentLoaded', function() {
-            const emailInput = document.getElementById('email');
-            const clearBtn = emailInput?.nextElementSibling;
-            
-            if (emailInput && clearBtn) {
-                function toggleClearBtn() {
-                    if (emailInput.value.trim() !== '') {
-                        clearBtn.style.display = 'flex';
-                    } else {
-                        clearBtn.style.display = 'none';
-                    }
-                }
-                
-                emailInput.addEventListener('input', toggleClearBtn);
-                toggleClearBtn(); // État initial
-            }
+        // Click on preview to trigger file input
+        document.getElementById('photo-preview').addEventListener('click', function() {
+            document.getElementById('photo_profil').click();
         });
     </script>
 </body>
