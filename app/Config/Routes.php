@@ -27,7 +27,7 @@ $routes->get('/Regime/update/(:num)', 'RegimeController::update/$1');
 $routes->post('/Regime/edit/(:num)', 'RegimeController::edit/$1');
 $routes->get('/Regime/supprimer/(:num)', 'RegimeController::supprimer/$1');
 // Regime - suggestion de regime
-$routes->get('/Regime/suggest','RegimeController::go_to_suggest');
+$routes->get('/Regime/suggest', 'RegimeController::go_to_suggest');
 
 // Activites - CRUD complet
 $routes->get('/Activites/add', 'ActiviteController::go_to_activite');
@@ -47,3 +47,13 @@ $routes->get('/codes/supprimer/(:num)', 'CodeController::supprimerCode/$1');
 // Codes - Front office (Porte monnaie)
 $routes->get('/codes/ajouter-credit', 'CodeController::ajouterCredit');
 $routes->post('/codes/valider', 'CodeController::validerCode');
+
+// Routes dashboard
+$routes->get('/dashboard', 'Dashboard::index');
+$routes->post('/dashboard/updatePoids', 'Dashboard::updatePoids');
+$routes->post('/dashboard/updatePhoto', 'Dashboard::updatePhoto');
+
+// Routes objectifs
+$routes->get('/objectif/choix', 'Objectif::choix');
+$routes->post('/objectif/sauvegarder', 'Objectif::sauvegarder');
+$routes->get('/objectif/suivi', 'Objectif::suivi');
