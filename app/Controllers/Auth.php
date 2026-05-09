@@ -15,11 +15,17 @@ class Auth extends BaseController
 
     public function inscription()
     {
+        if (session()->get('is_logged_in')) {
+            return redirect()->to('/dashboard');
+        }
         return view('auth/inscription_simple');
     }
 
     public function login()
     {
+        if (session()->get('is_logged_in')) {
+            return redirect()->to('/dashboard');
+        }
         return view('auth/login');
     }
 
@@ -28,24 +34,17 @@ class Auth extends BaseController
         $inscriptionData = [
             'nom' => $this->request->getPost('nom'),
             'email' => $this->request->getPost('email'),
-            'mot_de_passe' => $this->request->getPost('mot_de_passe'),
+            'mot_de_passe' => password_hash($this->request->getPost('mot_de_passe'), PASSWORD_DEFAULT),
             'genre' => $this->request->getPost('genre')
         ];
 
-        // Debug : afficher les données reçues
-        log_message('debug', 'Données inscription: ' . json_encode($inscriptionData));
-
         $utilisateurId = $this->authModel->registerUser($inscriptionData);
-
-        // Debug : afficher le résultat
-        log_message('debug', 'Résultat inscription: ' . json_encode($utilisateurId));
 
         if ($utilisateurId) {
             session()->set('temp_user_id', $utilisateurId);
-            return redirect()->to('/sante/info')->with('success', 'Inscription réussie ! Veuillez compléter vos informations santé.');
+            return redirect()->to('/sante/info')->with('success', 'Inscription réussie !');
         } else {
-            $errors = $this->authModel->getErrors();
-            return redirect()->back()->with('errors', $errors)->withInput();
+            return redirect()->back()->with('error', 'Erreur lors de l\'inscription')->withInput();
         }
     }
 
@@ -57,8 +56,17 @@ class Auth extends BaseController
         $result = $this->authModel->login($email, $password);
 
         if ($result['success']) {
-            session()->set('utilisateur', $result['utilisateur']);
-            return redirect()->to('/dashboard')->with('success', $result['message']);
+            $utilisateur = $result['utilisateur'];
+
+            session()->set([
+                'utilisateur' => $utilisateur,
+                'is_logged_in' => true,
+                'user_id' => $utilisateur['id'],
+                'user_nom' => $utilisateur['nom'],
+                'user_email' => $utilisateur['email']
+            ]);
+
+            return redirect()->to('/dashboard')->with('success', 'Connexion réussie');
         } else {
             return redirect()->back()->with('error', $result['message'])->withInput();
         }
@@ -66,10 +74,7 @@ class Auth extends BaseController
 
     public function logout()
     {
-        // Détruire complètement la session
         session()->destroy();
-        
-        // Rediriger vers la page de login avec message
         return redirect()->to('/')->with('success', 'Déconnexion réussie');
     }
 }

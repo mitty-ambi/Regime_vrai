@@ -64,7 +64,6 @@ CREATE TABLE aliments (
 CREATE TABLE activites (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100),
-    date_activite DATE,
     calories_brulees INT
 );
 
@@ -103,12 +102,12 @@ INSERT INTO objectifs (nom) VALUES
 ('reduction'),
 ('IMC ideal');
 
-INSERT INTO activites (nom, date_activite, calories_brulees) VALUES
-('Course à pied', '2026-05-01', 600),
-('Musculation', '2026-05-01', 400),
-('Natation', '2026-05-01', 500),
-('Vélo', '2026-05-01', 550),
-('Yoga', '2026-05-01', 200);
+INSERT INTO activites (nom, calories_brulees) VALUES
+('Course à pied', 600),
+('Musculation', 400),
+('Natation', 500),
+('Vélo', 550),
+('Yoga', 200);
 
 INSERT INTO regimes (nom, type, prix, duree, variation_poids, pourcentage_viande, pourcentage_poisson, pourcentage_volaille) VALUES
 ('Hyper Protéiné', 'augmentation', 49.99, 4, 3.5, 50, 20, 30),
