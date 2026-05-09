@@ -175,7 +175,8 @@
                         return;
                     }
                 }
-
+                // Pour l'objectif IMC idéal, pas de poids demandé (reste null)
+                
                 objectifsData.push(objectifData);
             });
 
