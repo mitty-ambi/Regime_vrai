@@ -22,5 +22,3 @@
         </li>
     </ul>
 </aside>
-
-<link rel="stylesheet" href="<?= base_url('assets/css/sidebar.css') ?>"
