@@ -10,6 +10,11 @@ class Regime extends Model
     protected $allowedFields = ['nom', 'type', 'prix', 'duree', 'variation_poids', 'pourcentage_viande', 'pourcentage_poisson', 'pourcentage_volaille'];
     protected $useTimestamps = false;
     
+    //recuperer les regimes selons une durer determiner
+    public function whereDurrerInferieur($durrer) {
+        return $this->where("duree <= ", $durrer)->findAll();
+    }
+
     //recuperer les reigime avec preference en 
     public function wherePreferenceVolaille() {
         return $this->wherePreference($this,"volaille")->orderBy('pourcentage_volaille',"DESC")->findAll();
