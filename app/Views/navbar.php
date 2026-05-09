@@ -1,7 +1,7 @@
 <header>
     <nav>
         <div class="logo">
-            🥗 Régime App
+            🥗 Régime 
         </div>
         <div class="nav-right">
             <?php if (session()->get('is_logged_in')): ?>
