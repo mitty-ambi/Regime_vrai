@@ -20,9 +20,9 @@ class Regime extends Model
             ->whereSueiVariationPoidlMax($seuilVariationPoidMax)
             ->findAll();
     }
-    
+
     //suggestion des regimes diminuateur de poid
-    public function getSuggestionDiminuateurPoid($durer, $preference, $seuilVariationPoidMin)
+    private function getSuggestionDiminuateurPoid($durer, $preference, $seuilVariationPoidMin)
     {
         return $this->whereDiminuateurPoid()
             ->whereDurrerInferieur($durer)
@@ -33,28 +33,9 @@ class Regime extends Model
 
 
     //recuperer les regimes selons une durer determiner
-    public function whereDurrerInferieur($durrer)
+    private function whereDurrerInferieur($durrer)
     {
         return $this->where("duree <= ", $durrer)->orderBy('duree', 'DESC');
-    }
-
-    //recuperer les reigime avec preference en 
-    public function wherePreferenceVolaille()
-    {
-        return $this->wherePreference($this, "volaille")->orderBy('pourcentage_volaille', "DESC")->findAll();
-    }
-
-    //recuperer les reigime avec preference en viande
-    public function wherePreferenceViande()
-    {
-        return $this->wherePreference($this, "viande")->orderBy('pourcentage_viande', "DESC")->findAll();
-    }
-
-
-    //recuperer les reigime avec preference en poisson
-    public function preferencePoisson()
-    {
-        return $this->orderBy('pourcentage_poisson', "DESC")->findAll();
     }
 
     //recuperer les regimes  avec une preference en viande , poisson , ou volaille

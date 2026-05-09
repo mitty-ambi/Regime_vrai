@@ -18,6 +18,12 @@ class RegimeController extends BaseController
         $this->objectifModel = new Objectif();
     }
 
+    public function go_to_suggest() {
+        $data['liste_objectif'] = $this->objectifModel->findAll();
+        $data['liste_regime'] = $this->regimeModel->findAll();
+        return view('regime/SuggestRegime',$data);
+    }
+
     public function go_to_regime()
     {
         $data['liste_regime'] = $this->regimeModel->findAll();
