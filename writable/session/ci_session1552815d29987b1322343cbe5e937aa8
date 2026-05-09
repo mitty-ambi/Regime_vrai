@@ -1,2 +1,0 @@
-__ci_last_regenerate|i:1778231917;_ci_previous_url|s:48:"http://localhost:8080/index.php/auth/inscription";errors|a:1:{i:0;s:132:"Erreur: Unable to connect to the database.
-Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)";}__ci_vars|a:2:{s:6:"errors";s:3:"old";s:13:"_ci_old_input";s:3:"old";}_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:6:{s:3:"nom";s:5:"MANOU";s:5:"email";s:16:"batman@gmail.com";s:12:"mot_de_passe";s:6:"123bat";s:5:"genre";s:5:"Femme";s:6:"taille";s:3:"160";s:5:"poids";s:2:"45";}}

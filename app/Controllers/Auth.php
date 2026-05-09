@@ -25,11 +25,14 @@ class Auth extends BaseController
 
     public function register()
     {
+        $photoData = $this->request->getPost('photo_data');
+        
         $inscriptionData = [
             'nom' => $this->request->getPost('nom'),
             'email' => $this->request->getPost('email'),
             'mot_de_passe' => $this->request->getPost('mot_de_passe'),
-            'genre' => $this->request->getPost('genre')
+            'genre' => $this->request->getPost('genre'),
+            'photo_profil' => $photoData ? $photoData : null
         ];
 
         // Debug : afficher les données reçues
@@ -58,7 +61,7 @@ class Auth extends BaseController
 
         if ($result['success']) {
             session()->set('utilisateur', $result['utilisateur']);
-            return redirect()->to('/dashboard')->with('success', $result['message']);
+            return redirect()->to('/dashboard');
         } else {
             return redirect()->back()->with('error', $result['message'])->withInput();
         }
