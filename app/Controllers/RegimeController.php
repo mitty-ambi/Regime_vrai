@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controllers;
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -18,10 +20,35 @@ class RegimeController extends BaseController
         $this->objectifModel = new Objectif();
     }
 
-    public function go_to_suggest() {
+    public function go_to_suggest()
+    {
         $data['liste_objectif'] = $this->objectifModel->findAll();
         $data['liste_regime'] = $this->regimeModel->findAll();
-        return view('regime/SuggestRegime',$data);
+        return view('regime/SuggestRegime', $data);
+    }
+
+    public function suggest()
+    {
+        // recuperation des data
+        $objectif_id = $this->request->getGet("objectif_id");
+        $durrer = $this->request->getGet("durrer");
+        $preference = $this->request->getGet("preference");
+
+        //recuperer l objectif de poid
+        $variationVoulu = $this->request->getGet("variationVoulu");
+
+        //verfier quelle est l objecif selectionner
+        $objectif = $this->objectifModel->find($objectif_id);
+        if ($objectif['nom'] === 'augmentation') {
+            $data['liste_regime'] = $this->regimeModel->getSuggestionHaugmenterPoid($durrer, $preference, $variationVoulu);
+        }
+
+        if ($objectif['nom'] === 'reduction') {
+            $data['liste_regime'] = $this->regimeModel->getSuggestionDiminuateurPoid($durrer, $preference, (-1) * $variationVoulu);
+        }
+        $data['liste_objectif'] = $this->objectifModel->findAll();
+
+        return view('regime/SuggestRegime', $data);
     }
 
     public function go_to_regime()

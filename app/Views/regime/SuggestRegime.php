@@ -12,12 +12,12 @@
 
     <!-- filtre le regime en fonction de l objectif -->
     <section>
-        <form action="">
+        <form action="/Regime/get/suggestion" method="get">
             <!-- selection de l objectif -->
             <label for="input_objectifs"></label>
-            <select name="objectifs" id="">
+            <select name="objectif_id" id="">
                 <?php foreach ($liste_objectif as $objectifs) { ?>
-                    <option value="<?= $objectifs['nom'] ?>">
+                    <option value="<?= $objectifs['id'] ?>">
                         ⚖️ <?= $objectifs['nom'] ?>
                     </option>
                 <?php } ?>
@@ -26,6 +26,10 @@
             <!-- selection du durrer -->
             <label for="input_durrer">Durer du regime</label>
             <input type="number" name="durrer" id="input_durrer">
+
+            <!-- selectionner le variation voulu -->
+             <label for="input_durrer">Variation voulu</label>
+            <input type="number" name="variationVoulu" id="input_durrer">
 
             <!-- selection du type de proteinne preferer -->
             <p>
