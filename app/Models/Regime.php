@@ -65,12 +65,12 @@ class Regime extends Model
     //recuperer les regime pour dimuner le poid
     public function whereDiminuateurPoid()
     {
-        return $this->where("variation_poids <", 0);
+        return $this->where("variation_poids <", 0)->orderBy('variation_poids','ASC');
     }
 
     //recuperer les regime pour haugmenter le poid
     public function whereAugmenteurPoid()
     {
-        return $this->where("variation_poids >", 0);
+        return $this->where("variation_poids >", 0)->orderBy('variation_poids','DESC');
     }
 }
