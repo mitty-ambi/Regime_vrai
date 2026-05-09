@@ -45,7 +45,7 @@ class RegimeController extends BaseController
         //verfier quelle est l objecif selectionner
         $objectif = $this->objectifModel->find($objectif_id);
 
-        if ($objectif['nom'] === 'IMC ideal') {
+        if ($objectif['code'] === 'IMC-IDEAL') {
 
             $dataImcIdeal = $this->santeModel->getInfoForImcIdeal($user['id']);
             $variationVoulu = $dataImcIdeal['variation_poid'];
@@ -59,11 +59,11 @@ class RegimeController extends BaseController
             $data['data_imc_ideal'] = $dataImcIdeal;
         }
 
-        if ($objectif['nom'] === 'augmentation') {
+        if ($objectif['code'] === 'AUG') {
             $data['liste_regime'] = $this->regimeModel->getSuggestionHaugmenterPoid($durrer, $preference, $variationVoulu);
         }
 
-        if ($objectif['nom'] === 'reduction') {
+        if ($objectif['code'] === 'RED') {
             $data['liste_regime'] = $this->regimeModel->getSuggestionDiminuateurPoid($durrer, $preference, (-1) * $variationVoulu);
         }
 
