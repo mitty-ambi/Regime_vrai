@@ -22,10 +22,10 @@ class Dashboard extends BaseController
         }
 
         $utilisateur = session()->get('utilisateur');
-        
+
         // Récupérer les données de santé
         $sante = $this->santeModel->getSanteByUtilisateurId($utilisateur['id']);
-        
+
         // Fusionner les données
         if ($sante) {
             $utilisateurComplet = array_merge($utilisateur, $sante);
@@ -35,7 +35,7 @@ class Dashboard extends BaseController
         } else {
             $data['utilisateur'] = $utilisateur;
         }
-        
+
         return view('dashboard/index', $data);
     }
 

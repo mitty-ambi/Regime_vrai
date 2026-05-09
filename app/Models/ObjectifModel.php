@@ -29,10 +29,10 @@ class UtilisateurObjectifModel extends Model
     protected $table = 'utilisateur_objectifs';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'utilisateur_id', 
-        'objectif_id', 
-        'statut', 
-        'poids_initial', 
+        'utilisateur_id',
+        'objectif_id',
+        'statut',
+        'poids_initial',
         'poids_cible'
     ];
     protected $returnType = 'array';
@@ -42,9 +42,9 @@ class UtilisateurObjectifModel extends Model
     {
         // Vérifier si l'utilisateur n'a pas déjà cet objectif
         $existing = $this->where('utilisateur_id', $utilisateurId)
-                         ->where('objectif_id', $objectifId)
-                         ->where('statut', 'actif')
-                         ->first();
+            ->where('objectif_id', $objectifId)
+            ->where('statut', 'actif')
+            ->first();
 
         if ($existing) {
             return false; // L'objectif existe déjà
@@ -63,17 +63,17 @@ class UtilisateurObjectifModel extends Model
     public function getUserObjectifs($utilisateurId)
     {
         return $this->select('utilisateur_objectifs.*, objectifs.nom as objectif_nom')
-                    ->join('objectifs', 'objectifs.id = utilisateur_objectifs.objectif_id')
-                    ->where('utilisateur_objectifs.utilisateur_id', $utilisateurId)
-                    ->where('utilisateur_objectifs.statut', 'actif')
-                    ->findAll();
+            ->join('objectifs', 'objectifs.id = utilisateur_objectifs.objectif_id')
+            ->where('utilisateur_objectifs.utilisateur_id', $utilisateurId)
+            ->where('utilisateur_objectifs.statut', 'actif')
+            ->findAll();
     }
 
     // Supprimer un objectif pour un utilisateur
     public function removeUserObjectif($utilisateurId, $objectifId)
     {
         return $this->where('utilisateur_id', $utilisateurId)
-                    ->where('objectif_id', $objectifId)
-                    ->delete();
+            ->where('objectif_id', $objectifId)
+            ->delete();
     }
 }

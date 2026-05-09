@@ -1,5 +1,7 @@
 <?php
 namespace App\Controllers;
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 use App\Models\Activites;
 use App\Models\Regime;
@@ -70,6 +72,6 @@ class ActiviteController extends BaseController
             session()->setFlashdata('error', 'Déjà associé');
         }
 
-        return redirect()->to('/Activites/go_to_activite');
+        return redirect()->to('/Activites/add');
     }
 }

@@ -7,258 +7,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <style>
-        :root {
-            --primary: #10b981;
-            --primary-dark: #059669;
-            --primary-light: #d1fae5;
-            --dark: #1f2937;
-            --gray: #6b7280;
-            --gray-light: #e5e7eb;
-            --light: #f9fafb;
-        }
+    <link rel="stylesheet" href="<?= base_url('assets/css/info_client.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/admin_dashboard.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/objectif.css') ?>">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Manrope', sans-serif;
-            background: var(--light);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .header .logo {
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .header h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 32px;
-            color: var(--dark);
-            margin-bottom: 8px;
-        }
-
-        .header p {
-            color: var(--gray);
-            font-size: 16px;
-        }
-
-        .objectifs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .objectif-card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            border: 2px solid var(--gray-light);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .objectif-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        }
-
-        .objectif-card.selected {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .objectif-card.selected::after {
-            content: '✓';
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: var(--primary);
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .poids-input-container {
-            margin-top: 16px;
-            padding: 12px;
-            background: var(--light);
-            border-radius: 8px;
-            display: none;
-        }
-
-        .poids-input-container {
-            cursor: default;
-        }
-
-        .poids-input-container.show {
-            display: block;
-        }
-
-        .poids-input-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .poids-input {
-            flex: 1;
-            padding: 8px 12px;
-            border: 2px solid var(--gray-light);
-            border-radius: 6px;
-            font-size: 14px;
-            font-family: 'Manrope', sans-serif;
-        }
-
-        .poids-input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .poids-label {
-            font-size: 12px;
-            color: var(--gray);
-            font-weight: 500;
-        }
-
-        .objectif-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .objectif-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 8px;
-            text-align: center;
-        }
-
-        .objectif-description {
-            font-size: 14px;
-            color: var(--gray);
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Manrope', sans-serif;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--gray);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: var(--dark);
-        }
-
-        .alert {
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-            font-size: 14px;
-        }
-
-        .alert-success {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #16a34a;
-        }
-
-        .alert-error {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #dc2626;
-        }
-
-        .navigation {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .navigation a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .navigation a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 640px) {
-            .objectifs-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .btn-container {
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 <body>
+    
+    <?= view("navbar") ?>
+    <?= view("sidebar") ?>
     <div class="container">
         <div class="header">
             <div class="logo">🥗 NutriGain</div>
@@ -343,37 +101,37 @@
 
         // Pré-sélectionner les objectifs déjà choisis
         <?php foreach ($userObjectifs as $userObjectif): ?>
-                selectedObjectifs.push(<?= $userObjectif['objectif_id'] ?>);
+            selectedObjectifs.push(<?= $userObjectif['objectif_id'] ?>);
             document.querySelector('.objectif-card').classList.add('selected');
         <?php endforeach; ?>
 
-            function toggleObjectif(card, objectifId) {
-                const index = selectedObjectifs.indexOf(objectifId);
+        function toggleObjectif(card, objectifId) {
+            const index = selectedObjectifs.indexOf(objectifId);
 
-                if (index > -1) {
-                    selectedObjectifs.splice(index, 1);
-                    card.classList.remove('selected');
+            if (index > -1) {
+                selectedObjectifs.splice(index, 1);
+                card.classList.remove('selected');
 
-                    // Cacher le champ de poids correspondant
-                    const poidsAugmenter = document.getElementById('poids-augmenter-' + objectifId);
-                    const poidsReduire = document.getElementById('poids-reduire-' + objectifId);
-                    if (poidsAugmenter) poidsAugmenter.classList.remove('show');
-                    if (poidsReduire) poidsReduire.classList.remove('show');
-                } else {
-                    if (selectedObjectifs.length >= 3) {
-                        alert('Vous pouvez choisir au maximum 3 objectifs');
-                        return;
-                    }
-                    selectedObjectifs.push(objectifId);
-                    card.classList.add('selected');
-
-                    // Afficher le champ de poids correspondant
-                    const poidsAugmenter = document.getElementById('poids-augmenter-' + objectifId);
-                    const poidsReduire = document.getElementById('poids-reduire-' + objectifId);
-                    if (poidsAugmenter) poidsAugmenter.classList.add('show');
-                    if (poidsReduire) poidsReduire.classList.add('show');
+                // Cacher le champ de poids correspondant
+                const poidsAugmenter = document.getElementById('poids-augmenter-' + objectifId);
+                const poidsReduire = document.getElementById('poids-reduire-' + objectifId);
+                if (poidsAugmenter) poidsAugmenter.classList.remove('show');
+                if (poidsReduire) poidsReduire.classList.remove('show');
+            } else {
+                if (selectedObjectifs.length >= 3) {
+                    alert('Vous pouvez choisir au maximum 3 objectifs');
+                    return;
                 }
+                selectedObjectifs.push(objectifId);
+                card.classList.add('selected');
+
+                // Afficher le champ de poids correspondant
+                const poidsAugmenter = document.getElementById('poids-augmenter-' + objectifId);
+                const poidsReduire = document.getElementById('poids-reduire-' + objectifId);
+                if (poidsAugmenter) poidsAugmenter.classList.add('show');
+                if (poidsReduire) poidsReduire.classList.add('show');
             }
+        }
 
         document.getElementById('objectifsForm').addEventListener('submit', function (e) {
             e.preventDefault();

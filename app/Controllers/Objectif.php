@@ -24,13 +24,13 @@ class Objectif extends BaseController
         }
 
         $utilisateur = session()->get('utilisateur');
-        
+
         // Récupérer tous les objectifs disponibles
         $objectifs = $this->objectifModel->getAllObjectifs();
-        
+
         // Récupérer les objectifs déjà choisis par l'utilisateur
         $userObjectifs = $this->utilisateurObjectifModel->getUserObjectifs($utilisateur['id']);
-        
+
         $data = [
             'objectifs' => $objectifs,
             'userObjectifs' => $userObjectifs,
@@ -45,7 +45,7 @@ class Objectif extends BaseController
     {
         if (!session()->has('utilisateur')) {
             return $this->response->setJSON([
-                'success' => false,
+                'success' => false, 
                 'message' => 'Utilisateur non connecté'
             ]);
         }
@@ -64,19 +64,17 @@ class Objectif extends BaseController
         try {
             // Supprimer les anciens objectifs actifs
             $this->utilisateurObjectifModel->where('utilisateur_id', $utilisateur['id'])
-                                                ->where('statut', 'actif')
-                                                ->delete();
+                ->where('statut', 'actif')
+                ->delete();
 
             // Ajouter les nouveaux objectifs
             foreach ($objectifsChoisis as $objectifData) {
                 $objectifId = $objectifData->id;
                 $poidsObjectif = $objectifData->poids ?? null;
-                
                 // Calculer le poids cible si un poids est spécifié
                 $poidsCible = null;
                 if ($poidsObjectif && isset($utilisateur['poids'])) {
                     $poidsCible = $utilisateur['poids'];
-                    
                     // Récupérer le nom de l'objectif pour déterminer l'opération
                     $objectif = $this->objectifModel->find($objectifId);
                     if ($objectif) {
@@ -87,9 +85,9 @@ class Objectif extends BaseController
                         }
                     }
                 }
-                
+
                 $this->utilisateurObjectifModel->addObjectifToUser(
-                    $utilisateur['id'], 
+                    $utilisateur['id'],
                     $objectifId,
                     $utilisateur['poids'] ?? null,
                     $poidsCible
