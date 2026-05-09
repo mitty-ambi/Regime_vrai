@@ -201,3 +201,10 @@ CREATE TABLE utilisateur_objectifs (
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE,
     FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE CASCADE
 );
+
+
+-- Ajouter la colonne photo_profil à la table utilisateurs
+ALTER TABLE utilisateurs ADD COLUMN photo_profil VARCHAR(255) NULL AFTER email;
+
+-- Mettre à jour les utilisateurs existants avec une valeur NULL
+UPDATE utilisateurs SET photo_profil = NULL WHERE photo_profil IS NULL;
