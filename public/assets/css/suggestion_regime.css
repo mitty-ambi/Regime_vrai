@@ -21,6 +21,19 @@
 }
 
 /* ──────────────────────────────────────────────── */
+/*  Layout principal — décalage sidebar              */
+/* ──────────────────────────────────────────────── */
+
+/* La sidebar fait 260px de large (valeur de admin_dashboard.css).
+   On pousse le container vers la droite pour ne pas être masqué. */
+.container {
+    margin-left: 270px;      /* = largeur sidebar + 10px de respiration */
+    max-width: calc(100% - 290px);
+    padding: 32px 32px 64px;
+    box-sizing: border-box;
+}
+
+/* ──────────────────────────────────────────────── */
 /*  En-tête de page                                  */
 /* ──────────────────────────────────────────────── */
 .page-header {
@@ -425,7 +438,24 @@
 /* ──────────────────────────────────────────────── */
 /*  Responsive                                       */
 /* ──────────────────────────────────────────────── */
+
+/* Tablette : sidebar réduite ou superposée */
+@media (max-width: 1024px) {
+    .container {
+        margin-left: 260px;
+        max-width: calc(100% - 270px);
+        padding: 24px 20px 48px;
+    }
+}
+
+/* Mobile : sidebar en overlay => le container prend toute la largeur */
 @media (max-width: 768px) {
+    .container {
+        margin-left: 0 !important;
+        max-width: 100% !important;
+        padding: 16px 16px 48px;
+    }
+
     .filter-card { padding: 20px; }
 
     .filter-grid { grid-template-columns: 1fr; }
@@ -437,7 +467,7 @@
     .regime-table thead th,
     .regime-table tbody td { padding: 8px 10px; }
 
-    .pct-track { display: none; }  /* Masque les barres sur mobile */
+    .pct-track { display: none; }
 
     .table-section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
 }

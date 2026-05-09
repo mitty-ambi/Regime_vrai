@@ -208,7 +208,7 @@ $santeModel = new SanteModel();
                                     <td class="cell-price"><?= number_format($regime['prix'], 2) ?> $</td>
 
                                     <!-- Durée -->
-                                    <td><?= (int) $regime['duree'] ?> sem.</td>
+                                    <td><?= (int) $regime['duree'] ?> j</td>
 
                                     <!-- Variation poids -->
                                     <td>

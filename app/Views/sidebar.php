@@ -9,6 +9,9 @@
             <a href="/Regime/go_to_regime">📋 Régimes</a>
         </li>
         <li class="sidebar-menu-item">
+            <a href="/Regime/suggest">📋 Suggestion</a>
+        </li>
+        <li class="sidebar-menu-item">
             <a href="/Activites/add">🏃 Activités</a>
         </li>
         <li class="sidebar-menu-item">
