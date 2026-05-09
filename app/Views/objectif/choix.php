@@ -143,6 +143,7 @@
 
             // Préparer les données avec les poids
             const objectifsData = [];
+
             selectedObjectifs.forEach(objectifId => {
                 const objectifData = {
                     id: objectifId,
@@ -172,6 +173,7 @@
                         return;
                     }
                 }
+
                 objectifsData.push(objectifData);
             });
 
