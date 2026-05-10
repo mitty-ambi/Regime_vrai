@@ -74,9 +74,7 @@ CREATE TABLE achats_regimes (
     prix_original DECIMAL(10, 2),
     prix_paye DECIMAL(10, 2),
     date_achat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    statu VARCHAR(20) DEFAULT 'en cours',
-    'termine',
-    'annule',
+    statu ENUM('en cours', 'termine', 'annule') DEFAULT 'en cours',
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
     FOREIGN KEY (regime_id) REFERENCES regimes(id)
 );
@@ -107,10 +105,13 @@ VALUES
 
 CREATE TABLE parametre (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    imc_ideal  DECIMAL(10, 2)
+    imc_ideal DECIMAL(10, 2)
 );
 
-INSERT INTO parametre (imc_ideal) VALUES (22);
+INSERT INTO
+    parametre (imc_ideal)
+VALUES
+    (22);
 
 INSERT INTO
     activites (nom, calories_brulees)
@@ -257,7 +258,7 @@ INSERT INTO
         prix_paye
     )
 VALUES
-    (1, 4, 34.99, 34.99);
+    (1, 4, 34.99, 34.99),
     (2, 1, 49.99, 49.99),
     (3, 4, 34.99, 29.74),
     (4, 1, 49.99, 49.99),
