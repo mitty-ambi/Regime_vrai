@@ -6,6 +6,9 @@
             <a href="/dashboard" class="active">📊 Dashboard</a>
         </li>
         <li class="sidebar-menu-item">
+            <a href="/dashboard" class="active">📊 info client</a>
+        </li>
+        <li class="sidebar-menu-item">
             <a href="/Regime/go_to_regime">📋 Régimes</a>
         </li>
         <li class="sidebar-menu-item">
