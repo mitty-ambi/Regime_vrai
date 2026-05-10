@@ -6,7 +6,7 @@ class Objectif extends Model
 {
     protected $table = "objectifs";
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nom'];
+    protected $allowedFields = ['nom','code'];
     protected $useTimestamps = false;
 
     //recuperer l objectif de l utilisateur

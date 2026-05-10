@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -48,13 +49,13 @@ class Objectif extends BaseController
     {
         if (!session()->has('utilisateur')) {
             return $this->response->setJSON([
-                'success' => false, 
+                'success' => false,
                 'message' => 'Utilisateur non connecté'
             ]);
         }
 
-        $utilisateur = session()->get('utilisateur');
-        $jsonData = $this->request->getJSON();
+        $utilisateur      = session()->get('utilisateur');
+        $jsonData         = $this->request->getJSON();
         $objectifsChoisis = $jsonData->objectifs ?? null;
 
         if (!$objectifsChoisis || !is_array($objectifsChoisis)) {
@@ -65,21 +66,21 @@ class Objectif extends BaseController
         }
 
         try {
-            // Supprimer les anciens objectifs actifs
-            $this->utilisateurObjectifModel->where('utilisateur_id', $utilisateur['id'])
+            $this->utilisateurObjectifModel
+                ->where('utilisateur_id', $utilisateur['id'])
                 ->where('statut', 'actif')
                 ->delete();
 
-            // Ajouter les nouveaux objectifs
             foreach ($objectifsChoisis as $objectifData) {
-                $objectifId = $objectifData->id;
+                $objectifId    = $objectifData->id;
                 $poidsObjectif = $objectifData->poids ?? null;
-                // Calculer le poids cible si un poids est spécifié
-                $poidsCible = null;
+                $duree         = isset($objectifData->duree) ? (int) $objectifData->duree : null;
+                $poidsCible    = null;
+
                 if ($poidsObjectif && isset($utilisateur['poids'])) {
                     $poidsCible = $utilisateur['poids'];
-                    // Récupérer le nom de l'objectif pour déterminer l'opération
-                    $objectif = $this->objectifModel->find($objectifId);
+                    $objectif   = $this->objectifModel->find($objectifId);
+
                     if ($objectif) {
                         if (strpos($objectif['nom'], 'Augmenter') !== false) {
                             $poidsCible += $poidsObjectif;
@@ -93,7 +94,8 @@ class Objectif extends BaseController
                     $utilisateur['id'],
                     $objectifId,
                     $utilisateur['poids'] ?? null,
-                    $poidsCible
+                    $poidsCible,
+                    $duree
                 );
             }
 
@@ -101,7 +103,6 @@ class Objectif extends BaseController
                 'success' => true,
                 'message' => 'Objectifs enregistrés avec succès'
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -109,7 +110,6 @@ class Objectif extends BaseController
             ]);
         }
     }
-
     // Page de suivi des objectifs
     public function suivi()
     {
