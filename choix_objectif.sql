@@ -26,6 +26,7 @@ CREATE TABLE utilisateur_objectifs (
     objectif_id INT NOT NULL,
     statut ENUM('actif', 'atteint', 'abandonne') DEFAULT 'actif',
     date_debut DATETIME DEFAULT CURRENT_TIMESTAMP,
+    durrer INT,
     poids_initial DECIMAL(5,2) NULL,
     poids_cible DECIMAL(5,2) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -1,6 +1,4 @@
 <?php
-use App\Models\SanteModel;
-$santeModel = new SanteModel();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,11 +18,20 @@ $santeModel = new SanteModel();
     <?= view("sidebar") ?>
 
     <div class="container">
-
+        <section>
+            <!-- infromation de l objectif courante -->
+            <ul>
+                <li>objecif couante : <?= $objectif['objectif_nom'] ?></li>
+                <li>Poid initial : <?= $objectif['poids_initial'] ?></li>
+                <li>Poid actuel : <?= $user['poids'] ?></li>
+                <li>Poid cible : <?= $objectif['poids_cible'] ?></li>
+                <li>Variation de poid necessaire : <?= $variation_poid ?> kg</li>
+            </ul>
+        </section>
         <!-- ── En-tête ── -->
         <div class="page-header">
             <h1 class="page-title">🥗 Suggestion de régime</h1>
-            <p class="page-subtitle">Filtrez et trouvez le plan nutritionnel adapté à vos objectifs</p>
+            <p class="page-subtitle">Filtr ez et trouvez le plan nutritionnel adapté à vos objectifs</p>
         </div>
 
         <!-- ── Alertes flash ── -->
@@ -45,52 +52,6 @@ $santeModel = new SanteModel();
             <h2 class="filter-card__title">Filtres de recherche</h2>
 
             <form action="/Regime/get/suggestion" method="get" class="filter-form">
-
-                <div class="filter-grid">
-
-                    <!-- Objectif -->
-                    <div class="filter-group">
-                        <label for="objectif_id">Objectif</label>
-                        <div class="select-wrapper">
-                            <select name="objectif_id" id="objectif_id">
-                                <?php foreach ($liste_objectif as $objectif): ?>
-                                    <option
-                                        value="<?= $objectif['id'] ?>"
-                                        <?= (isset($_GET['objectif_id']) && $_GET['objectif_id'] == $objectif['id']) ? 'selected' : '' ?>>
-                                        ⚖️ <?= esc($objectif['nom']) ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <span class="select-arrow">&#8964;</span>
-                        </div>
-                    </div>
-
-                    <!-- Durée -->
-                    <div class="filter-group">
-                        <label for="durrer">Durée (semaines)</label>
-                        <input
-                            type="number"
-                            name="durrer"
-                            id="durrer"
-                            placeholder="ex : 8"
-                            min="1"
-                            value="<?= esc($_GET['durrer'] ?? '') ?>">
-                    </div>
-
-                    <!-- Variation voulue -->
-                    <div class="filter-group">
-                        <label for="variationVoulu">Variation souhaitée (kg)</label>
-                        <input
-                            type="number"
-                            name="variationVoulu"
-                            id="variationVoulu"
-                            placeholder="ex : −5"
-                            step="0.5"
-                            value="<?= esc($_GET['variationVoulu'] ?? '') ?>">
-                    </div>
-
-                </div><!-- /.filter-grid -->
-
                 <!-- Préférence protéine -->
                 <span class="protein-row-label">Protéine préférée</span>
                 <div class="protein-row">
@@ -173,7 +134,6 @@ $santeModel = new SanteModel();
                         <thead>
                             <tr>
                                 <th>Nom</th>
-                                <th>Type</th>
                                 <th>Prix</th>
                                 <th>Durée</th>
                                 <th>Variation poids</th>
@@ -186,23 +146,16 @@ $santeModel = new SanteModel();
                         <tbody>
                             <?php foreach ($liste_regime as $regime): ?>
                                 <?php
-                                    $variation   = (float) $regime['variation_poids'];
-                                    $pctViande   = (int)   $regime['pourcentage_viande'];
-                                    $pctPoisson  = (int)   $regime['pourcentage_poisson'];
-                                    $pctVolaille = (int)   $regime['pourcentage_volaille'];
-                                    $variationClass = $variation >= 0 ? 'variation-pos' : 'variation-neg';
-                                    $variationSign  = $variation >= 0 ? '+' : '';
+                                $variation   = (float) $regime['variation_poids'];
+                                $pctViande   = (int)   $regime['pourcentage_viande'];
+                                $pctPoisson  = (int)   $regime['pourcentage_poisson'];
+                                $pctVolaille = (int)   $regime['pourcentage_volaille'];
+                                $variationClass = $variation >= 0 ? 'variation-pos' : 'variation-neg';
+                                $variationSign  = $variation >= 0 ? '+' : '';
                                 ?>
                                 <tr>
                                     <!-- Nom -->
                                     <td class="regime-name"><?= esc($regime['nom']) ?></td>
-
-                                    <!-- Type -->
-                                    <td>
-                                        <span class="type-badge">
-                                            ⚖️ <?= esc($regime['type']) ?>
-                                        </span>
-                                    </td>
 
                                     <!-- Prix -->
                                     <td class="cell-price"><?= number_format($regime['prix'], 2) ?> $</td>
@@ -275,4 +228,5 @@ $santeModel = new SanteModel();
     </script>
 
 </body>
+
 </html>
