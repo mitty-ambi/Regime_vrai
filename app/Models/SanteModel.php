@@ -69,4 +69,27 @@ class SanteModel extends Model
         }
         return $sante;
     }
+
+    /**
+     * Mettre à jour le poids d'un utilisateur
+     */
+    public function updatePoids($utilisateurId, $poids)
+    {
+        // Vérifier si l'utilisateur a déjà des données santé
+        $existing = $this->where('utilisateur_id', $utilisateurId)->first();
+
+        if ($existing) {
+            // Mettre à jour le poids existant
+            return $this->where('utilisateur_id', $utilisateurId)
+                ->set('poids', $poids)
+                ->update();
+        } else {
+            // Créer une nouvelle entrée si aucune donnée n'existe
+            return $this->insert([
+                'utilisateur_id' => $utilisateurId,
+                'poids' => $poids,
+                'taille' => 170 // Valeur par défaut, devrait être mise à jour
+            ]);
+        }
+    }
 }
