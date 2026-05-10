@@ -138,9 +138,18 @@
         <div class="table-section">
 
             <div class="table-section-header">
-                <h2 class="table-section-header__title">📋 Liste des régimes</h2>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <h2 class="table-section-header__title">📋 Liste des régimes</h2>
+                    <?php if (!empty($liste_regime)): ?>
+                        <span class="result-count">
+                            <?= count($liste_regime) ?> résultat<?= count($liste_regime) > 1 ? 's' : '' ?>
+                        </span>
+                    <?php endif; ?>
+                </div>
                 <?php if (!empty($liste_regime)): ?>
-                    <span class="result-count"><?= count($liste_regime) ?> résultat<?= count($liste_regime) > 1 ? 's' : '' ?></span>
+                    <a href="/Regime/get/suggestion/pdf" class="btn-export">
+                        ⬇ Exporter PDF
+                    </a>
                 <?php endif; ?>
             </div>
 
@@ -158,7 +167,7 @@
                                 <th>Nom</th>
                                 <th>Prix</th>
                                 <th>Durée</th>
-                                <th>Variation poids</th>
+                                <th>Gain</th>
                                 <th>% Viande</th>
                                 <th>% Poisson</th>
                                 <th>% Volaille</th>
