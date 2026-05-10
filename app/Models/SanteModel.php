@@ -69,4 +69,50 @@ class SanteModel extends Model
         }
         return $sante;
     }
+
+    public function calculerPoid($imc,$taille) {
+         $tailleEnMetres = $taille / 100;
+        return round($imc*($tailleEnMetres*$tailleEnMetres),2);
+    }
+
+    //recuperer la variation de poid necessaire pour ateindre l IMC ideal
+    public function getInfoForImcIdeal($utilisateurId) {
+        $sante = $this->getSanteByUtilisateurId($utilisateurId);
+        if ($sante) {
+            $taille = $sante['taille'];
+            $poids = $sante["poids"];
+            $imcIdeal = $this->db->table("parametre")->get(1)->getResultArray()[0]["imc_ideal"];
+            $poidIdeal = $this->calculerPoid($imcIdeal,$taille);
+            $variationPoid = $poidIdeal - $poids;
+
+            $sante['imc'] = $this->calculateIMC($sante['taille'], $sante['poids']);
+            $sante['imc_ideal'] = $this->db->table("parametre")->get(1)->getResultArray()[0]["imc_ideal"];
+            $sante['poids_ideal'] = $poidIdeal;
+            $sante['variation_poid'] = $variationPoid;
+        }
+        return $sante;
+    }
+        
+    /**
+     * Mettre à jour le poids d'un utilisateur
+     */
+    public function updatePoids($utilisateurId, $poids)
+    {
+        // Vérifier si l'utilisateur a déjà des données santé
+        $existing = $this->where('utilisateur_id', $utilisateurId)->first();
+        
+        if ($existing) {
+            // Mettre à jour le poids existant
+            return $this->where('utilisateur_id', $utilisateurId)
+                        ->set('poids', $poids)
+                        ->update();
+        } else {
+            // Créer une nouvelle entrée si aucune donnée n'existe
+            return $this->insert([
+                'utilisateur_id' => $utilisateurId,
+                'poids' => $poids,
+                'taille' => 170 // Valeur par défaut, devrait être mise à jour
+            ]);
+        }
+    }
 }

@@ -6,6 +6,8 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Auth::inscription');
+$routes->get('/livres','LivreController::index');
+$routes->get('/livres/filtre','LivreController::filtre');
 
 // Routes d'authentification
 $routes->get('/auth/login', 'Auth::login');
@@ -19,6 +21,13 @@ $routes->post('/sante/save', 'Sante::save');
 
 // Routes dashboard
 $routes->get('/dashboard', 'Dashboard::index');
+$routes->post('/dashboard/updatePoids', 'Dashboard::updatePoids');
+$routes->post('/dashboard/updatePhoto', 'Dashboard::updatePhoto');
+
+// Routes objectifs
+$routes->get('/objectif/choix', 'Objectif::choix');
+$routes->post('/objectif/sauvegarder', 'Objectif::sauvegarder');
+$routes->get('/objectif/suivi', 'Objectif::suivi');
 
 // Régime - CRUD complet
 $routes->get('/Regime/go_to_regime', 'RegimeController::go_to_regime');
@@ -27,7 +36,8 @@ $routes->get('/Regime/update/(:num)', 'RegimeController::update/$1');
 $routes->post('/Regime/edit/(:num)', 'RegimeController::edit/$1');
 $routes->get('/Regime/supprimer/(:num)', 'RegimeController::supprimer/$1');
 // Regime - suggestion de regime
-$routes->get('/Regime/suggest','RegimeController::go_to_suggest');
+
+$routes->get('/Regime/suggest','RegimeController::suggest');
 $routes->get('/Regime/get/suggestion','RegimeController::suggest');
 
 // Activites - CRUD complet
@@ -35,6 +45,7 @@ $routes->get('/Activites/add', 'ActiviteController::go_to_activite');
 $routes->post('/Activites/insert', 'ActiviteController::insert');
 $routes->get('/Activites/update/(:num)', 'ActiviteController::update/$1');
 $routes->post('/Activites/edit/(:num)', 'ActiviteController::edit/$1');
+$routes->post('/Activites/associer/', 'ActiviteController::associer');
 $routes->get('/Activites/supprimer/(:num)', 'ActiviteController::supprimer/$1');
 
 // Codes - CRUD complet + Validation

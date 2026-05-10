@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Controllers;
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;

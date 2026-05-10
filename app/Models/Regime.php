@@ -13,10 +13,11 @@ class Regime extends Model
     protected $useTimestamps = false;
 
     //suggestons des regimes augmentateur de poid
-    public function getSuggestionHaugmenterPoid($durer, $preference, $seuilVariationPoidMax) {
-        return $this->whereAugmenteurPoid()
+    public function getSuggestionHaugmenterPoid($durer, $preference, $seuilVariationPoidMax)
+    {
+        return $this->preference($preference)
+            ->whereAugmenteurPoid()
             ->whereDurrerInferieur($durer)
-            ->preference($preference)
             ->whereSueiVariationPoidlMax($seuilVariationPoidMax)
             ->findAll();
     }
@@ -24,9 +25,9 @@ class Regime extends Model
     //suggestion des regimes diminuateur de poid
     public function getSuggestionDiminuateurPoid($durer, $preference, $seuilVariationPoidMin)
     {
-        return $this->whereDiminuateurPoid()
+        return $this->preference($preference)
+            ->whereDiminuateurPoid()
             ->whereDurrerInferieur($durer)
-            ->preference($preference)
             ->whereSueiVariationPoidlMin($seuilVariationPoidMin)
             ->findAll();
     }
@@ -42,11 +43,11 @@ class Regime extends Model
     public function preference($elementPreferer)
     {
         if ($elementPreferer == "poisson") {
-            $this->orderBy('pourcentage_poisson','DESC');
+            $this->orderBy('pourcentage_poisson', 'DESC');
         } else if ($elementPreferer == "viande") {
-            $this->orderBy('pourcentage_viande','DESC');
+            $this->orderBy('pourcentage_viande', 'DESC');
         } else if ($elementPreferer == "volaille") {
-            $this->orderBy('pourcentage_volaille','DESC');
+            $this->orderBy('pourcentage_volaille', 'DESC');
         }
         return $this;
     }
@@ -65,12 +66,12 @@ class Regime extends Model
     //recuperer les regime pour dimuner le poid
     public function whereDiminuateurPoid()
     {
-        return $this->where("variation_poids <", 0);
+        return $this->where("variation_poids <", 0)->orderBy('variation_poids', 'ASC');
     }
 
     //recuperer les regime pour haugmenter le poid
     public function whereAugmenteurPoid()
     {
-        return $this->where("variation_poids >", 0);
+        return $this->where("variation_poids >", 0)->orderBy('variation_poids', 'DESC');
     }
 }

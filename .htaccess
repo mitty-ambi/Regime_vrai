@@ -1,0 +1,23 @@
+# Désactiver le signe de liste de répertoires
+Options -Indexes
+
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Rediriger les requêtes vers index.php si le fichier/répertoire n'existe pas
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Réécrire l'URL pour enlever index.php
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# Empêcher l'accès aux fichiers sensibles
+<Files ~ "^\.">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ~ "^(composer|package|npm)\.(json|lock)$">
+    Order allow,deny
+    Deny from all
+</Files>

@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Controllers;
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 use App\Models\AuthModel;
 
@@ -31,11 +34,14 @@ class Auth extends BaseController
 
     public function register()
     {
+        $photoData = $this->request->getPost('photo_data');
+        
         $inscriptionData = [
             'nom' => $this->request->getPost('nom'),
             'email' => $this->request->getPost('email'),
             'mot_de_passe' => $this->request->getPost('mot_de_passe'),
-            'genre' => $this->request->getPost('genre')
+            'genre' => $this->request->getPost('genre'),
+            'photo_profil' => $photoData ? $photoData : null
         ];
 
         $utilisateurId = $this->authModel->registerUser($inscriptionData);
@@ -59,17 +65,8 @@ class Auth extends BaseController
         $result = $this->authModel->login($email, $password);
 
         if ($result['success']) {
-            $utilisateur = $result['utilisateur'];
-
-            session()->set([
-                'utilisateur' => $utilisateur,
-                'is_logged_in' => true,
-                'user_id' => $utilisateur['id'],
-                'user_nom' => $utilisateur['nom'],
-                'user_email' => $utilisateur['email']
-            ]);
-
-            return redirect()->to('/dashboard')->with('success', 'Connexion réussie');
+            session()->set('utilisateur', $result['utilisateur']);
+            return redirect()->to('/dashboard');
         } else {
             return redirect()->back()->with('error', $result['message'])->withInput();
         }
