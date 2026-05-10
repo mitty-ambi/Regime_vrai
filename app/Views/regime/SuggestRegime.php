@@ -19,14 +19,36 @@
 
     <div class="container">
         <section>
-            <!-- infromation de l objectif courante -->
-            <ul>
-                <li>objecif couante : <?= $objectif['objectif_nom'] ?></li>
-                <li>Poid initial : <?= $objectif['poids_initial'] ?></li>
-                <li>Poid actuel : <?= $user['poids'] ?></li>
-                <li>Poid cible : <?= $objectif['poids_cible'] ?></li>
-                <li>Variation de poid necessaire : <?= $variation_poid ?> kg</li>
-            </ul>
+            <div class="obj-grid">
+
+                <div class="obj-card accent-top">
+                    <span class="obj-label">Objectif</span>
+                    <div><span class="obj-badge"><?= esc($objectif['objectif_nom']) ?></span></div>
+                </div>
+
+                <div class="obj-card">
+                    <span class="obj-label">Poids initial</span>
+                    <div class="obj-value"><?= $objectif['poids_initial'] ?> <span class="obj-unit">kg</span></div>
+                </div>
+
+                <div class="obj-card accent-warn">
+                    <span class="obj-label">Poids actuel</span>
+                    <div class="obj-value"><?= $user['poids'] ?> <span class="obj-unit">kg</span></div>
+                </div>
+
+                <div class="obj-card accent-ok">
+                    <span class="obj-label">Poids cible</span>
+                    <div class="obj-value"><?= $objectif['poids_cible'] ?> <span class="obj-unit">kg</span></div>
+                </div>
+
+                <div class="obj-card">
+                    <span class="obj-label">Variation nécessaire</span>
+                    <div class="<?= $variation_poid <= 0 ? 'variation-neg' : 'variation-pos' ?>">
+                        <?= ($variation_poid > 0 ? '+' : '') . $variation_poid ?> <span class="obj-unit">kg</span>
+                    </div>
+                </div>
+
+            </div>
         </section>
         <!-- ── En-tête ── -->
         <div class="page-header">

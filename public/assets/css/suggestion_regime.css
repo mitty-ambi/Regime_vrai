@@ -81,7 +81,41 @@
     color: var(--gray);
     margin-bottom: 1.2rem;
 }
+/* === Objectif info cards === */
+.obj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+.obj-card {
+    background: #fff;
+    border: 0.5px solid var(--gray-light);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.obj-card.accent-top  { border-top: 2px solid var(--info); }
+.obj-card.accent-warn { border-top: 2px solid var(--warning); }
+.obj-card.accent-ok   { border-top: 2px solid var(--success); }
 
+.obj-icon  { font-size: 18px; color: var(--gray); }
+.obj-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; }
+.obj-value { font-size: 20px; font-weight: 600; color: var(--dark); line-height: 1.2; }
+.obj-unit  { font-size: 13px; color: var(--gray); font-weight: 400; }
+.obj-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #dbeafe;
+    color: #1e40af;
+}
+.variation-neg { font-size: 20px; font-weight: 600; color: var(--success); }
+.variation-pos { font-size: 20px; font-weight: 600; color: var(--danger); }
 /* ──────────────────────────────────────────────── */
 /*  Grille de filtres                                */
 /* ──────────────────────────────────────────────── */
