@@ -23,13 +23,20 @@ CREATE TABLE sante (
 
 CREATE TABLE objectifs (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(20) NOT NULL,
     nom VARCHAR(50)
 );
 
 CREATE TABLE utilisateur_objectifs (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id INT,
-    objectif_id INT,
+    utilisateur_id INT NOT NULL,
+    objectif_id INT NOT NULL,
+    statut ENUM('actif', 'atteint', 'abandonne') DEFAULT 'actif',
+    date_debut DATETIME DEFAULT CURRENT_TIMESTAMP,
+    durrer INT,
+    poids_initial DECIMAL(5,2) NULL,
+    poids_cible DECIMAL(5,2) NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE,
     FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE CASCADE
 );
@@ -44,6 +51,12 @@ CREATE TABLE regimes (
     pourcentage_viande DECIMAL(5, 2),
     pourcentage_poisson DECIMAL(5, 2),
     pourcentage_volaille DECIMAL(5, 2)
+);
+
+CREATE TABLE activites (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100),
+    calories_brulees INT
 );
 
 CREATE TABLE regime_activite (
@@ -61,11 +74,6 @@ CREATE TABLE aliments (
     type VARCHAR(50)
 );
 
-CREATE TABLE activites (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(100),
-    calories_brulees INT
-);
 
 CREATE TABLE achats_regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -75,8 +83,6 @@ CREATE TABLE achats_regimes (
     prix_paye DECIMAL(10, 2),
     date_achat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     statu VARCHAR(20) DEFAULT 'en cours',
-    'termine',
-    'annule',
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
     FOREIGN KEY (regime_id) REFERENCES regimes(id)
 );
@@ -98,12 +104,10 @@ CREATE TABLE transactions_codes (
     FOREIGN KEY (code_id) REFERENCES codes(id)
 );
 
-INSERT INTO
-    objectifs (nom)
-VALUES
-    ('augmentation'),
-    ('reduction'),
-    ('IMC ideal');
+INSERT INTO objectifs (code,nom) VALUES
+('AUG','Augmenter son poids'),
+('RED','Réduire son poids'),
+('IMC-IDEAL','Atteindre son IMC idéal');
 
 CREATE TABLE parametre (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -289,39 +293,6 @@ VALUES
     (3, 7, 10.00),
     (5, 3, 5.00);
 
--- Supprimer la table si elle existe
-DROP TABLE IF EXISTS utilisateur_objectifs;
-
-DROP TABLE IF EXISTS objectifs;
-
--- Créer la table objectifs (simple)
-CREATE TABLE objectifs (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(100) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Insérer les 3 objectifs de base (sans description)
-INSERT INTO
-    objectifs (nom)
-VALUES
-    ('Augmenter son poids'),
-    ('Réduire son poids'),
-    ('Atteindre son IMC idéal');
-
--- Créer la table de liaison utilisateur_objectifs
-CREATE TABLE utilisateur_objectifs (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id INT NOT NULL,
-    objectif_id INT NOT NULL,
-    statut ENUM('actif', 'atteint', 'abandonne') DEFAULT 'actif',
-    date_debut DATE DEFAULT CURRENT_TIMESTAMP,
-    poids_initial DECIMAL(5, 2) NULL,
-    poids_cible DECIMAL(5, 2) NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE,
-    FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE CASCADE
-);
 
 -- Ajouter la colonne photo_profil à la table utilisateurs
 ALTER TABLE
