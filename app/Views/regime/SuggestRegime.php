@@ -13,21 +13,25 @@
 </head>
 
 <body>
+
+    <?= view("navbar") ?>
+    <?= view("sidebar") ?>
+
     <div class="container">
         <section>
             <!-- infromation de l objectif courante -->
-             <ul>
+            <ul>
                 <li>objecif couante : <?= $objectif['objectif_nom'] ?></li>
                 <li>Poid initial : <?= $objectif['poids_initial'] ?></li>
                 <li>Poid actuel : <?= $user['poids'] ?></li>
-                <li>Poid cible :  <?= $objectif['poids_cible'] ?></li>
+                <li>Poid cible : <?= $objectif['poids_cible'] ?></li>
                 <li>Variation de poid necessaire : <?= $variation_poid ?> kg</li>
-             </ul>
+            </ul>
         </section>
         <!-- ── En-tête ── -->
         <div class="page-header">
             <h1 class="page-title">🥗 Suggestion de régime</h1>
-            <p class="page-subtitle">Filtr  ez et trouvez le plan nutritionnel adapté à vos objectifs</p>
+            <p class="page-subtitle">Filtr ez et trouvez le plan nutritionnel adapté à vos objectifs</p>
         </div>
 
         <!-- ── Alertes flash ── -->
@@ -142,12 +146,12 @@
                         <tbody>
                             <?php foreach ($liste_regime as $regime): ?>
                                 <?php
-                                    $variation   = (float) $regime['variation_poids'];
-                                    $pctViande   = (int)   $regime['pourcentage_viande'];
-                                    $pctPoisson  = (int)   $regime['pourcentage_poisson'];
-                                    $pctVolaille = (int)   $regime['pourcentage_volaille'];
-                                    $variationClass = $variation >= 0 ? 'variation-pos' : 'variation-neg';
-                                    $variationSign  = $variation >= 0 ? '+' : '';
+                                $variation   = (float) $regime['variation_poids'];
+                                $pctViande   = (int)   $regime['pourcentage_viande'];
+                                $pctPoisson  = (int)   $regime['pourcentage_poisson'];
+                                $pctVolaille = (int)   $regime['pourcentage_volaille'];
+                                $variationClass = $variation >= 0 ? 'variation-pos' : 'variation-neg';
+                                $variationSign  = $variation >= 0 ? '+' : '';
                                 ?>
                                 <tr>
                                     <!-- Nom -->
@@ -224,4 +228,5 @@
     </script>
 
 </body>
+
 </html>
