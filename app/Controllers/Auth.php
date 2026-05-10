@@ -66,6 +66,7 @@ class Auth extends BaseController
 
         if ($result['success']) {
             session()->set('utilisateur', $result['utilisateur']);
+            session()->set('is_logged_in', true);
             return redirect()->to('/dashboard');
         } else {
             return redirect()->back()->with('error', $result['message'])->withInput();
