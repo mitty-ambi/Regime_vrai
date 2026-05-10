@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,9 @@
 
 
 </head>
+
 <body>
-    
+
     <?= view("navbar") ?>
     <?= view("sidebar") ?>
     <div class="container">
@@ -85,6 +87,15 @@
                 <?php endforeach; ?>
             </div>
 
+            <!-- selectionner le durrer -->
+            <div id="selection-durrer">
+                <div class="filter-group">
+                    <label for="duree-globale">Durée de l'objectif (jours)</label>
+                    <input type="number" id="duree-globale" name="duree"
+                        placeholder="Ex : 30" min="1" max="365" step="1">
+                </div>
+            </div>
+
             <div class="btn-container">
                 <button type="button" class="btn btn-secondary" onclick="window.location.href='/dashboard'">
                     Plus tard
@@ -133,7 +144,7 @@
             }
         }
 
-        document.getElementById('objectifsForm').addEventListener('submit', function (e) {
+        document.getElementById('objectifsForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             if (selectedObjectifs.length === 0) {
@@ -141,61 +152,74 @@
                 return;
             }
 
-            // Préparer les données avec les poids
-            const objectifsData = [];
+            const duree = parseInt(document.getElementById('duree-globale').value);
+            if (!duree || duree <= 0) {
+                alert('Veuillez spécifier une durée en jours');
+                document.getElementById('duree-globale').focus();
+                return;
+            }
 
-            selectedObjectifs.forEach(objectifId => {
+            const objectifsData = [];
+            let erreur = false;
+
+            selectedObjectifs.forEach(function(objectifId) {
+                if (erreur) return;
+
                 const objectifData = {
                     id: objectifId,
-                    poids: null
+                    poids: null,
+                    duree: duree
                 };
 
-                // Vérifier si c'est un objectif d'augmentation ou de réduction
                 const poidsAugmenterInput = document.getElementById('poids-augmenter-value-' + objectifId);
                 const poidsReduireInput = document.getElementById('poids-reduire-value-' + objectifId);
 
                 if (poidsAugmenterInput) {
                     const poids = parseFloat(poidsAugmenterInput.value);
-                    if (poids && poids > 0) {
-                        objectifData.poids = poids;
-                    } else {
+                    if (!poids || poids <= 0) {
                         alert('Veuillez spécifier le nombre de kilos à prendre');
                         poidsAugmenterInput.focus();
+                        erreur = true;
                         return;
                     }
+                    objectifData.poids = poids;
                 } else if (poidsReduireInput) {
                     const poids = parseFloat(poidsReduireInput.value);
-                    if (poids && poids > 0) {
-                        objectifData.poids = poids;
-                    } else {
+                    if (!poids || poids <= 0) {
                         alert('Veuillez spécifier le nombre de kilos à perdre');
                         poidsReduireInput.focus();
+                        erreur = true;
                         return;
                     }
+                    objectifData.poids = poids;
                 }
 
                 objectifsData.push(objectifData);
             });
 
+            if (erreur) return;
+
             fetch('/objectif/sauvegarder', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                body: JSON.stringify({
-                    objectifs: objectifsData
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({
+                        objectifs: objectifsData
+                    })
                 })
-            })
-                .then(response => response.json())
-                .then(data => {
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
                     if (data.success) {
                         window.location.href = '/dashboard';
                     } else {
                         alert(data.message);
                     }
                 })
-                .catch(error => {
+                .catch(function(error) {
                     console.error('Error:', error);
                     alert('Erreur lors de la sauvegarde');
                 });

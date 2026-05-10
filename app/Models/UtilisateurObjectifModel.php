@@ -1,5 +1,7 @@
 <?php
-namespace App\Models; 
+
+namespace App\Models;
+
 use CodeIgniter\Model;
 
 class UtilisateurObjectifModel extends Model
@@ -11,12 +13,13 @@ class UtilisateurObjectifModel extends Model
         'objectif_id',
         'statut',
         'poids_initial',
-        'poids_cible'
+        'poids_cible',
+        'durrer'
     ];
     protected $returnType = 'array';
 
     // Ajouter un objectif pour un utilisateur
-    public function addObjectifToUser($utilisateurId, $objectifId, $poidsInitial = null, $poidsCible = null)
+    public function addObjectifToUser($utilisateurId, $objectifId, $poidsInitial = null, $poidsCible = null,$duree = null)
     {
         // Vérifier si l'utilisateur n'a pas déjà cet objectif
         $existing = $this->where('utilisateur_id', $utilisateurId)
@@ -28,23 +31,25 @@ class UtilisateurObjectifModel extends Model
             return false; // L'objectif existe déjà
         }
 
-        return $this->insert([
+        $this->insert([
             'utilisateur_id' => $utilisateurId,
-            'objectif_id' => $objectifId,
-            'poids_initial' => $poidsInitial,
-            'poids_cible' => $poidsCible,
-            'statut' => 'actif'
+            'objectif_id'    => $objectifId,
+            'statut'         => 'actif',
+            'poids_initial'  => $poidsInitial,
+            'poids_cible'    => $poidsCible,
+            'durrer'         => $duree,
         ]);
     }
 
     //recuperer l objectifs courant de l utilisateur
-    function getUserObjectifsCourante($utilisateurId)  {
+    function getUserObjectifsCourante($utilisateurId)
+    {
         return $this->select('utilisateur_objectifs.*, objectifs.nom as objectif_nom , objectifs.code as code_objectif')
             ->join('objectifs', 'objectifs.id = utilisateur_objectifs.objectif_id')
             ->where('utilisateur_objectifs.utilisateur_id', $utilisateurId)
             ->where('utilisateur_objectifs.statut', 'actif')
             ->orderBy('utilisateur_objectifs.date_debut')
-            ->findAll();
+            ->first();
     }
 
     // Récupérer les objectifs d'un utilisateur
@@ -65,4 +70,3 @@ class UtilisateurObjectifModel extends Model
             ->delete();
     }
 }
-?>
