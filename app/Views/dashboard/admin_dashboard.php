@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - NutriGain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link rel="stylesheet" href="<?= base_url('assets/css/admin_dashboard.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/info_client.css') ?>">
@@ -100,15 +102,17 @@
                                         <td><?= number_format($regime['prix'], 2) ?>€</td>
                                         <td><?= $regime['duree'] ?> jours</td>
                                         <td>
-                                            🥩 <?= $regime['pourcentage_viande'] ?>% 
-                                            🐟 <?= $regime['pourcentage_poisson'] ?>% 
+                                            🥩 <?= $regime['pourcentage_viande'] ?>%
+                                            🐟 <?= $regime['pourcentage_poisson'] ?>%
                                             🍗 <?= $regime['pourcentage_volaille'] ?>%
                                         </td>
                                         <td><span class="badge badge-success"><?= $regime['actifs'] ?? 0 ?></span></td>
                                         <td>
                                             <div class="action-buttons">
-                                                <a href="/Regime/update/<?= $regime['id'] ?>" class="action-btn" title="Modifier">✏️</a>
-                                                <a href="/Regime/supprimer/<?= $regime['id'] ?>" class="action-btn" title="Supprimer" onclick="return confirm('Supprimer?')">🗑️</a>
+                                                <a href="/Regime/update/<?= $regime['id'] ?>" class="action-btn"
+                                                    title="Modifier">✏️</a>
+                                                <a href="/Regime/supprimer/<?= $regime['id'] ?>" class="action-btn"
+                                                    title="Supprimer" onclick="return confirm('Supprimer?')">🗑️</a>
                                             </div>
                                         </td>
                                     </tr>
