@@ -23,6 +23,7 @@ $routes->post('/sante/save', 'Sante::save');
 $routes->get('/dashboard', 'Dashboard::index');
 $routes->post('/dashboard/updatePoids', 'Dashboard::updatePoids');
 $routes->post('/dashboard/updatePhoto', 'Dashboard::updatePhoto');
+$routes->get('/dashboard/stats', 'Dashboard::stats');
 
 // Routes objectifs
 $routes->get('/objectif/choix', 'Objectif::choix');
