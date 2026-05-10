@@ -6,16 +6,40 @@ ini_set('display_errors', 1);
 
 
 use App\Models\SanteModel;
+use App\Models\Regime;
+use App\Models\Activites;
+use App\Models\Code;
 
 class Dashboard extends BaseController
 {
     protected $santeModel;
     protected $utilisateurModel;
+    protected $regimeModel;
+    protected $activiteModel;
+    protected $codeModel;
 
     public function __construct()
     {
         $this->santeModel = new \App\Models\SanteModel();
         $this->utilisateurModel = new \App\Models\UtilisateurModel();
+        $this->regimeModel = new Regime();
+        $this->activiteModel = new Activites();
+        $this->codeModel = new Code();
+    }
+    
+    public function stats()
+    {
+        $data['total_utilisateurs'] = $this->regimeModel->getStatsUtilisateurs();
+        $data['regimes_actifs'] = $this->regimeModel->getRegimesActifs();
+        $data['revenues_mois'] = $this->regimeModel->getRevenuesParMois();
+        $data['codes_utilises'] = $this->regimeModel->getCodesUtilises();
+        
+        $data['top_regimes'] = $this->regimeModel->getTopRegimes(5);
+        $data['types_regimes'] = $this->regimeModel->getTypesRegimes();
+        $data['inscriptions'] = $this->regimeModel->getInscriptionsRecentes(7);
+        $data['regimes_stats'] = $this->regimeModel->getRegimesWithStats();
+        
+        return view("dashboard/admin_dashboard", $data);
     }
 
     public function index()

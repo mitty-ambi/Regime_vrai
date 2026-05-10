@@ -3,7 +3,7 @@
     <div class="sidebar-logo">🥗 NutriGain</div>
     <ul class="sidebar-menu">
         <li class="sidebar-menu-item">
-            <a href="/dashboard" class="active">📊 Dashboard</a>
+            <a href="/dashboard/stats" class="active">📊 Dashboard</a>
         </li>
         <li class="sidebar-menu-item">
             <a href="/dashboard" class="active">📊 info client</a>
