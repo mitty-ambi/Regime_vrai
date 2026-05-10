@@ -53,7 +53,8 @@ ini_set('display_errors', 1);
                         </div>
                         <div class="form-group">
                             <label for="calories_brulees">🔥 Calories brûlées (par jour) :</label>
-                            <input type="number" step="1" id="calories_brulees" name="calories_brulees" required placeholder="500">
+                            <input type="number" step="1" id="calories_brulees" name="calories_brulees" required
+                                placeholder="500">
                         </div>
                     </div>
                     <button type="submit" class="btn-submit">✅ Ajouter l'activité</button>
@@ -80,7 +81,8 @@ ini_set('display_errors', 1);
                                 <td>🔥 <?= $activite['calories_brulees'] ?> cal</td>
                                 <td class="action-buttons">
                                     <a href="/Activites/update/<?= $activite['id'] ?>" class="btn-edit">✏️ Modifier</a>
-                                    <a href="/Activites/supprimer/<?= $activite['id'] ?>" class="btn-delete" onclick="return confirm('Supprimer cette activité ?')">🗑️ Supprimer</a>
+                                    <a href="/Activites/supprimer/<?= $activite['id'] ?>" class="btn-delete"
+                                        onclick="return confirm('Supprimer cette activité ?')">🗑️ Supprimer</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -109,7 +111,8 @@ ini_set('display_errors', 1);
                             <select name="id_activite" id="id_activite" required>
                                 <option value="">-- Sélectionnez une activité --</option>
                                 <?php foreach ($liste_activite as $activite): ?>
-                                    <option value="<?= $activite['id'] ?>"><?= $activite['nom'] ?> (<?= $activite['calories_brulees'] ?> cal)</option>
+                                    <option value="<?= $activite['id'] ?>"><?= $activite['nom'] ?>
+                                        (<?= $activite['calories_brulees'] ?> cal)</option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -128,25 +131,25 @@ ini_set('display_errors', 1);
                 tab.classList.remove('active');
                 tab.style.display = 'none';
             });
-            
+
             // Désactiver tous les boutons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             // Afficher l'onglet sélectionné
             const selectedTab = document.getElementById('tab-' + tabName);
             if (selectedTab) {
                 selectedTab.classList.add('active');
                 selectedTab.style.display = 'block';
             }
-            
+
             // Activer le bouton cliqué
             event.target.classList.add('active');
         }
-        
+
         // Initialiser les onglets au chargement
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Cacher tous les onglets sauf le premier
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach((tab, index) => {
