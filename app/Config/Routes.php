@@ -6,8 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Auth::inscription');
-$routes->get('/livres','LivreController::index');
-$routes->get('/livres/filtre','LivreController::filtre');
 
 // Routes d'authentification
 $routes->get('/auth/login', 'Auth::login');
@@ -37,10 +35,7 @@ $routes->get('/Regime/update/(:num)', 'RegimeController::update/$1');
 $routes->post('/Regime/edit/(:num)', 'RegimeController::edit/$1');
 $routes->get('/Regime/supprimer/(:num)', 'RegimeController::supprimer/$1');
 // Regime - suggestion de regime
-
-$routes->get('/Regime/suggest','RegimeController::suggest');
-$routes->get('/Regime/get/suggestion','RegimeController::suggest');
-$routes->get('/Regime/get/suggestion/pdf','RegimeController::suggestPdf');
+$routes->get('/Regime/suggest', 'RegimeController::go_to_suggest');
 
 // Activites - CRUD complet
 $routes->get('/Activites/add', 'ActiviteController::go_to_activite');
