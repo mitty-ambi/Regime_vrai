@@ -41,6 +41,9 @@ class RegimeController extends BaseController
 
         //verfier quelle est l objecif selectionner
         $objectif = $this->utilisateurObjectif->getUserObjectifsCourante($user['id']);
+        if(!isset($objectif)) {
+            return redirect()->to('/objectif/choix');
+        }
         $codeObjectif = $objectif['code_objectif'];
         $durrer = $objectif['durrer'];
         //calculer la variation voulu 
