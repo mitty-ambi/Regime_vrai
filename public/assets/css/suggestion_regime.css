@@ -68,7 +68,29 @@
     transition: box-shadow 0.3s ease;
     animation: fadeIn 0.4s ease;
 }
+/* Bouton exporter */
+.btn-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    background: white;
+    color: var(--gray);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
 
+.btn-export:hover {
+    background: var(--light);
+    border-color: var(--gray);
+    color: var(--dark);
+}
 .filter-card:hover {
     box-shadow: var(--shadow-lg);
 }

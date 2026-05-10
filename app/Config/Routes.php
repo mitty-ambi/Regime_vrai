@@ -40,6 +40,7 @@ $routes->get('/Regime/supprimer/(:num)', 'RegimeController::supprimer/$1');
 
 $routes->get('/Regime/suggest','RegimeController::suggest');
 $routes->get('/Regime/get/suggestion','RegimeController::suggest');
+$routes->get('/Regime/get/suggestion/pdf','RegimeController::suggestPdf');
 
 // Activites - CRUD complet
 $routes->get('/Activites/add', 'ActiviteController::go_to_activite');
