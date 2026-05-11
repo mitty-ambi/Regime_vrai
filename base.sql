@@ -112,13 +112,15 @@ VALUES
 
 CREATE TABLE parametre (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    imc_ideal DECIMAL(10, 2)
+    imc_ideal DECIMAL(10, 2),
+    prix_gold DECIMAL(10, 2) DEFAULT 29.99,
+    reduction_gold DECIMAL(3, 2) DEFAULT 0.85
 );
 
 INSERT INTO
-    parametre (imc_ideal)
+    parametre (imc_ideal, prix_gold, reduction_gold)
 VALUES
-    (22);
+    (22, 29.99, 0.5);
 
 INSERT INTO
     activites (nom, calories_brulees)
