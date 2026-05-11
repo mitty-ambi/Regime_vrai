@@ -11,6 +11,7 @@ use App\Models\Objectif;
 use App\Models\RegimeSuggestionPdf;
 use App\Models\SanteModel;
 use App\Models\UtilisateurObjectifModel;
+use App\Models\Parametre;
 
 class RegimeController extends BaseController
 {
@@ -18,6 +19,7 @@ class RegimeController extends BaseController
     protected $objectifModel;
     protected $santeModel;
     protected $utilisateurObjectif;
+    protected $parametreModel;
 
     public function __construct()
     {
@@ -25,6 +27,7 @@ class RegimeController extends BaseController
         $this->objectifModel = new Objectif();
         $this->utilisateurObjectif = new UtilisateurObjectifModel();
         $this->santeModel = new SanteModel();
+        $this->parametreModel = new Parametre();
     }
 
     public function suggestPdf()
@@ -141,6 +144,16 @@ class RegimeController extends BaseController
         if (!isset($data)) {
             return redirect()->to('/objectif/choix');
         }
+        // Passer le statut gold de l'utilisateur à la vue
+        $utilisateur = session()->get('utilisateur');
+        $data['userIsGold'] = $utilisateur['is_gold'] ?? 0;
+        $data['userSolde'] = $utilisateur['solde'] ?? 0;
+
+        // Récupérer les paramètres GOLD depuis la DB
+        $params = $this->parametreModel->getGoldParams();
+        $data['goldPrix'] = $params['prix_gold'] ?? 29.99;
+        $data['goldReduction'] = $params['reduction_gold'] ?? 0.85;
+
         return view('regime/SuggestRegime', $data);
     }
 
@@ -160,9 +173,10 @@ class RegimeController extends BaseController
         }
         $codeObjectif = $objectif['code_objectif'];
         $duree = 99999;
-        if(isset($objectif['duree'])) {
+        if (isset($objectif['duree'])) {
             $duree = $objectif['duree'];
-        };
+        }
+        ;
         //calculer la variation voulu 
         $variationVoulu = $objectif['poids_cible'] - $user['poids'];
 
