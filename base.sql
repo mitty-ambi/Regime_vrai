@@ -89,7 +89,7 @@ CREATE TABLE achats_regimes (
 
 CREATE TABLE codes (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    code VARCHAR(50) UNIQUE,
+    code VARCHAR(50) UNIQUE, 
     montant DECIMAL(10, 2),
     est_utilise BOOLEAN DEFAULT FALSE
 );
@@ -108,6 +108,7 @@ INSERT INTO objectifs (code,nom) VALUES
 ('AUG','Augmenter son poids'),
 ('RED','Réduire son poids'),
 ('IMC-IDEAL','Atteindre son IMC idéal');
+
 
 CREATE TABLE parametre (
     id INT AUTO_INCREMENT PRIMARY KEY,
