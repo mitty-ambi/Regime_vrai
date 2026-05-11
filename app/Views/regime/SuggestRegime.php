@@ -73,7 +73,7 @@
         <div class="filter-card">
             <h2 class="filter-card__title">Filtres de recherche</h2>
 
-            <form action="/Regime/get/suggestion" method="get" class="filter-form">
+            <form action="/Regime/suggest" method="get" class="filter-form">
                 <!-- Préférence protéine -->
                 <span class="protein-row-label">Protéine préférée</span>
                 <div class="protein-row">
