@@ -88,7 +88,7 @@ CREATE TABLE achats_regimes (
 
 CREATE TABLE codes (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    code VARCHAR(50) UNIQUE,
+    code VARCHAR(50) UNIQUE, 
     montant DECIMAL(10, 2),
     est_utilise BOOLEAN DEFAULT FALSE
 );
@@ -110,15 +110,18 @@ VALUES
     ('RED', 'Réduire son poids'),
     ('IMC-IDEAL', 'Atteindre son IMC idéal');
 
+
 CREATE TABLE parametre (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    imc_ideal DECIMAL(10, 2)
+    imc_ideal DECIMAL(10, 2),
+    prix_gold DECIMAL(10, 2) DEFAULT 29.99,
+    reduction_gold DECIMAL(3, 2) DEFAULT 0.85
 );
 
 INSERT INTO
-    parametre (imc_ideal)
+    parametre (imc_ideal, prix_gold, reduction_gold)
 VALUES
-    (22);
+    (22, 29.99, 0.5);
 
 INSERT INTO
     activites (nom, calories_brulees)

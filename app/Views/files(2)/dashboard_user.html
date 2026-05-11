@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - NutriGain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #10b981;
@@ -420,6 +423,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -513,6 +517,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- HEADER -->
     <header>
@@ -592,15 +597,22 @@
                 <div class="card gold-offer">
                     <div class="card-header">⭐ Offre Premium Gold</div>
                     <p style="margin-bottom: 16px; font-size: 13px;">Obtenez 15% de réduction sur tous les régimes</p>
-                    <p style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">29,99€<span style="font-size: 13px;"> (une seule fois)</span></p>
-                    <button style="width: 100%; background: white; color: var(--warning); border: none; padding: 10px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#fbbf24'" onmouseout="this.style.background='white'">Activer Premium</button>
+                    <p style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">29,99€<span
+                            style="font-size: 13px;"> (une seule fois)</span></p>
+                    <button
+                        style="width: 100%; background: white; color: var(--warning); border: none; padding: 10px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;"
+                        onmouseover="this.style.background='#fbbf24'" onmouseout="this.style.background='white'">Activer
+                        Premium</button>
                 </div>
 
                 <!-- ACTIVE REGIMES -->
                 <div class="card" style="margin-top: 24px;">
                     <div class="card-header">📋 Régimes Actifs</div>
-                    <p style="font-size: 13px; color: var(--gray); margin-bottom: 16px;">Vous n'avez pas encore activé de régime</p>
-                    <a href="#regimes" style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 13px;">Découvrir les régimes →</a>
+                    <p style="font-size: 13px; color: var(--gray); margin-bottom: 16px;">Vous n'avez pas encore activé
+                        de régime</p>
+                    <a href="#regimes"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 13px;">Découvrir
+                        les régimes →</a>
                 </div>
             </div>
 
@@ -618,7 +630,8 @@
                             <div class="regime-name">Régime Équilibré 30 jours</div>
                             <div class="regime-duration">30 jours</div>
                         </div>
-                        <div class="regime-description">Régime parfait pour atteindre votre IMC idéal. Combinaison idéale de protéines, glucides et lipides.</div>
+                        <div class="regime-description">Régime parfait pour atteindre votre IMC idéal. Combinaison
+                            idéale de protéines, glucides et lipides.</div>
                         <div class="regime-stats">
                             <div class="regime-stat">
                                 <div class="regime-stat-value">50%</div>
@@ -645,7 +658,8 @@
                             <div class="regime-name">Régime Protéiné 60 jours</div>
                             <div class="regime-duration">60 jours</div>
                         </div>
-                        <div class="regime-description">Riche en protéines pour développer la masse musculaire et la force.</div>
+                        <div class="regime-description">Riche en protéines pour développer la masse musculaire et la
+                            force.</div>
                         <div class="regime-stats">
                             <div class="regime-stat">
                                 <div class="regime-stat-value">70%</div>
@@ -672,7 +686,8 @@
                             <div class="regime-name">Régime Léger 15 jours</div>
                             <div class="regime-duration">15 jours</div>
                         </div>
-                        <div class="regime-description">Idéal pour une détox rapide et léger avant un événement important.</div>
+                        <div class="regime-description">Idéal pour une détox rapide et léger avant un événement
+                            important.</div>
                         <div class="regime-stats">
                             <div class="regime-stat">
                                 <div class="regime-stat-value">40%</div>
@@ -722,11 +737,12 @@
         }
 
         // Fermer le modal en cliquant en dehors
-        document.getElementById('codeModal').addEventListener('click', function(e) {
+        document.getElementById('codeModal').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeCodeModal();
             }
         });
     </script>
 </body>
+
 </html>
