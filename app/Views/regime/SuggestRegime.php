@@ -1,4 +1,10 @@
 <?php
+if (session()->getFlashdata('succes')) {
+    var_dump(session()->getFlashdata('succes'));
+}
+if (session()->getFlashdata('erreur')) {
+    var_dump(session()->getFlashdata('erreur'));
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,6 +24,14 @@
     <?= view("sidebar") ?>
 
     <div class="container">
+        <section class="message">
+            <?php if (session()->get('achat_effectuer')) { ?>
+                <p class="message-success">Achat effectué avec succès</p>
+            <?php } ?>
+            <?php if (session()->get('erreur_solde_insufisant')) { ?>
+                <p class="message-error">Erreur : solde insuffisant</p>
+            <?php } ?>
+        </section>
         <section>
             <div class="obj-grid">
 
@@ -278,9 +292,9 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <?php if( isset($regime['nom_activite']))  {?>
-                                        <?= $regime['nom_activite'] ?>    
-                                        <?php } else {?>
+                                        <?php if (isset($regime['nom_activite'])) { ?>
+                                            <?= $regime['nom_activite'] ?>
+                                        <?php } else { ?>
                                             aucun
                                         <?php } ?>
                                     </td>

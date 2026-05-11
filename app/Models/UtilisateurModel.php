@@ -43,6 +43,11 @@ class UtilisateurModel extends Model
         ]
     ];
 
+    public function getSolde($idUtilisateur) {
+        $solde = $this->select('solde')->find($idUtilisateur);
+        return $solde ? $solde['solde'] : 0;
+    }
+
     public function getUtilisateurByEmail($email)
     {
         return $this->where('email', $email)->first();

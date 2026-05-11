@@ -98,7 +98,32 @@
             background: #dc2626;
             transform: translateY(-1px);
         }
+/* MESSAGES / ALERTS */
+.message {
+    margin-bottom: 24px;
+}
 
+.message-success,
+.message-error {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.message-success {
+    border-left: 4px solid var(--success);
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.message-error {
+    border-left: 4px solid var(--danger);
+    background: #fee2e2;
+    color: #b91c1c;
+}
         /* MAIN CONTENT */
         main {
             max-width: 1400px;

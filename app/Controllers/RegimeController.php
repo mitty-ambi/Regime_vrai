@@ -6,11 +6,15 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 use App\Controllers\BaseController;
+use App\Models\AchatRegime;
 use App\Models\Regime;
 use App\Models\Objectif;
 use App\Models\RegimeSuggestionPdf;
 use App\Models\SanteModel;
+use App\Models\UtilisateurModel;
 use App\Models\UtilisateurObjectifModel;
+
+use Throwable;
 use App\Models\Parametre;
 
 class RegimeController extends BaseController
@@ -19,15 +23,62 @@ class RegimeController extends BaseController
     protected $objectifModel;
     protected $santeModel;
     protected $utilisateurObjectif;
+
+    protected $achatRegimeModel;
+    protected $utilisateurModel;
     protected $parametreModel;
 
     public function __construct()
     {
+        $this->utilisateurModel = new UtilisateurModel();
         $this->regimeModel = new Regime();
         $this->objectifModel = new Objectif();
         $this->utilisateurObjectif = new UtilisateurObjectifModel();
         $this->santeModel = new SanteModel();
         $this->parametreModel = new Parametre();
+        $this->achatRegimeModel = new AchatRegime();
+    }
+
+    public function acheterRegime($id)
+    {
+        $user = session()->get("utilisateur");
+        $regime = $this->regimeModel->find($id);
+
+        //recuperer le solde de l utilisateur
+        $user['solde'] = $this->utilisateurModel->getSolde($user['id']);
+        $argentApresAchat = $user['solde'] - $regime['prix'];
+
+        //verifier le solde de l utilisateur est asser pour l achat
+        if ($argentApresAchat <= 0) {
+            //mettre a jour l infomrnation de l user dans la session
+            session()->set('utilisateur', $user);
+            session()->setFlashdata('achat_effectuer', false);
+            session()->setFlashdata('erreur_solde_insufisant', true);
+            return redirect()->to('/Regime/suggest');
+        }
+
+        //diminuer le solde de l utilisateur
+        $user['solde'] = $argentApresAchat;
+
+        //mettre a jour le solde de l utilisateur dans la base
+        $this->utilisateurModel->update($user['id'], array(
+            'solde' => $argentApresAchat
+        ));
+
+        //mettre a jour l infomrnation de l user dans la session
+        session()->set('utilisateur', $user);
+
+        //ajout de de l achat dans la table regime achat 
+        $this->achatRegimeModel->insert(array(
+            'utilisateur_id' => $user['id'],
+            'regime_id' => $regime['id'],
+            'prix_original' => $regime['prix'],
+            'prix_paye' => $regime['prix']
+        ));
+        session()->setFlashdata('user', $user);
+        session()->setFlashdata('achat_effectuer', true);
+        session()->setFlashdata('erreur_solde_insufisant', false);
+        return redirect()->to('/Regime/suggest');
     }
 
     public function suggestPdf()
