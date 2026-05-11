@@ -171,6 +171,7 @@
                                 <th>% Viande</th>
                                 <th>% Poisson</th>
                                 <th>% Volaille</th>
+                                <th>Sport</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -229,6 +230,13 @@
                                             </div>
                                             <span class="pct-label"><?= $pctVolaille ?> %</span>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <?php if( isset($regime['nom_activite']))  {?>
+                                        <?= $regime['nom_activite'] ?>    
+                                        <?php } else {?>
+                                            aucun
+                                        <?php } ?>
                                     </td>
 
                                     <!-- Bouton Acheter -->
