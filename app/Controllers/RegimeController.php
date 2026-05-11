@@ -28,105 +28,105 @@ class RegimeController extends BaseController
     }
 
     public function suggestPdf()
-{
-    $data = $this->getDataSuggest();
+    {
+        $data = $this->getDataSuggest();
 
-    $user     = $data['user'];
-    $objectif = $data['objectif'];
-    $variation = $data['variation_poid'];
-    $liste    = $data['liste_regime'];
-    $date     = date('d/m/Y');
+        $user     = $data['user'];
+        $objectif = $data['objectif'];
+        $variation = $data['variation_poid'];
+        $liste    = $data['liste_regime'];
+        $date     = date('d/m/Y');
 
-    $pdf = new RegimeSuggestionPdf();
-    $pdf->AddPage();
+        $pdf = new RegimeSuggestionPdf();
+        $pdf->AddPage();
 
-    // ── Titre ──
-    $pdf->SetFont('Arial', 'B', 16);
-    $pdf->Cell(0, 10, utf8_decode('Plan nutritionnel'), 0, 1, 'C');
-    $pdf->SetFont('Arial', '', 9);
-    $pdf->SetTextColor(120, 120, 120);
-    $pdf->Cell(0, 6, 'Date : ' . $date, 0, 1, 'C');
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->Ln(4);
+        // ── Titre ──
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(0, 10, utf8_decode('Plan nutritionnel'), 0, 1, 'C');
+        $pdf->SetFont('Arial', '', 9);
+        $pdf->SetTextColor(120, 120, 120);
+        $pdf->Cell(0, 6, 'Date : ' . $date, 0, 1, 'C');
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->Ln(4);
 
-    // ── Infos client ──
-    $pdf->SetFont('Arial', 'B', 11);
-    $pdf->Cell(0, 8, utf8_decode('Informations'), 0, 1);
-    $pdf->SetFont('Arial', '', 10);
-
-    $infos = [
-        ['Nom',             utf8_decode($user['nom'] ?? '-')],
-        ['Objectif',        utf8_decode($objectif['objectif_nom'])],
-        ['Poids initial',   number_format($objectif['poids_initial'], 1) . ' kg'],
-        ['Poids actuel',    number_format($user['poids'], 1) . ' kg'],
-        ['Poids cible',     number_format($objectif['poids_cible'], 1) . ' kg'],
-        ['Variation visée', ($variation > 0 ? '+' : '') . number_format($variation, 1) . ' kg'],
-    ];
-
-    foreach ($infos as [$label, $val]) {
-        $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(55, 7, utf8_decode($label) . ' :', 0, 0);
-        $pdf->SetFont('Arial', '', 10);
-        $pdf->Cell(0, 7, $val, 0, 1);
-    }
-
-    // ── IMC si disponible ──
-    if (isset($data['data_imc_ideal'])) {
-        $imc = $data['data_imc_ideal'];
-        $pdf->Ln(3);
+        // ── Infos client ──
         $pdf->SetFont('Arial', 'B', 11);
-        $pdf->Cell(0, 8, 'IMC', 0, 1);
+        $pdf->Cell(0, 8, utf8_decode('Informations'), 0, 1);
         $pdf->SetFont('Arial', '', 10);
 
-        $imcInfos = [
-            ['IMC actuel',           number_format($imc['imc'], 1)],
-            ['IMC ideal',            number_format($imc['imc_ideal'], 1)],
-            ['Poids pour IMC ideal', number_format($imc['poids_ideal'], 1) . ' kg'],
+        $infos = [
+            ['Nom',             utf8_decode($user['nom'] ?? '-')],
+            ['Objectif',        utf8_decode($objectif['objectif_nom'])],
+            ['Poids initial',   number_format($objectif['poids_initial'], 1) . ' kg'],
+            ['Poids actuel',    number_format($user['poids'], 1) . ' kg'],
+            ['Poids cible',     number_format($objectif['poids_cible'], 1) . ' kg'],
+            ['Variation visée', ($variation > 0 ? '+' : '') . number_format($variation, 1) . ' kg'],
         ];
 
-        foreach ($imcInfos as [$label, $val]) {
+        foreach ($infos as [$label, $val]) {
             $pdf->SetFont('Arial', 'B', 10);
             $pdf->Cell(55, 7, utf8_decode($label) . ' :', 0, 0);
             $pdf->SetFont('Arial', '', 10);
             $pdf->Cell(0, 7, $val, 0, 1);
         }
+
+        // ── IMC si disponible ──
+        if (isset($data['data_imc_ideal'])) {
+            $imc = $data['data_imc_ideal'];
+            $pdf->Ln(3);
+            $pdf->SetFont('Arial', 'B', 11);
+            $pdf->Cell(0, 8, 'IMC', 0, 1);
+            $pdf->SetFont('Arial', '', 10);
+
+            $imcInfos = [
+                ['IMC actuel',           number_format($imc['imc'], 1)],
+                ['IMC ideal',            number_format($imc['imc_ideal'], 1)],
+                ['Poids pour IMC ideal', number_format($imc['poids_ideal'], 1) . ' kg'],
+            ];
+
+            foreach ($imcInfos as [$label, $val]) {
+                $pdf->SetFont('Arial', 'B', 10);
+                $pdf->Cell(55, 7, utf8_decode($label) . ' :', 0, 0);
+                $pdf->SetFont('Arial', '', 10);
+                $pdf->Cell(0, 7, $val, 0, 1);
+            }
+        }
+
+        $pdf->Ln(4);
+
+        // ── Tableau des régimes ──
+        $pdf->SetFont('Arial', 'B', 11);
+        $pdf->Cell(0, 8, utf8_decode('Régimes suggérés'), 0, 1);
+
+        $pdf->SetFont('Arial', 'B', 9);
+        $pdf->SetFillColor(220, 220, 220);
+        $pdf->Cell(50, 8, 'Nom',          1, 0, 'C', true);
+        $pdf->Cell(22, 8, utf8_decode('Durée'),   1, 0, 'C', true);
+        $pdf->Cell(30, 8, 'Variation',    1, 0, 'C', true);
+        $pdf->Cell(25, 8, '% Viande',     1, 0, 'C', true);
+        $pdf->Cell(25, 8, '% Poisson',    1, 0, 'C', true);
+        $pdf->Cell(25, 8, '% Volaille',   1, 0, 'C', true);
+        $pdf->Cell(13, 8, 'Prix',         1, 1, 'C', true);
+
+        $pdf->SetFont('Arial', '', 9);
+        foreach ($liste as $r) {
+            $vPoids = (float) $r['variation_poids'];
+            $sign   = $vPoids >= 0 ? '+' : '';
+
+            $pdf->Cell(50, 7, utf8_decode($r['nom']),                          1, 0);
+            $pdf->Cell(22, 7, (int)$r['duree'] . ' j',                         1, 0, 'C');
+            $pdf->Cell(30, 7, $sign . number_format($vPoids, 1) . ' kg',       1, 0, 'C');
+            $pdf->Cell(25, 7, (int)$r['pourcentage_viande']   . ' %',          1, 0, 'C');
+            $pdf->Cell(25, 7, (int)$r['pourcentage_poisson']  . ' %',          1, 0, 'C');
+            $pdf->Cell(25, 7, (int)$r['pourcentage_volaille'] . ' %',          1, 0, 'C');
+            $pdf->Cell(13, 7, number_format($r['prix'], 0) . ' Ar',            1, 1, 'C');
+        }
+
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'attachment; filename="regime_' . date('Ymd') . '.pdf"')
+            ->setBody($pdf->Output('S'));
     }
-
-    $pdf->Ln(4);
-
-    // ── Tableau des régimes ──
-    $pdf->SetFont('Arial', 'B', 11);
-    $pdf->Cell(0, 8, utf8_decode('Régimes suggérés'), 0, 1);
-
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->SetFillColor(220, 220, 220);
-    $pdf->Cell(50, 8, 'Nom',          1, 0, 'C', true);
-    $pdf->Cell(22, 8, utf8_decode('Durée'),   1, 0, 'C', true);
-    $pdf->Cell(30, 8, 'Variation',    1, 0, 'C', true);
-    $pdf->Cell(25, 8, '% Viande',     1, 0, 'C', true);
-    $pdf->Cell(25, 8, '% Poisson',    1, 0, 'C', true);
-    $pdf->Cell(25, 8, '% Volaille',   1, 0, 'C', true);
-    $pdf->Cell(13, 8, 'Prix',         1, 1, 'C', true);
-
-    $pdf->SetFont('Arial', '', 9);
-    foreach ($liste as $r) {
-        $vPoids = (float) $r['variation_poids'];
-        $sign   = $vPoids >= 0 ? '+' : '';
-
-        $pdf->Cell(50, 7, utf8_decode($r['nom']),                          1, 0);
-        $pdf->Cell(22, 7, (int)$r['duree'] . ' j',                         1, 0, 'C');
-        $pdf->Cell(30, 7, $sign . number_format($vPoids, 1) . ' kg',       1, 0, 'C');
-        $pdf->Cell(25, 7, (int)$r['pourcentage_viande']   . ' %',          1, 0, 'C');
-        $pdf->Cell(25, 7, (int)$r['pourcentage_poisson']  . ' %',          1, 0, 'C');
-        $pdf->Cell(25, 7, (int)$r['pourcentage_volaille'] . ' %',          1, 0, 'C');
-        $pdf->Cell(13, 7, number_format($r['prix'], 0) . ' Ar',            1, 1, 'C');
-    }
-
-    return $this->response
-        ->setHeader('Content-Type', 'application/pdf')
-        ->setHeader('Content-Disposition', 'attachment; filename="regime_' . date('Ymd') . '.pdf"')
-        ->setBody($pdf->Output('S'));
-}
 
     public function go_to_suggest()
     {
