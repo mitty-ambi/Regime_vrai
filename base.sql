@@ -34,8 +34,8 @@ CREATE TABLE utilisateur_objectifs (
     statut ENUM('actif', 'atteint', 'abandonne') DEFAULT 'actif',
     date_debut DATETIME DEFAULT CURRENT_TIMESTAMP,
     duree INT,
-    poids_initial DECIMAL(5,2) NULL,
-    poids_cible DECIMAL(5,2) NULL,
+    poids_initial DECIMAL(5, 2) NULL,
+    poids_cible DECIMAL(5, 2) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE,
     FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE CASCADE
@@ -74,7 +74,6 @@ CREATE TABLE aliments (
     type VARCHAR(50)
 );
 
-
 CREATE TABLE achats_regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     utilisateur_id INT,
@@ -104,21 +103,25 @@ CREATE TABLE transactions_codes (
     FOREIGN KEY (code_id) REFERENCES codes(id)
 );
 
-INSERT INTO objectifs (code,nom) VALUES
-('AUG','Augmenter son poids'),
-('RED','Réduire son poids'),
-('IMC-IDEAL','Atteindre son IMC idéal');
+INSERT INTO
+    objectifs (code, nom)
+VALUES
+    ('AUG', 'Augmenter son poids'),
+    ('RED', 'Réduire son poids'),
+    ('IMC-IDEAL', 'Atteindre son IMC idéal');
 
 
 CREATE TABLE parametre (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    imc_ideal DECIMAL(10, 2)
+    imc_ideal DECIMAL(10, 2),
+    prix_gold DECIMAL(10, 2) DEFAULT 29.99,
+    reduction_gold DECIMAL(3, 2) DEFAULT 0.85
 );
 
 INSERT INTO
-    parametre (imc_ideal)
+    parametre (imc_ideal, prix_gold, reduction_gold)
 VALUES
-    (22);
+    (22, 29.99, 0.5);
 
 INSERT INTO
     activites (nom, calories_brulees)
@@ -296,7 +299,6 @@ VALUES
     (1, 1, 10.00),
     (3, 7, 10.00),
     (5, 3, 5.00);
-
 
 -- Ajouter la colonne photo_profil à la table utilisateurs
 ALTER TABLE

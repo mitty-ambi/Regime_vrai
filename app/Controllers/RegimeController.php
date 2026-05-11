@@ -11,6 +11,7 @@ use App\Models\Objectif;
 use App\Models\RegimeSuggestionPdf;
 use App\Models\SanteModel;
 use App\Models\UtilisateurObjectifModel;
+use App\Models\Parametre;
 
 class RegimeController extends BaseController
 {
@@ -18,6 +19,7 @@ class RegimeController extends BaseController
     protected $objectifModel;
     protected $santeModel;
     protected $utilisateurObjectif;
+    protected $parametreModel;
 
     public function __construct()
     {
@@ -25,17 +27,18 @@ class RegimeController extends BaseController
         $this->objectifModel = new Objectif();
         $this->utilisateurObjectif = new UtilisateurObjectifModel();
         $this->santeModel = new SanteModel();
+        $this->parametreModel = new Parametre();
     }
 
     public function suggestPdf()
     {
         $data = $this->getDataSuggest();
 
-        $user     = $data['user'];
+        $user = $data['user'];
         $objectif = $data['objectif'];
         $variation = $data['variation_poid'];
-        $liste    = $data['liste_regime'];
-        $date     = date('d/m/Y');
+        $liste = $data['liste_regime'];
+        $date = date('d/m/Y');
 
         $pdf = new RegimeSuggestionPdf();
         $pdf->AddPage();
@@ -55,11 +58,11 @@ class RegimeController extends BaseController
         $pdf->SetFont('Arial', '', 10);
 
         $infos = [
-            ['Nom',             utf8_decode($user['nom'] ?? '-')],
-            ['Objectif',        utf8_decode($objectif['objectif_nom'])],
-            ['Poids initial',   number_format($objectif['poids_initial'], 1) . ' kg'],
-            ['Poids actuel',    number_format($user['poids'], 1) . ' kg'],
-            ['Poids cible',     number_format($objectif['poids_cible'], 1) . ' kg'],
+            ['Nom', utf8_decode($user['nom'] ?? '-')],
+            ['Objectif', utf8_decode($objectif['objectif_nom'])],
+            ['Poids initial', number_format($objectif['poids_initial'], 1) . ' kg'],
+            ['Poids actuel', number_format($user['poids'], 1) . ' kg'],
+            ['Poids cible', number_format($objectif['poids_cible'], 1) . ' kg'],
             ['Variation visée', ($variation > 0 ? '+' : '') . number_format($variation, 1) . ' kg'],
         ];
 
@@ -79,8 +82,8 @@ class RegimeController extends BaseController
             $pdf->SetFont('Arial', '', 10);
 
             $imcInfos = [
-                ['IMC actuel',           number_format($imc['imc'], 1)],
-                ['IMC ideal',            number_format($imc['imc_ideal'], 1)],
+                ['IMC actuel', number_format($imc['imc'], 1)],
+                ['IMC ideal', number_format($imc['imc_ideal'], 1)],
                 ['Poids pour IMC ideal', number_format($imc['poids_ideal'], 1) . ' kg'],
             ];
 
@@ -100,26 +103,26 @@ class RegimeController extends BaseController
 
         $pdf->SetFont('Arial', 'B', 9);
         $pdf->SetFillColor(220, 220, 220);
-        $pdf->Cell(50, 8, 'Nom',          1, 0, 'C', true);
-        $pdf->Cell(22, 8, utf8_decode('Durée'),   1, 0, 'C', true);
-        $pdf->Cell(30, 8, 'Variation',    1, 0, 'C', true);
-        $pdf->Cell(25, 8, '% Viande',     1, 0, 'C', true);
-        $pdf->Cell(25, 8, '% Poisson',    1, 0, 'C', true);
-        $pdf->Cell(25, 8, '% Volaille',   1, 0, 'C', true);
-        $pdf->Cell(13, 8, 'Prix',         1, 1, 'C', true);
+        $pdf->Cell(50, 8, 'Nom', 1, 0, 'C', true);
+        $pdf->Cell(22, 8, utf8_decode('Durée'), 1, 0, 'C', true);
+        $pdf->Cell(30, 8, 'Variation', 1, 0, 'C', true);
+        $pdf->Cell(25, 8, '% Viande', 1, 0, 'C', true);
+        $pdf->Cell(25, 8, '% Poisson', 1, 0, 'C', true);
+        $pdf->Cell(25, 8, '% Volaille', 1, 0, 'C', true);
+        $pdf->Cell(13, 8, 'Prix', 1, 1, 'C', true);
 
         $pdf->SetFont('Arial', '', 9);
         foreach ($liste as $r) {
             $vPoids = (float) $r['variation_poids'];
-            $sign   = $vPoids >= 0 ? '+' : '';
+            $sign = $vPoids >= 0 ? '+' : '';
 
-            $pdf->Cell(50, 7, utf8_decode($r['nom']),                          1, 0);
-            $pdf->Cell(22, 7, (int)$r['duree'] . ' j',                         1, 0, 'C');
-            $pdf->Cell(30, 7, $sign . number_format($vPoids, 1) . ' kg',       1, 0, 'C');
-            $pdf->Cell(25, 7, (int)$r['pourcentage_viande']   . ' %',          1, 0, 'C');
-            $pdf->Cell(25, 7, (int)$r['pourcentage_poisson']  . ' %',          1, 0, 'C');
-            $pdf->Cell(25, 7, (int)$r['pourcentage_volaille'] . ' %',          1, 0, 'C');
-            $pdf->Cell(13, 7, number_format($r['prix'], 0) . ' Ar',            1, 1, 'C');
+            $pdf->Cell(50, 7, utf8_decode($r['nom']), 1, 0);
+            $pdf->Cell(22, 7, (int) $r['duree'] . ' j', 1, 0, 'C');
+            $pdf->Cell(30, 7, $sign . number_format($vPoids, 1) . ' kg', 1, 0, 'C');
+            $pdf->Cell(25, 7, (int) $r['pourcentage_viande'] . ' %', 1, 0, 'C');
+            $pdf->Cell(25, 7, (int) $r['pourcentage_poisson'] . ' %', 1, 0, 'C');
+            $pdf->Cell(25, 7, (int) $r['pourcentage_volaille'] . ' %', 1, 0, 'C');
+            $pdf->Cell(13, 7, number_format($r['prix'], 0) . ' Ar', 1, 1, 'C');
         }
 
         return $this->response
@@ -141,6 +144,16 @@ class RegimeController extends BaseController
         if (!isset($data)) {
             return redirect()->to('/objectif/choix');
         }
+        // Passer le statut gold de l'utilisateur à la vue
+        $utilisateur = session()->get('utilisateur');
+        $data['userIsGold'] = $utilisateur['is_gold'] ?? 0;
+        $data['userSolde'] = $utilisateur['solde'] ?? 0;
+
+        // Récupérer les paramètres GOLD depuis la DB
+        $params = $this->parametreModel->getGoldParams();
+        $data['goldPrix'] = $params['prix_gold'] ?? 29.99;
+        $data['goldReduction'] = $params['reduction_gold'] ?? 0.85;
+
         return view('regime/SuggestRegime', $data);
     }
 
@@ -148,7 +161,7 @@ class RegimeController extends BaseController
     {
         // initialiser $data
         $data = [];
-        
+
         // recuperation des data
         $preference = $this->request->getGet("preference");
         $user = session()->get("utilisateur");
@@ -159,7 +172,11 @@ class RegimeController extends BaseController
             return null;
         }
         $codeObjectif = $objectif['code_objectif'];
-        $duree = $objectif['duree'];
+        $duree = 99999;
+        if (isset($objectif['duree'])) {
+            $duree = $objectif['duree'];
+        }
+        ;
         //calculer la variation voulu 
         $variationVoulu = $objectif['poids_cible'] - $user['poids'];
 
@@ -170,10 +187,10 @@ class RegimeController extends BaseController
             $objectif['poids_cible'] = $dataImcIdeal['poids_ideal'];
 
             if ($variationVoulu < 0) {
-                $data['liste_regime']  = $this->regimeModel->getSuggestionDiminuateurPoid($duree, $preference, $variationVoulu);
+                $data['liste_regime'] = $this->regimeModel->getSuggestionDiminuateurPoid($duree, $preference, $variationVoulu);
             }
             if ($variationVoulu > 0) {
-                $data['liste_regime']  = $this->regimeModel->getSuggestionHaugmenterPoid($duree, $preference, $variationVoulu);
+                $data['liste_regime'] = $this->regimeModel->getSuggestionHaugmenterPoid($duree, $preference, $variationVoulu);
             }
             $data['data_imc_ideal'] = $dataImcIdeal;
         }

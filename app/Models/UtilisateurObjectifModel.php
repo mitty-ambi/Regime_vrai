@@ -33,11 +33,11 @@ class UtilisateurObjectifModel extends Model
 
         $this->insert([
             'utilisateur_id' => $utilisateurId,
-            'objectif_id'    => $objectifId,
-            'statut'         => 'actif',
-            'poids_initial'  => $poidsInitial,
-            'poids_cible'    => $poidsCible,
-            'duree'          => $duree,
+            'objectif_id' => $objectifId,
+            'statut' => 'actif',
+            'poids_initial' => $poidsInitial,
+            'poids_cible' => $poidsCible,
+            'duree' => $duree,
         ]);
     }
 
