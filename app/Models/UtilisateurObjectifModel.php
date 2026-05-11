@@ -14,12 +14,12 @@ class UtilisateurObjectifModel extends Model
         'statut',
         'poids_initial',
         'poids_cible',
-        'durrer'
+        'duree'
     ];
     protected $returnType = 'array';
 
     // Ajouter un objectif pour un utilisateur
-    public function addObjectifToUser($utilisateurId, $objectifId, $poidsInitial = null, $poidsCible = null,$duree = null)
+    public function addObjectifToUser($utilisateurId, $objectifId, $poidsInitial = null, $poidsCible = null, $duree = null)
     {
         // Vérifier si l'utilisateur n'a pas déjà cet objectif
         $existing = $this->where('utilisateur_id', $utilisateurId)
@@ -37,7 +37,7 @@ class UtilisateurObjectifModel extends Model
             'statut'         => 'actif',
             'poids_initial'  => $poidsInitial,
             'poids_cible'    => $poidsCible,
-            'durrer'         => $duree,
+            'duree'          => $duree,
         ]);
     }
 

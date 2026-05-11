@@ -146,6 +146,9 @@ class RegimeController extends BaseController
 
     private function getDataSuggest()
     {
+        // initialiser $data
+        $data = [];
+        
         // recuperation des data
         $preference = $this->request->getGet("preference");
         $user = session()->get("utilisateur");
@@ -156,7 +159,7 @@ class RegimeController extends BaseController
             return null;
         }
         $codeObjectif = $objectif['code_objectif'];
-        $durrer = $objectif['durrer'];
+        $duree = $objectif['duree'];
         //calculer la variation voulu 
         $variationVoulu = $objectif['poids_cible'] - $user['poids'];
 
@@ -167,20 +170,20 @@ class RegimeController extends BaseController
             $objectif['poids_cible'] = $dataImcIdeal['poids_ideal'];
 
             if ($variationVoulu < 0) {
-                $data['liste_regime']  = $this->regimeModel->getSuggestionDiminuateurPoid($durrer, $preference, $variationVoulu);
+                $data['liste_regime']  = $this->regimeModel->getSuggestionDiminuateurPoid($duree, $preference, $variationVoulu);
             }
             if ($variationVoulu > 0) {
-                $data['liste_regime']  = $this->regimeModel->getSuggestionHaugmenterPoid($durrer, $preference, $variationVoulu);
+                $data['liste_regime']  = $this->regimeModel->getSuggestionHaugmenterPoid($duree, $preference, $variationVoulu);
             }
             $data['data_imc_ideal'] = $dataImcIdeal;
         }
 
         if ($codeObjectif === 'AUG') {
-            $data['liste_regime'] = $this->regimeModel->getSuggestionHaugmenterPoid($durrer, $preference, $variationVoulu);
+            $data['liste_regime'] = $this->regimeModel->getSuggestionHaugmenterPoid($duree, $preference, $variationVoulu);
         }
 
         if ($codeObjectif === 'RED') {
-            $data['liste_regime'] = $this->regimeModel->getSuggestionDiminuateurPoid($durrer, $preference, $variationVoulu);
+            $data['liste_regime'] = $this->regimeModel->getSuggestionDiminuateurPoid($duree, $preference, $variationVoulu);
         }
         $data['user'] = $user;
         $data['objectif'] = $objectif;
