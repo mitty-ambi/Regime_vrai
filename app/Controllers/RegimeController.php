@@ -159,7 +159,10 @@ class RegimeController extends BaseController
             return null;
         }
         $codeObjectif = $objectif['code_objectif'];
-        $duree = $objectif['duree'];
+        $duree = 99999;
+        if(isset($objectif['duree'])) {
+            $duree = $objectif['duree'];
+        };
         //calculer la variation voulu 
         $variationVoulu = $objectif['poids_cible'] - $user['poids'];
 

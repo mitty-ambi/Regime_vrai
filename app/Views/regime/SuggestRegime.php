@@ -73,7 +73,7 @@
         <div class="filter-card">
             <h2 class="filter-card__title">Filtres de recherche</h2>
 
-            <form action="/Regime/get/suggestion" method="get" class="filter-form">
+            <form action="/Regime/suggest" method="get" class="filter-form">
                 <!-- Préférence protéine -->
                 <span class="protein-row-label">Protéine préférée</span>
                 <div class="protein-row">
@@ -171,6 +171,7 @@
                                 <th>% Viande</th>
                                 <th>% Poisson</th>
                                 <th>% Volaille</th>
+                                <th>Sport</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -229,6 +230,13 @@
                                             </div>
                                             <span class="pct-label"><?= $pctVolaille ?> %</span>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <?php if( isset($regime['nom_activite']))  {?>
+                                        <?= $regime['nom_activite'] ?>    
+                                        <?php } else {?>
+                                            aucun
+                                        <?php } ?>
                                     </td>
 
                                     <!-- Bouton Acheter -->

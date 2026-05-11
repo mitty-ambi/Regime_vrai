@@ -15,11 +15,21 @@ class Regime extends Model
     //suggestons des regimes augmentateur de poid
     public function getSuggestionHaugmenterPoid($durer, $preference, $seuilVariationPoidMax)
     {
-        return $this->preference($preference)
+        return $this
+            ->preference($preference)
             ->whereAugmenteurPoid()
             ->whereDurrerInferieur($durer)
             ->whereSueiVariationPoidlMax($seuilVariationPoidMax)
+            ->withSportAssocier()
             ->findAll();
+    }
+
+    //suggestion du sport associer au regime
+    public function withSportAssocier()
+    {
+        return $this->select('regimes.*,activites.nom as nom_activite,activites.calories_brulees')
+            ->join('regime_activite', 'regime_activite.id_regime=regimes.id', 'left')
+            ->join('activites', 'regime_activite.id=activites.id', 'left');
     }
 
     //suggestion des regimes diminuateur de poid
@@ -29,6 +39,7 @@ class Regime extends Model
             ->whereDiminuateurPoid()
             ->whereDurrerInferieur($durer)
             ->whereSueiVariationPoidlMin($seuilVariationPoidMin)
+            ->withSportAssocier()
             ->findAll();
     }
 
